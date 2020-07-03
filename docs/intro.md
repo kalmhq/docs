@@ -1,28 +1,33 @@
 ---
-title: Getting Started with KAPP
+title: Getting Started with Kalm
 ---
-  
-# What is KAPP
 
-KAPP is an intuitive workflow for deploying, managing, and querying applications on kubernetes.
+# What is Kalm
 
-# Why KAPP
+Kalm (Kubernetes AppLication Manager) is an open source tool that makes it easier to manage applications on kubernetes. Kalm comes with a web interface for the most common operations including:
 
-Kuberenetes is a powerful and flexible tool for managing microservices. However, it comes with a lot of complexity, and requires high effort to even setup the simplest real world application. As applications scales up, this complexes grows exponentially. 
+- Creation of new application deployments
+- Deploying, updating, and scaling existing deployments
+- Volume, config, and secret management
 
-KAPP tries to mitigate this complexity by make things more intuitive and managable across three facets:
+Kalm is installed as a kubernetes controller directly on your cluster:
 
-1. Provide intuitive inteface for common operations
-2. Introduce high level abstractions(i.e Application, Config) that map to lower level Kubernetes resource types at the [resource definition]() level. This drastically simplifies the amount of boilerplate configuration for many types of popular usecases.
-3. Preconfigured Extensions - k8s comes with a vibrant ecosystem. But to even get advanced features, one would have to install and configure multiple extensions. Microservice Applications created by KAPP just works, and get immediate access to powerful features such as Grayscale deployment, autoscaling, external access out of the box. See [Plugins]() for more details.
+![architecture](architecture)
 
-![KAPP Interface][interface]
+In addition, Kalm pre-configures the Istio service mesh, which makes it easier to setup HTTPS certificates, setup routes to services, and much more.
 
-# How KAPP Works
+# Why Kalm
 
- Kapp make some wraps on top of k8s. This is done through the k8s cool feature [Custom Resource Definition](https://kubernetes.io/docs/tasks/access-kubernetes-api/custom-resources/custom-resource-definitions/). We defined some new models which will parse into k8s original ones by Kapp controller.
+Kuberenetes is a powerful and flexible tool for managing microservices. However first-time to setup and configuration can be daunting. The high upfront cost makes it prohibitive for smaller teams to adopt kubernetes. We made kalm in an attempt decrease the cognitive load for developers to interact with kubernetes in both development and production environments.
 
+Kalm tries to reduce complexity in three different ways:
 
-Its easier to see how this works together by going through an example:
+1. Provide intuitive graphical inteface with tips and instructions for the most common operations.
+2. Introduce a new Custom Resource type called "Application". This natural grouping is helpful in reducing the amount of boilerplate configuration.
+3. Preconfiguration of useful extensions - Kalm pre-configures modules such as the Istio service mesh to make it possible to quickly setting up things like HTTPS, routing, API gateways out of the box.
+
+![Web Interface][interface]
+
+Next, lets install Kalm and go through an example to illustrate how it works:
 
 [interface]: /img/intro-ux.png
