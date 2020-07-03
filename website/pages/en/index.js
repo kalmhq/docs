@@ -84,15 +84,29 @@ class Index extends React.Component {
     );
 
     const FeatureCallout = () => (
-      <div
-        className="productShowcaseSection paddingBottom"
-        style={{ textAlign: "center" }}
-      >
-        <h2>Open Source</h2>
-        <MarkdownBlock>
-          Kalm is installed as a webapp and a Kubernetes operator.
-        </MarkdownBlock>
-      </div>
+      <Container>
+        <GridBlock
+          align="center"
+          layout="threeColumn"
+          className="feature"
+          contents={[
+            {
+              title: "Open Source",
+              content: "Fully open source, easy to install",
+            },
+            {
+              title: "Works with any cluster",
+              content:
+                "Works with Minikube, GKE, AKE, MKE, Digital Ocean, Aliyun and more",
+            },
+            {
+              title: "For Developers",
+              content:
+                "Built for developers, by developers. Full time DevOps not required.",
+            },
+          ]}
+        />
+      </Container>
     );
 
     const TryOut = () => (
