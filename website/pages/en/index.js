@@ -15,11 +15,7 @@ const GridBlock = CompLibrary.GridBlock;
 
 class HomeSplash extends React.Component {
   render() {
-    const { siteConfig, language = "" } = this.props;
-    const { baseUrl, docsUrl } = siteConfig;
-    const docsPart = `${docsUrl ? `${docsUrl}/` : ""}`;
-    const langPart = `${language ? `${language}/` : ""}`;
-    const docUrl = (doc) => `${baseUrl}${docsPart}${langPart}${doc}`;
+    const { siteConfig } = this.props;
 
     const SplashContainer = (props) => (
       <div className="homeContainer">
@@ -36,10 +32,10 @@ class HomeSplash extends React.Component {
     );
 
     const ProjectTitle = () => (
-      <>
+      <div>
         <h2 className="projectTitle">{siteConfig.headline}</h2>
         <div className="subtitle">{siteConfig.subtitle}</div>
-      </>
+      </div>
     );
 
     const PromoSection = (props) => (
