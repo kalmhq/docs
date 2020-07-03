@@ -22,8 +22,9 @@ const users = [];
 
 const siteConfig = {
   title: "Kalm", // Title for your website.
-  tagline:
-    "An intuitive GUI that makes it easier to weild the full power of Kubernetes and Istio",
+  headline: "Manage Kubernetes Applications with ease",
+  subtitle:
+    "Stop struggling with yml files. Manage your application deployment on k8s with an intuitive interface made for developers.",
   url: "https://swinges.github.io", // Your website URL
   baseUrl: "/", // Base URL for your project */
   // For github.io type URLs, you would set the url and baseUrl like:

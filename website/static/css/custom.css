@@ -4,7 +4,7 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  */
- 
+
 /* your custom css */
 
 @media only screen and (min-device-width: 360px) and (max-device-width: 736px) {
@@ -31,12 +31,22 @@
   }
 }
 
-.blockImage {
-  box-shadow: 0 15px 30px 0 rgba(0, 0, 0, .11), 0 5px 15px 0 rgba(0, 0, 0, .08);
+.projectTitle {
+  font-size: 4.4em;
 }
 
-.darkBackground, .nav-footer {
-  background:#313131
+.subtitle {
+  font-size: 1.6em;
+}
+
+.blockImage {
+  box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.11),
+    0 5px 15px 0 rgba(0, 0, 0, 0.08);
+}
+
+.darkBackground,
+.nav-footer {
+  background: #313131;
 }
 
 .lightBackground {

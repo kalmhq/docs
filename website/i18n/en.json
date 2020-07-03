@@ -3,7 +3,6 @@
   "localized-strings": {
     "next": "Next",
     "previous": "Previous",
-    "tagline": "An intuitive GUI that makes it easier to weild the full power of Kubernetes and Istio",
     "docs": {
       "api1": {
         "title": "REST API"

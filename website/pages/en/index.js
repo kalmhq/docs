@@ -5,9 +5,9 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-const React = require('react');
+const React = require("react");
 
-const CompLibrary = require('../../core/CompLibrary.js');
+const CompLibrary = require("../../core/CompLibrary.js");
 
 const MarkdownBlock = CompLibrary.MarkdownBlock; /* Used to read markdown */
 const Container = CompLibrary.Container;
@@ -15,13 +15,13 @@ const GridBlock = CompLibrary.GridBlock;
 
 class HomeSplash extends React.Component {
   render() {
-    const {siteConfig, language = ''} = this.props;
-    const {baseUrl, docsUrl} = siteConfig;
-    const docsPart = `${docsUrl ? `${docsUrl}/` : ''}`;
-    const langPart = `${language ? `${language}/` : ''}`;
-    const docUrl = doc => `${baseUrl}${docsPart}${langPart}${doc}`;
+    const { siteConfig, language = "" } = this.props;
+    const { baseUrl, docsUrl } = siteConfig;
+    const docsPart = `${docsUrl ? `${docsUrl}/` : ""}`;
+    const langPart = `${language ? `${language}/` : ""}`;
+    const docUrl = (doc) => `${baseUrl}${docsPart}${langPart}${doc}`;
 
-    const SplashContainer = props => (
+    const SplashContainer = (props) => (
       <div className="homeContainer">
         <div className="homeSplashFade">
           <div className="wrapper homeWrapper">{props.children}</div>
@@ -29,20 +29,20 @@ class HomeSplash extends React.Component {
       </div>
     );
 
-    const Logo = props => (
+    const Logo = (props) => (
       <div className="projectLogo">
         <img src={props.img_src} alt="Project Logo" />
       </div>
     );
 
-    const ProjectTitle = props => (
-      <h2 className="projectTitle">
-        {props.title}
-        <small>{props.tagline}</small>
-      </h2>
+    const ProjectTitle = () => (
+      <>
+        <h2 className="projectTitle">{siteConfig.headline}</h2>
+        <div className="subtitle">{siteConfig.subtitle}</div>
+      </>
     );
 
-    const PromoSection = props => (
+    const PromoSection = (props) => (
       <div className="section promoSection">
         <div className="promoRow">
           <div className="pluginRowBlock">{props.children}</div>
@@ -52,15 +52,17 @@ class HomeSplash extends React.Component {
 
     return (
       <Container background="light">
-      <SplashContainer>
-        <div className="inner">
-          {/* <img src={siteConfig.baseUrl + 'img/Kubernetes_logo_without_workmark.svg'} alt="Logo" width="150" height="140" /> */}
-          <ProjectTitle tagline={siteConfig.tagline} title={siteConfig.title} />
-          <PromoSection>
-            <button className="call-to-action" href="#try">Get Started Now</button>
-          </PromoSection>
-        </div>
-      </SplashContainer>
+        <SplashContainer>
+          <div className="inner">
+            {/* <img src={siteConfig.baseUrl + 'img/Kubernetes_logo_without_workmark.svg'} alt="Logo" width="150" height="140" /> */}
+            <ProjectTitle />
+            <PromoSection>
+              <button className="call-to-action" href="#try">
+                Get Started Now
+              </button>
+            </PromoSection>
+          </div>
+        </SplashContainer>
       </Container>
     );
   }
@@ -68,14 +70,15 @@ class HomeSplash extends React.Component {
 
 class Index extends React.Component {
   render() {
-    const {config: siteConfig, language = ''} = this.props;
-    const {baseUrl} = siteConfig;
+    const { config: siteConfig, language = "" } = this.props;
+    const { baseUrl } = siteConfig;
 
-    const Block = props => (
+    const Block = (props) => (
       <Container
-        padding={['bottom', 'top']}
+        padding={["bottom", "top"]}
         id={props.id}
-        background={props.background}>
+        background={props.background}
+      >
         <GridBlock
           align="left"
           contents={props.children}
@@ -83,13 +86,16 @@ class Index extends React.Component {
         />
       </Container>
     );
-    
+
     const FeatureCallout = () => (
       <div
         className="productShowcaseSection paddingBottom"
-        style={{textAlign: 'center'}}>
+        style={{ textAlign: "center" }}
+      >
         <h2>Open Source</h2>
-        <MarkdownBlock>Kalm is installed as a webapp and a Kubernetes operator.</MarkdownBlock>
+        <MarkdownBlock>
+          Kalm is installed as a webapp and a Kubernetes operator.
+        </MarkdownBlock>
       </div>
     );
 
@@ -98,48 +104,40 @@ class Index extends React.Component {
         {[
           {
             content:
-              'Kalm contains basic and advanced deployment configurations powered by Istio. Easily maximize your uptime, roll out new features safely, scale your appication, and rollback as needed. ',
+              "Kalm contains basic and advanced deployment configurations powered by Istio. Easily maximize your uptime, roll out new features safely, scale your appication, and rollback as needed. ",
             image: `${baseUrl}img/node_scheduling2.png`,
-            imageAlign: 'right',
-            title: 'Deploy With Power',
+            imageAlign: "right",
+            title: "Deploy With Power",
           },
         ]}
       </Block>
     );
 
-    const Description = () => (
-      <Block background="light">
-        {[
-          {
-          },
-        ]}
-      </Block>
-      
-    );
+    const Description = () => <Block background="light">{[{}]}</Block>;
 
     const LearnHow = () => (
       <Block background="light">
         {[
           {
             content:
-              'Application setup in KAPP is quick and easy. Rather than hacking through complex yaml files, you can deploy and manage your entire applicatoin through the KAPP gui.',
+              "Application setup in Kalm is quick and easy. Rather than hacking through complex yaml files, you can deploy and manage your entire applicatoin through the Kalm gui.",
             image: `${baseUrl}img/AppCreation1.svg`,
-            imageAlign: 'right',
-            title: 'Create and import applications easily',
+            imageAlign: "right",
+            title: "Create and import applications easily",
           },
         ]}
       </Block>
     );
-    
+
     const Story2 = () => (
       <Block background="dark">
         {[
           {
             content:
-              'Organize your application into highly customizable component images. Server (continuous) and cron jobs are both supported.',
+              "Organize your application into highly customizable component images. Server (continuous) and cron jobs are both supported.",
             image: `${baseUrl}img/ComponentCreation2.svg`,
-            imageAlign: 'right',
-            title: 'Quickly upload and manage application components',
+            imageAlign: "right",
+            title: "Quickly upload and manage application components",
           },
         ]}
       </Block>
@@ -150,10 +148,10 @@ class Index extends React.Component {
         {[
           {
             content:
-              'You can config your environment so you can rock out like a pro. Config your config for config dawg. So many cool features it be like whoa!',
+              "You can config your environment so you can rock out like a pro. Config your config for config dawg. So many cool features it be like whoa!",
             image: `${baseUrl}img/Configs3.svg`,
-            imageAlign: 'right',
-            title: 'Configs and Environment Variables Rock',
+            imageAlign: "right",
+            title: "Configs and Environment Variables Rock",
           },
         ]}
       </Block>
@@ -164,24 +162,24 @@ class Index extends React.Component {
         {[
           {
             content:
-              'We love routes. We think routes are the shit and so should you. Here are a couple things that make routes on KAPP the bees knees',
+              "We love routes. We think routes are the shit and so should you. Here are a couple things that make routes on Kalm the bees knees",
             image: `${baseUrl}img/Routes4.svg`,
-            imageAlign: 'right',
-            title: 'Routes are awesome',
+            imageAlign: "right",
+            title: "Routes are awesome",
           },
         ]}
       </Block>
     );
-    
+
     const Story5 = () => (
       <Block background="light">
         {[
           {
             content:
-              'Check out this dashboard. It is epic. Look at the pretty graphs. Much awesome. Much wow. Very excite.',
+              "Check out this dashboard. It is epic. Look at the pretty graphs. Much awesome. Much wow. Very excite.",
             image: `${baseUrl}img/Dashboard5.svg`,
-            imageAlign: 'right',
-            title: 'Ultimate Dashboardy',
+            imageAlign: "right",
+            title: "Ultimate Dashboardy",
           },
         ]}
       </Block>
@@ -191,16 +189,18 @@ class Index extends React.Component {
       <Block layout="fourColumn">
         {[
           {
-            content: 'Say goodbye to awkward hacking and hand-holding on yml files. With Kalm, lead developers can quickly configure a robust and streamlined workflow for the entire team.',
+            content:
+              "Say goodbye to awkward hacking and hand-holding on yml files. With Kalm, lead developers can quickly configure a robust and streamlined workflow for the entire team.",
             image: `${baseUrl}img/undraw_react.svg`,
-            imageAlign: 'top',
-            title: 'For Developers',
+            imageAlign: "top",
+            title: "For Developers",
           },
           {
-            content: 'Harness the full power of Kubernetes without losing complex features. You can customize every aspect of your development configuration with Kalm.',
+            content:
+              "Harness the full power of Kubernetes without losing complex features. You can customize every aspect of your development configuration with Kalm.",
             image: `${baseUrl}img/undraw_upgrade_06a0.svg`,
-            imageAlign: 'top',
-            title: 'Power and Precision',
+            imageAlign: "top",
+            title: "Power and Precision",
           },
         ]}
       </Block>
@@ -212,14 +212,15 @@ class Index extends React.Component {
       }
 
       const showcase = siteConfig.users
-        .filter(user => user.pinned)
-        .map(user => (
+        .filter((user) => user.pinned)
+        .map((user) => (
           <a href={user.infoLink} key={user.infoLink}>
             <img src={user.image} alt={user.caption} title={user.caption} />
           </a>
         ));
 
-      const pageUrl = page => baseUrl + (language ? `${language}/` : '') + page;
+      const pageUrl = (page) =>
+        baseUrl + (language ? `${language}/` : "") + page;
 
       return (
         <div className="productShowcaseSection paddingBottom">
@@ -227,7 +228,7 @@ class Index extends React.Component {
           <p>This project is used by all these people</p>
           <div className="logos">{showcase}</div>
           <div className="more-users">
-            <a className="button" href={pageUrl('users.html')}>
+            <a className="button" href={pageUrl("users.html")}>
               More {siteConfig.title} Users
             </a>
           </div>
