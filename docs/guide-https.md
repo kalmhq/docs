@@ -1,8 +1,8 @@
 ---
-title: HTTPS with Ingress
+title: Setup HTTPS Certificates
 ---
 
-Plugins is the core feature, which make kapp so different from using original k8s. A plugin will combine lots of work together to give the user maximum convenience to achieve some heavy tasks. The artical will introduce each plugin in details. 
+Plugins is the core feature, which make kapp so different from using original k8s. A plugin will combine lots of work together to give the user maximum convenience to achieve some heavy tasks. The artical will introduce each plugin in details.
 
 # External Access
 

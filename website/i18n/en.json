@@ -4,25 +4,6 @@
     "next": "Next",
     "previous": "Previous",
     "docs": {
-      "api1": {
-        "title": "REST API"
-      },
-      "doc1": {
-        "title": "Latin-ish",
-        "sidebar_label": "Example Page"
-      },
-      "doc2": {
-        "title": "document number 2"
-      },
-      "doc3": {
-        "title": "This is document number 3"
-      },
-      "doc4": {
-        "title": "Other Document"
-      },
-      "doc5": {
-        "title": "Fifth Document"
-      },
       "faq-auth": {
         "title": "Authorization"
       },
@@ -32,17 +13,26 @@
       "first-deploy": {
         "title": "first-deploy"
       },
+      "guide-ali": {
+        "title": "Connecting to AliCloud"
+      },
       "guide-google": {
-        "title": "Connecting to Google Cloud"
+        "title": "Connect to Google Cloud"
       },
       "guide-https": {
-        "title": "HTTPS with Ingress"
+        "title": "Setup HTTPS Certificates"
       },
       "install": {
         "title": "Installation"
       },
       "intro": {
-        "title": "Getting Started with Kalm"
+        "title": "What is Kalm"
+      },
+      "ref-crd": {
+        "title": "Custom Resource Definitions"
+      },
+      "tut-bookinfo": {
+        "title": "Application and Routing"
       },
       "tut-create": {
         "title": "Creating an Application"
@@ -50,14 +40,17 @@
       "tut-deploy": {
         "title": "Deploy"
       },
+      "tut-hello": {
+        "title": "Hello Kalm"
+      },
       "tut-overview": {
         "title": "Basic Tutorial Overview"
       },
       "tut-rollback": {
         "title": "Rollback"
       },
-      "tut-scale": {
-        "title": "Scaling"
+      "tut-volume": {
+        "title": "Volume, Config, and Secrets"
       }
     },
     "links": {
@@ -68,10 +61,9 @@
     },
     "categories": {
       "Getting Started": "Getting Started",
-      "Basic Tutorial": "Basic Tutorial",
-      "Guides": "Guides",
-      "FAQ": "FAQ",
-      "API Reference": "API Reference"
+      "Tutorials": "Tutorials",
+      "How To": "How To",
+      "Reference": "Reference"
     }
   },
   "pages-strings": {

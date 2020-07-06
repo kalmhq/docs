@@ -1,8 +1,6 @@
 ---
-title: Getting Started with Kalm
+title: What is Kalm
 ---
-
-# What is Kalm
 
 Kalm (Kubernetes AppLication Manager) is an open source tool that makes it easier to manage applications on kubernetes. Kalm comes with a web interface for the most common operations including:
 

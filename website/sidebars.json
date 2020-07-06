@@ -1,17 +1,8 @@
 {
   "docs": {
     "Getting Started": ["intro", "install"],
-    "Basic Tutorial": [
-      "tut-overview",
-      "tut-create",
-      "tut-deploy",
-      "tut-scale",
-      "tut-rollback"
-    ],
-    "Guides": ["guide-https", "guide-google"],
-    "FAQ": ["faq-permissions", "faq-auth"]
-  },
-  "api": {
-    "API Reference": ["api1"]
+    "Tutorials": ["tut-hello", "tut-bookinfo", "tut-volume"],
+    "How To": ["guide-https", "guide-google", "guide-ali"],
+    "Reference": ["ref-crd"]
   }
 }

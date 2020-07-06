@@ -1,5 +1,0 @@
----
-title: Scaling
----
-
-Scaling out
