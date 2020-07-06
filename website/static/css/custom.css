@@ -47,11 +47,14 @@
 .lightBackground {
   color: #757575;
 }
-.call-to-action {
+a.btn-primary {
+  margin-top: 48px;
   width: 400px;
-  height: 60px;
+  padding: 20px;
   font-size: 30px;
   font-weight: 800;
+  line-height: 30px;
+
   color: #fff;
   background: #3f51b5;
   border: none;

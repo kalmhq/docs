@@ -53,9 +53,9 @@ class HomeSplash extends React.Component {
             {/* <img src={siteConfig.baseUrl + 'img/Kubernetes_logo_without_workmark.svg'} alt="Logo" width="150" height="140" /> */}
             <ProjectTitle />
             <PromoSection>
-              <button className="call-to-action" href="#try">
-                Get Started Now
-              </button>
+              <a href="/docs/intro" className="btn-primary">
+                Get Started
+              </a>
             </PromoSection>
           </div>
         </SplashContainer>
