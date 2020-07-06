@@ -20,28 +20,76 @@ kubectl is required, see [here](https://kubernetes.io/docs/tasks/tools/install-k
 
 A cluster-admin role is required to install kapp on your cluster. If you are not familiar with k8s RBAC, you can just use the very first user of your cluster.
 
-### Installing
+## Step 1: Obtaining a kubernetes cluster
 
-Install via kubectl
+You can use either local cluster such as minikube, or a cloud based cluster like GKE or AKS.
+
+### Minikube
+
+Directions for minikube
+
+### GKE
+
+Directions for GKE
+
+## Step 2: Install Kalm onto cluster
+
+### Installing from Script
+
+Install via script
 
 ```
-kubectl apply -f https://xx.com/xx/xx
-# TODO: fix the path.
+kubectl apply -f https://get.kalm.dev
 ```
 
-Check install status with the following command. If you see **kapp-controller**, **kapp-dashboard** are up and running, which means kapp is already installed successfully on your cluster.
+### Install from Source
+
+TODO: move final docs from source directory to here
+
+## Step 3: Launch Kalm
+
+### Configuring Permissions
+
+IMPORTANT: This is for test only! Do not create token this way on a production cluster. Make sure that you know what you are doing before proceeding. Granting admin privileges to Dashboard's Service Account might be a security risk.
+
+To bypass the annoying configuration and restart, in this guide, we will find out how to create a new user using Service Account mechanism of Kubernetes, grant this user admin permissions and login to Kapp Dashboard using bearer token tied to this user.
+
+The commands should be executed in the same shell seesion.
+
+1. Create a service account
 
 ```
-kubectl get pods -n kapp-system
+kubectl create sa kapp-sample-user
 ```
 
-Access your dashboard
-
-1. start a proxy server on your localhost
+2. grant admin permission to the service account
 
 ```
-kubectl proxy
+kubectl create clusterrolebinding kapp-sample-user-admin --user=system:serviceaccount:default:kapp-sample-user --clusterrole=cluster-admin
 ```
 
-2. open dashboard at [http://localhost:8001/api/v1/namespaces/kapp-system/services/https:kapp-dashbaord:/proxy/](http://localhost:8001/api/v1/namespaces/kapp-system/services/https:kapp-dashbaord:/proxy/)
+3. Get service account secret name
 
+```
+secret=$(kubectl get sa kapp-sample-user -o json | jq -r .secrets\[\].name)
+echo $secret
+```
+
+You will see some token name like `kapp-sample-user-token-vbhwr`
+
+4. Get secret token
+
+```
+secret_token=$(kubectl get secret $secret -o json | jq -r '.data["token"]' | base64 -D)
+echo $secret_token
+```
+
+5. Use the token you got to login
+
+_IMAGE_PLACEHOLDER_
+
+you will success login.
+
+_IMAGE_PLACEHOLDER_
+
+Now everything is setup. Next, let's deploy an application.

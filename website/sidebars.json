@@ -1,10 +1,6 @@
 {
   "docs": {
-    "Getting Started": [
-      "intro",
-      "install",
-      "configure"
-    ],
+    "Getting Started": ["intro", "install"],
     "Basic Tutorial": [
       "tut-overview",
       "tut-create",
@@ -12,18 +8,10 @@
       "tut-scale",
       "tut-rollback"
     ],
-    "Guides": [
-      "guide-https",
-      "guide-google"
-    ],
-    "FAQ": [
-      "faq-permissions",
-      "faq-auth"
-    ]
+    "Guides": ["guide-https", "guide-google"],
+    "FAQ": ["faq-permissions", "faq-auth"]
   },
   "api": {
-    "API Reference": [
-      "api1"
-    ]
+    "API Reference": ["api1"]
   }
 }

@@ -7,9 +7,6 @@
       "api1": {
         "title": "REST API"
       },
-      "configure": {
-        "title": "Configurations"
-      },
       "doc1": {
         "title": "Latin-ish",
         "sidebar_label": "Example Page"
