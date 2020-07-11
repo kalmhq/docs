@@ -128,4 +128,6 @@ You should see the main page
 
 ![main page](assets/main-page.png)
 
-Congratulations! Kalm is now properly setup and running. Next, let's see how it works.
+## Next Step
+
+Congratulations! Kalm is now properly setup and running. Next, let's create our first application to see how Kalm works.
