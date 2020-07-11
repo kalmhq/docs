@@ -12,33 +12,37 @@ This tutorial will teach you:
 
 ## Step 1: Create Application
 
-The main page of Kalm shows a list of applications. Press the "Add" Button
+The main page of Kalm shows a list of applications. Press the **Add** button
 
 ![add application](assets/add-app.png)
 
-Enter a name for your application, such as "hello-kalm".
+Enter a name for your application, then press **Submit**
 
 ![name application](assets/name-app.png)
 
+<br>
+
 ## Step 2: Create Component
 
-An application contains 1 or more components. Each component typically corresponds to a docker image. In this example, we will create 1 component which holds the official nginx image.
+An application is made of one or more _components_. Each component typically hold a docker image. In this example, we will create a component which contains the official <a href="https://hub.docker.com/_/nginx" target="_blank">nginx image</a>
 
-Click the "Add Component" Button. Enter "webserver" into the Name field and "nginx:latest" into the Image field. Leave all other fields as is and click "Deploy".
+Click the **Add Component** button. Enter a name such as _"webserver"_ into the **Name** field and **_nginx:latest_** into the **Image** field. Leave all other fields as is and click **Deploy**.
 
 ![create component](assets/create-comp.png)
 
-After a few seconds, a single Pod holding the nginx:latest image is successfully deployed to your cluster.
+After a few seconds, a single Pod holding the nginx:latest image will be deployed to your cluster.
 
 ![first pod](assets/first-pod.png)
 
-## Step 3: Examine and Modify Component
+<br>
 
-Let's examine our pod. Kalm provides a handy terminal for quick examinations into pods. Click the "Shell" Icon to connect a shell to the pod.
+## Step 3: Examining and Updating
+
+Let's examine our pod to see if nginx is really deployed. Kalm provides a handy terminal for quick examinations. Open a shell to our pod by clicking on the shell icon.
 
 ![shell button](assets/shell-button.png)
 
-Let's run a few commands:
+Run a few commands, for example:
 
 ```
 cd /etc/nginx
@@ -46,17 +50,17 @@ ls
 cat nginx.conf
 ```
 
-It seems that this is the nginx container we wanted
+It seems that nginx is correctly installed!
 
 ![shell commands](assets/shell-cmd.png)
 
-Next let's go back to the Components list, and edit our component.
+Next let's go back to the Components list by clicking on **Components** in the navigation sidebar.
 
-Currently, a single pod is running on our cluster, because we specified 1 replica when creating the component. We can edit Application components at any time and redeploy it. Click the "Edit" button.
+Currently one pod is running. Let's scale up our application. Click the **Edit** button.
 
 ![edit component](assets/edit-comp.png)
 
-Change the number of replicas to "3" and click Deploy.
+Change the number of replicas to **3** and click Deploy.
 
 ![increase replicas](assets/increase-replicas.png)
 
@@ -64,44 +68,56 @@ After a few moments, there should be three pods running.
 
 ![three pods](assets/three-pods.png)
 
-You may have heard that kubernetes is "declarative", which means you specify the end result, and the kubernetes control plane figures out how to achieve the end result for you.
+Kubernetes is declarative, which means you specify the end result("I want 3 pods"), and the kubernetes control plane figures out how best to achieve the end result for you("let's add 2 more").
 
-## Step 4: Port and HTTP access
+## Step 4: Port and Routing
 
-Since nginx is a web server, what we really want is to be able to see it via a browser. To enable HTTP access, we have to do two things. First let's open a port on the component. Click "Edit" on the webserver component, then click on the "Networking" tab.
+Let's make our application accessible in the browser. We can do this by opening a port on our component, then adding a route to it.
+
+First open a port by clicking on **Edit**, then click on the **Networking** tab.
 
 ![networking tab](assets/networking-tab.png)
 
-To open a port, lets specify two values, the "Container Port" and the "Service Port". Kalm tries to be helpful by providing visual reminders. The Container port should be 80 because thats what the nginx:latest image defaults to. TheService port can be an arbitrary port such as 8080.
+To open a port, we need to specify a `Container Port` and a `Service Port`. Kalm tries to be helpful by providing a visual reminder of which is which.
+
+The Container port should be **80** because its what the `nginx:latest` image defaults to. TheService port can be an arbitrary port of your choosing, such as **8080**.
 
 ![specify ports](assets/ports.png)
 
-Click Deploy to update the deployment.
+Click **Deploy** to apply changes.
 
-During the deployment you may notice that the number of pods temporarily exceeds three. By default, Kalm uses a rolling update, which means pods are incrementally added and removed one by one, resulting in zero downtime.
+_Note: During the deployment you may notice that the number of pods temporarily exceeds three. Kalm by default uses `rolling update`, which means pods are incrementally added and removed one by one, resulting in zero downtime._
 
 ![rolling updates](assets/rolling-update.png)
 
-Now that the port is open, let's specify a route. Click the "Routes" tab, then click "Add"
+<br>
 
-![rolling updates](assets/add-route.png)
+Now that the port is open, let's add a route. Click **Routes** in the navigation sidebar tab, then click **Add**
 
-In the Routes section, let's enter "\*" for host, which allows us to visit directly via the IP.
+![add route](assets/add-route.png)
+
+Let's enter "\*" for host, which allows us to visit directly via IP address.
 
 ![specify host](assets/specify-host.png)
 
-Next open the targets selector, choose our component.
+In the _Targets_ section, select our component from the dropdown.
 
 ![add target](assets/add-target.png)
 
-Click "Save Route", and a route will have been added. Mouse over "routes" and click on Open in browser.
+Click **Save Route**, and a route will have been added.
+
+Click **Open in Browser**
 
 ![open in browser](assets/open-in-browser.png)
 
-You should see a new tab with a "Welcome to nginx!" screen:
+Great, our application is working!
 
 ![nginx success](assets/nginx-success.png)
 
-Congratulations, you've just deployed an application with an image, scaled it, edited, and setup routing so it can be visited from the outside world.
+You've just installed an application on your cluster, modified it, scaled it, and setup routing to make it accessible from the outside world!
 
-In the next tutorial we'll cover setting up multiple components working together, representing a real world "microservices" architecture.
+All the heavy lifting is done via kubernetes and istio. Kalm is simply applying the appropriate configurations to your cluster. In fact anyone with familiarity with kubernetes should be able to create the same application configuration with a text editor and `kubectl`. We encourage this as an _execrise for the reader_.
+
+## Next Step
+
+Admittedly our "application" is rather trivial. In the next tutorial, let's go over a more representative application comtaining multiple microservices working together.
