@@ -69,10 +69,9 @@ curl -sL https://get.kalm.dev | bash
 
 To enable localhost access, open a port via:
 
-```
-kubectl port-forward -n kapp-system \
-  $(kubectl get pod -n kapp-system \
-    -l app=kalm-dashboard \
+```kubectl port-forward -n kalm-system \
+  $(kubectl get pod -n kalm-system \
+    -l app=kalm \
     -ojsonpath="{.items[0].metadata.name}") \
   3001:3001
 ```
