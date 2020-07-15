@@ -48,21 +48,21 @@ curl -s https://get.kalm.dev/status | bash
 
 ```sh
 NAME                            READY   STATUS    RESTARTS   AGE
-kapp-operator-c7cd8cffc-4grps   2/2     Running   0          56m
+kalm-operator-5fcf5d87f-k4h69   2/2     Running   0          21m
 
 NAME                               READY   STATUS    RESTARTS   AGE
-kalm-dashboard-6bbb5894-q8sb5      2/2     Running   0          55m
-kapp-controller-686c55b89b-6s29x   2/2     Running   0          55m
+kalm-79f76fbf9c-tskck              2/2     Running   0          13m
+kalm-controller-694d8d9c78-rn55v   2/2     Running   0          16m
 
 NAME                                       READY   STATUS    RESTARTS   AGE
-cert-manager-7cb75cf6b4-gbhw7              1/1     Running   1          43h
-cert-manager-cainjector-759496659c-h6ggk   1/1     Running   1          43h
-cert-manager-webhook-7c75b89bf6-lfpp5      1/1     Running   1          43h
+cert-manager-766d5c494b-lqdfs              1/1     Running   0          20m
+cert-manager-cainjector-6649bbb695-gccc7   1/1     Running   0          20m
+cert-manager-webhook-68d464c8b-bds28       1/1     Running   0          20m
 
 NAME                                    READY   STATUS    RESTARTS   AGE
-istio-ingressgateway-7bf98d4db8-c4czn   1/1     Running   1          43h
-istiod-6fd48c8cc7-9gj6m                 1/1     Running   1          43h
-prometheus-5767f54db5-82p66             2/2     Running   2          43h
+istio-ingressgateway-74d4d8d459-thqsz   1/1     Running   0          19m
+istiod-5c99cfc846-mx6c5                 1/1     Running   0          20m
+prometheus-69d8b457f9-5t5tk             2/2     Running   0          19m
 ```
 
 If one or more namespaces is showing up as not ready, please wait a few seconds and try again.
