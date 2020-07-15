@@ -17,7 +17,7 @@
         "title": "Connect to AliCloud"
       },
       "guide-google": {
-        "title": "Connect to Google Cloud"
+        "title": "Install on Google Kubernetes Engine"
       },
       "guide-https": {
         "title": "Setup HTTPS Certificates"
