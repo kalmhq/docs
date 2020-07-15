@@ -85,4 +85,8 @@ To setup access directly via the cluster IP:
 #TODO ask team how to do this
 ```
 
-For setting up a service account, refer to [installation instructions](/docs/install#step-4-admin-service-account).
+For setting up a login token, refer to [installation instructions](/docs/install#step-4-admin-service-account).
+
+## Next Step
+
+You've now setup Kalm on a GKE cluster. For managing apps with Kalm, see the [Hello Kalm](/docs/tut-hello) tutorial.
