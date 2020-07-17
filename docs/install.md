@@ -37,13 +37,13 @@ Alternatively, see the References sections for provisioning clusters on AWS and 
 Kalm can be installed as a [Kubernetes Operator](https://kubernetes.io/docs/concepts/extend-kubernetes/operator/) directly onto your cluster via:
 
 ```sh
-kubectl apply -f https://get.kalm.dev
+curl -sL https://get.kalm.dev | bash
 ```
 
 This command installs Kalm plus a few dependencies, and can take a few seconds to complete. To check the status of the installation, run:
 
 ```sh
-curl -s https://get.kalm.dev/status | bash
+curl -sL https://get.kalm.dev/status | bash
 ```
 
 ```sh
@@ -76,9 +76,9 @@ _Instructions on installing from source can be found on the Kalm github reposito
 To enable browser access, open a port via:
 
 ```sh
-kubectl port-forward -n kapp-system \
-  $(kubectl get pod -n kapp-system \
-    -l app=kalm-dashboard \
+kubectl port-forward -n kalm-system \
+  $(kubectl get pod -n kalm-system \
+    -l app=kalm \
     -ojsonpath="{.items[0].metadata.name}") \
   3001:3001
 ```
