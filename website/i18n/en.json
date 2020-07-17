@@ -22,6 +22,9 @@
       "guide-https": {
         "title": "Setup HTTPS Certificates"
       },
+      "guide-logs": {
+        "title": "View Container Logs"
+      },
       "install": {
         "title": "Installation"
       },

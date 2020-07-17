@@ -2,7 +2,7 @@
   "docs": {
     "Getting Started": ["intro", "install"],
     "Tutorials": ["tut-hello", "tut-bookinfo", "tut-volume"],
-    "How To": ["guide-https", "guide-google", "guide-ali"],
+    "How To": ["guide-logs", "guide-https", "guide-google", "guide-ali"],
     "Reference": ["ref-crd"]
   }
 }
