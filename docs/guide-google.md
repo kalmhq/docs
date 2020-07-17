@@ -10,13 +10,13 @@ As a prerequisit, please install and authenticate the `gcloud` command line tool
 
 To begin, choose a project
 
-```
+```bash
 export PROJECT_ID=hello-kalm
 ```
 
 Note: If you don't have an existing project, you can create one with:
 
-```
+```bash
 export PROJECT_ID=hello-kalm
 gcloud projects create $PROJECT_ID
 ```
@@ -25,7 +25,7 @@ Make sure <a href="https://cloud.google.com/billing/docs/how-to/modify-project#c
 
 You need to enable Kubernetes Engine API as well:
 
-```text
+```bash
 gcloud services enable container.googleapis.com
 ```
 
@@ -33,11 +33,11 @@ gcloud services enable container.googleapis.com
 
 Next, provision a cluster with 4 nodes
 
-```
-  export M_TYPE=n1-standard-2 && \
-  export ZONE=us-west2-a && \
-  export CLUSTER_NAME=${PROJECT_ID}-${RANDOM} && \
-  gcloud container clusters create $CLUSTER_NAME \
+```bash
+export M_TYPE=n1-standard-2 && \
+export ZONE=us-west2-a && \
+export CLUSTER_NAME=${PROJECT_ID}-${RANDOM} && \
+gcloud container clusters create $CLUSTER_NAME \
   --cluster-version latest \
   --machine-type=$M_TYPE \
   --num-nodes 4 \
@@ -47,10 +47,10 @@ Next, provision a cluster with 4 nodes
 
 The creation of the cluster will take a few minutes. Once complete, point kubeconfig to the new cluster:
 
-```
+```bash
 gcloud container clusters get-credentials $CLUSTER_NAME \
-    --zone $ZONE \
-    --project $PROJECT_ID
+  --zone $ZONE \
+  --project $PROJECT_ID
 ```
 
 Verify context is properly setup and accessible
@@ -63,16 +63,16 @@ kubectl cluster-info
 
 Install the Kalm operator
 
-```
+```bash
 curl -sL https://get.kalm.dev | bash
 ```
 
 To enable localhost access, open a port via:
 
-```
-kubectl port-forward -n kapp-system \
-  $(kubectl get pod -n kapp-system \
-    -l app=kalm-dashboard \
+```bash
+kubectl port-forward -n kalm-system \
+  $(kubectl get pod -n kalm-system \
+    -l app=kalm \
     -ojsonpath="{.items[0].metadata.name}") \
   3001:3001
 ```
