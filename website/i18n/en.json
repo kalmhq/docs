@@ -4,6 +4,9 @@
     "next": "Next",
     "previous": "Previous",
     "docs": {
+      "cronjob": {
+        "title": "Schedule CronJobs"
+      },
       "faq-auth": {
         "title": "Authorization"
       },
@@ -13,8 +16,11 @@
       "first-deploy": {
         "title": "first-deploy"
       },
-      "guide-ali": {
-        "title": "Connect to AliCloud"
+      "guide-aws": {
+        "title": "Install on AWS"
+      },
+      "guide-config": {
+        "title": "Add Env Variables & Configs"
       },
       "guide-google": {
         "title": "Install on Google Kubernetes Engine"
@@ -31,8 +37,14 @@
       "intro": {
         "title": "What is Kalm"
       },
+      "probes": {
+        "title": "Health Probes"
+      },
       "ref-crd": {
         "title": "Custom Resource Definitions"
+      },
+      "registry": {
+        "title": "Pull from Private Registry"
       },
       "tut-bookinfo": {
         "title": "Application and Routing"
@@ -52,8 +64,8 @@
       "tut-rollback": {
         "title": "Rollback"
       },
-      "tut-volume": {
-        "title": "Volume, Config, and Secrets"
+      "volumes": {
+        "title": "Mount Volumes"
       }
     },
     "links": {
