@@ -65,7 +65,7 @@
         "title": "Rollback"
       },
       "volumes": {
-        "title": "Mount Volumes"
+        "title": "Mount Disks"
       }
     },
     "links": {
