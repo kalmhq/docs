@@ -92,10 +92,11 @@ class Index extends React.Component {
           contents={[
             {
               title: "Open Source",
-              content: "Fully open source, easy to install",
+              content:
+                "Kalm is free and open source. Deploy on your cluster trustlessly. Modifiable to fit your requirements.",
             },
             {
-              title: "Works with any cluster",
+              title: "Works with any Kubernetes cluster",
               content:
                 "Works with Minikube, GKE, AKE, MKE, Digital Ocean, Aliyun and more",
             },
@@ -109,108 +110,99 @@ class Index extends React.Component {
       </Container>
     );
 
-    const TryOut = () => (
-      <Block background="dark" id="try">
-        {[
-          {
-            content:
-              "Kalm contains basic and advanced deployment configurations powered by Istio. Easily maximize your uptime, roll out new features safely, scale your appication, and rollback as needed. ",
-            image: `${baseUrl}img/node_scheduling2.png`,
-            imageAlign: "right",
-            title: "Deploy With Power",
-          },
-        ]}
-      </Block>
-    );
-
-    const Description = () => <Block background="light">{[{}]}</Block>;
-
-    const LearnHow = () => (
+    const WebFeature = () => (
       <Block background="light">
         {[
           {
+            title: "Easily Create and Update Applications",
             content:
-              "Application setup in Kalm is quick and easy. Rather than hacking through complex yaml files, you can deploy and manage your entire applicatoin through the Kalm gui.",
-            image: `${baseUrl}img/AppCreation1.svg`,
+              "Kalm provides an intuitive web interface for performing common tasks including App configuration, scaling, routing, auto-healing, and job scheduling",
+            image: `img/Configs3.svg`,
             imageAlign: "right",
-            title: "Create and import applications easily",
           },
         ]}
       </Block>
     );
 
-    const Story2 = () => (
+    const RoutesFeature = () => (
       <Block background="dark">
         {[
           {
+            title: "Add Routes",
             content:
-              "Organize your application into highly customizable component images. Server (continuous) and cron jobs are both supported.",
-            image: `${baseUrl}img/ComponentCreation2.svg`,
-            imageAlign: "right",
-            title: "Quickly upload and manage application components",
-          },
-        ]}
-      </Block>
-    );
-
-    const Story3 = () => (
-      <Block background="light">
-        {[
-          {
-            content:
-              "You can config your environment so you can rock out like a pro. Config your config for config dawg. So many cool features it be like whoa!",
+              "Kalm makes it easy to configure external access - hook up hosts and paths to services, specify routing rules, and setup HTTPS",
             image: `${baseUrl}img/Configs3.svg`,
             imageAlign: "right",
-            title: "Configs and Environment Variables Rock",
           },
         ]}
       </Block>
     );
 
-    const Story4 = () => (
-      <Block background="dark">
-        {[
-          {
-            content:
-              "We love routes. We think routes are the shit and so should you. Here are a couple things that make routes on Kalm the bees knees",
-            image: `${baseUrl}img/Routes4.svg`,
-            imageAlign: "right",
-            title: "Routes are awesome",
-          },
-        ]}
-      </Block>
-    );
-
-    const Story5 = () => (
+    const AppCrdFeature = () => (
       <Block background="light">
         {[
           {
+            title: "Organize your cluster into Apps",
             content:
-              "Check out this dashboard. It is epic. Look at the pretty graphs. Much awesome. Much wow. Very excite.",
-            image: `${baseUrl}img/Dashboard5.svg`,
+              "Kalm defines a high-level CRD called Application - which helps cut down the amount of boilerplate and copy pasting in the underlying config files",
+            image: `${baseUrl}img/Configs3.svg`,
             imageAlign: "right",
-            title: "Ultimate Dashboardy",
           },
         ]}
       </Block>
     );
 
-    const Features = () => (
-      <Block layout="fourColumn">
+    const OutOfTheBoxFeature = () => (
+      <Block background="dark">
         {[
           {
+            title: "Works Out of the Box",
             content:
-              "Say goodbye to awkward hacking and hand-holding on yml files. With Kalm, lead developers can quickly configure a robust and streamlined workflow for the entire team.",
-            image: `${baseUrl}img/undraw_react.svg`,
-            imageAlign: "top",
-            title: "For Developers",
+              "First time K8s setup can be daunting. Kalm installs all the necessary dependencies for common usecases and works out of the box. ",
+            image: `${baseUrl}img/Configs3.svg`,
+            imageAlign: "right",
           },
+        ]}
+      </Block>
+    );
+
+    const OperatorFeature = () => (
+      <Block background="light">
+        {[
           {
+            title: "Kalm is a Kubernetes Operator",
             content:
-              "Harness the full power of Kubernetes without losing complex features. You can customize every aspect of your development configuration with Kalm.",
-            image: `${baseUrl}img/undraw_upgrade_06a0.svg`,
-            imageAlign: "top",
-            title: "Power and Precision",
+              " Kalm uses the Kubernetes Operator pattern and CRD(Custom Resource Definitions), which means its easy to install and complements existing tools. Drop into kubectl anytime if the web UI does not cover a corner case.",
+            image: `${baseUrl}img/Configs3.svg`,
+            imageAlign: "right",
+          },
+        ]}
+      </Block>
+    );
+
+    const AnyClusterFeature = () => (
+      <Block background="dark">
+        {[
+          {
+            title: "Work with all clusters",
+            content:
+              "Kalm doesn't explicity depend on platform specific features. You can use Kalm on any kubernetes cluster, including Amazon EKS, Google Kubernetes Engine, Digital Ocean Kubernetes Cluster, and minikube. Take Kalm with you if you need to migrate from one platform to another.",
+            image: `${baseUrl}img/Configs3.svg`,
+            imageAlign: "right",
+          },
+        ]}
+      </Block>
+    );
+
+    const CDFeature = () => (
+      <Block background="light" id="try">
+        {[
+          {
+            title: "Integrate with CI/CD",
+            content:
+              "Kalm provides a webhook so whatever CI you are using, you can trigger deployment updates easily",
+            image: `${baseUrl}img/node_scheduling2.png`,
+            imageAlign: "right",
           },
         ]}
       </Block>
@@ -253,13 +245,13 @@ class Index extends React.Component {
           {/* <Features />
             commenting this part out for now*/}
           <FeatureCallout />
-          <LearnHow />
-          <Story2 />
-          <Story3 />
-          <Story4 />
-          <Story5 />
-          <TryOut />
-          <Description />
+          <WebFeature />
+          <RoutesFeature />
+          <AppCrdFeature />
+          <OutOfTheBoxFeature />
+          <OperatorFeature />
+          <AnyClusterFeature />
+          <CDFeature />
           <Showcase />
         </div>
       </div>

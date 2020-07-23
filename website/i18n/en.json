@@ -44,7 +44,7 @@
         "title": "Custom Resource Definitions"
       },
       "registry": {
-        "title": "Pull from Private Registry"
+        "title": "registry"
       },
       "tut-bookinfo": {
         "title": "Application and Routing"
