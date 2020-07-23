@@ -117,7 +117,7 @@ class Index extends React.Component {
             title: "Easily Create and Update Applications",
             content:
               "Kalm provides an intuitive web interface for performing common tasks including App configuration, scaling, routing, auto-healing, and job scheduling",
-            image: `img/Configs3.svg`,
+            image: `img/kalm_start2x_gif.gif`,
             imageAlign: "right",
           },
         ]}
