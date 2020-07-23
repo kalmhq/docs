@@ -2,7 +2,7 @@
 title: Add Env Variables & Configs
 ---
 
-An well designed application is likely to have configurations which vary between deployments. Kubernetes makes it easy to override the configurations specified in images.
+A well designed application is likely to have configurations which vary between deployments. Kubernetes makes it easy to override the configurations specified in images.
 
 ## Example Container Setup
 
@@ -67,7 +67,7 @@ click **OK** (which should really be named Save)
 
 We've just created a config file. Now we need to override the startup command to tell redis to use it.
 
-In the **Command** input box, type `redis-server "/redis-conf/redis.conf"`
+In the **Command** input box, type `redis-server "/redis-config/redis.conf"`
 
 ![redis command](assets/redis-command.png)
 
@@ -76,7 +76,7 @@ Click **Update Deployment**
 After the update is complete, open the shell again and type
 
 ```
-redis-cli CONFIG SET maxmemory
+redis-cli CONFIG GET maxmemory
 ```
 
 Our configuration is picked up, this time via the configuration pod.
@@ -94,7 +94,7 @@ Click **Update Component** to apply this change
 To verify that the Environment Variable has been set, open a shell and type
 
 ```
-echo $MY_ENV_VAR
+echo $MY_CUSTOM_SETTING
 ```
 
 You should see the value set above(42) as the output
