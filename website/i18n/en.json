@@ -38,7 +38,7 @@
         "title": "What is Kalm"
       },
       "probes": {
-        "title": "Health Probes"
+        "title": "Health Checking Probes"
       },
       "ref-crd": {
         "title": "Custom Resource Definitions"
