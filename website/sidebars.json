@@ -10,7 +10,7 @@
       "probes",
       "guide-https"
     ],
-    "Tutorials": ["tut-bookinfo"],
+    "Tutorials": ["tut-bookinfo", "tut-wordpress"],
     "Platform Setup": ["guide-aws", "guide-google"]
   }
 }

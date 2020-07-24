@@ -64,6 +64,9 @@
       "tut-rollback": {
         "title": "Rollback"
       },
+      "tut-wordpress": {
+        "title": "Deploy Another Wordpress in 3-Minute"
+      },
       "volumes": {
         "title": "Mount Disks"
       }
