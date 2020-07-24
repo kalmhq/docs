@@ -8,11 +8,11 @@ Kalm can help you simplify the process of configuring Private Image Registries.
 
 ## Example Usage
 
+As a prerequisit you need access to a private registry. One option is to create a <a href="https://docs.docker.com/docker-hub/repos/#private-repositories">free private repository</a> on Docker Hub.
+
 Let's upload an image to a private dockerhub registry.
 
-Note: you get <a href="https://docs.docker.com/docker-hub/repos/#private-repositories" target="_blank">a free private repo</a> on Docker Hub, which you can use to follow along for this example.
-
-First upload the `busybox` image onto our preo repository. Replace `<MYREPO>` with the name of your private repo.
+Start by pulling down the `busybox` image onto your local machine, then re-tag it and upload to your private repo. Replace `<MYREPO>` with the name of your repository.
 
 ```
 docker pull busybox
@@ -23,14 +23,15 @@ docker push <MYREPO>/private-busybox:latest
 Now let's create a new application with a component using this private image
 
 - Create an Application
-- Create a component with `<MYREPO>/private-busybox:latest` as the image
+- Create a Component with `<MYREPO>/private-busybox:latest` as the image
+- In the command field, enter `/bin/sh -c sleep 10000` to keep the container alive.
 - Click **Deploy**
 
 You should get a "Failed to pull Image..." error.
 
 ![cannot pull error](assets/pull-error.png)
 
-This error is expected because the pod does not have permission to pull the image.
+This error is expected because the pod does not have permission to pull the specified image.
 
 ### Adding a Private Repository
 
@@ -52,4 +53,4 @@ If the login info is correct, you should see Verified checkbox light up shortly.
 
 Now let's redeploy our application.
 
-Go back to the component and delete the failing pod. Deleting a pod will trigger a redeployment. This time, the pod should be successfully deployed.
+Go back to the component and **delete the failing pod**. Deleting a pod will trigger a redeployment. This time, the pod should be successfully deployed.
