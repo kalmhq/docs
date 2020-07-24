@@ -44,7 +44,7 @@
         "title": "Custom Resource Definitions"
       },
       "registry": {
-        "title": "Pull from Private Registry"
+        "title": "Private Image Registry"
       },
       "tut-bookinfo": {
         "title": "Application and Routing"
@@ -70,9 +70,8 @@
     },
     "links": {
       "Docs": "Docs",
-      "Live Demo": "Live Demo",
       "Github": "Github",
-      "Login": "Login"
+      "Live Demo": "Live Demo"
     },
     "categories": {
       "Getting Started": "Getting Started",
