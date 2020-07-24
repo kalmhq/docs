@@ -1,18 +1,16 @@
 {
   "docs": {
-    "Getting Started": ["intro", "install"],
-    "Tutorials": ["tut-hello", "tut-bookinfo"],
-    "How To": [
+    "Getting Started": ["intro", "install", "tut-hello"],
+    "Guides": [
       "guide-logs",
       "guide-config",
       "cronjob",
       "volumes",
       "registry",
       "probes",
-      "guide-https",
-      "guide-google",
-      "guide-aws"
+      "guide-https"
     ],
-    "Reference": ["ref-crd"]
+    "Tutorials": ["tut-bookinfo"],
+    "Platform Setup": ["guide-aws", "guide-google"]
   }
 }

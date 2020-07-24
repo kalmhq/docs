@@ -76,9 +76,9 @@
     },
     "categories": {
       "Getting Started": "Getting Started",
+      "Guides": "Guides",
       "Tutorials": "Tutorials",
-      "How To": "How To",
-      "Reference": "Reference"
+      "Platform Setup": "Platform Setup"
     }
   },
   "pages-strings": {

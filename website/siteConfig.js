@@ -41,11 +41,8 @@ const siteConfig = {
   // For no header links in the top nav bar -> headerLinks: [],
   headerLinks: [
     { doc: "intro", label: "Docs" },
-    // {doc: 'doc4', label: 'API'},
-    // {page: 'help', label: 'Help'},
+    { href: "https://github.com/kalmhq/kalm", label: "Github" },
     { href: "https://github.com/", label: "Live Demo" },
-    { href: "https://github.com/swinges/kapp_os", label: "Github" },
-    { href: "https://github.com/", label: "Login" },
   ],
 
   // If you have users set above, you add it here:
