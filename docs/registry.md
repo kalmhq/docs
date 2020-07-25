@@ -24,7 +24,7 @@ Now let's create a new application with a component using this private image
 
 - Create an Application
 - Create a Component with `<MYREPO>/private-busybox:latest` as the image
-- In the command field, enter `/bin/sh -c sleep 10000` to keep the container alive.
+- In the command field, enter <code>/bin/sh -c \`sleep 10000\`</code> to keep the container alive.
 - Click **Deploy**
 
 You should get a "Failed to pull Image..." error.
