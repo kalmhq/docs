@@ -4,6 +4,11 @@ title: Add Env Variables & Configs
 
 A well designed application is likely to have configurations which vary between deployments. Kubernetes makes it easy to override the configurations specified in images.
 
+<figure class="video_container">
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/bMwc6XPtM3c" frameborder="0" allowfullscreen="true"> </iframe>
+</figure>
+
+
 ## Example Container Setup
 
 Let's go through an example of configuring Redis. Our goal is to change the `maxmemory` parameter. (Imagine that you need a larger amount of memory for production vs dev)
