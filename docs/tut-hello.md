@@ -12,7 +12,7 @@ This tutorial will teach you:
 
 
 <figure class="video_container">
-  <iframe src="https://www.youtube.com/embed/fzig4AvMr74" frameborder="0" allowfullscreen="true"> </iframe>
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/fzig4AvMr74" frameborder="0" allowfullscreen="true"> </iframe>
 </figure>
 
 
