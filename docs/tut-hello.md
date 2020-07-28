@@ -10,6 +10,12 @@ This tutorial will teach you:
 - How to create application configurations
 - How to open a port and direct traffic to an application
 
+
+<figure class="video_container">
+  <iframe src="https://www.youtube.com/embed/fzig4AvMr74" frameborder="0" allowfullscreen="true"> </iframe>
+</figure>
+
+
 ## Step 1: Create Application
 
 The main page of Kalm shows a list of applications. Press the **Add** button
