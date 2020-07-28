@@ -2,6 +2,10 @@
 title: View Container Logs
 ---
 
+<figure class="video_container">
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/zMzWkzxIKlo" frameborder="0" allowfullscreen="true"> </iframe>
+</figure>
+
 Sometimes its useful to view the log output of a particular container. Kalm provides a view to quickly view logs in the web:
 
 ![log button](assets/log-button.png)
@@ -18,7 +22,7 @@ In the **Command** input box, enter the following command, which outputs a times
 
 ![log component](assets/log-component.png)
 
-Click **Deploy** to instiatiate the component container.
+Click **Deploy** to instantiate the component container.
 
 After deployment is complete, click the _Log Icon_:
 
