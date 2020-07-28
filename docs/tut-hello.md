@@ -18,11 +18,11 @@ This tutorial will teach you:
 
 ## Step 1: Create Application
 
-The main page of Kalm shows a list of applications. Press the **Add** button
+The main page of Kalm shows a list of applications. Press the **Add Application** button
 
 ![add application](assets/add-app.png)
 
-Enter a name for your application, then press **Submit**
+Enter a name for your application, then press **Create Application**
 
 ![name application](assets/name-app.png)
 
@@ -30,9 +30,9 @@ Enter a name for your application, then press **Submit**
 
 ## Step 2: Create Component
 
-An application is made of one or more _components_. Each component typically hold a docker image. In this example, we will create a component which contains the official <a href="https://hub.docker.com/_/nginx" target="_blank">nginx image</a>
+An application is made of one or more _components_. Each component typically holds a docker image. In this example, we will create a component which contains the official <a href="https://hub.docker.com/_/nginx" target="_blank">nginx image</a>
 
-Click the **Add Component** button. Enter a name such as _"webserver"_ into the **Name** field and **_nginx:latest_** into the **Image** field. Leave all other fields as is and click **Deploy**.
+Under the Basic Information section, enter a name such as _"webserver"_ into the **Name** field and **_nginx:latest_** into the **Image** field. Leave all other fields as is and click **Deploy Component**.
 
 ![create component](assets/create-comp.png)
 
@@ -76,17 +76,17 @@ After a few moments, there should be three pods running.
 
 Kubernetes is declarative, which means you specify the end result("I want 3 pods"), and the kubernetes control plane figures out how best to achieve the end result for you("let's add 2 more").
 
-## Step 4: Port and Routing
+## Step 4: Ports and Routing
 
 Let's make our application accessible in the browser. We can do this by opening a port on our component, then adding a route to it.
 
-First open a port by clicking on **Edit**, then click on the **Networking** tab.
+First we'll open a port. Once again, we'll go the components area and click on **Edit**, then click on the **Networking** tab.
 
 ![networking tab](assets/networking-tab.png)
 
 To open a port, we need to specify a `Container Port` and a `Service Port`. Kalm tries to be helpful by providing a visual reminder of which is which.
 
-The Container port should be **80** because its what the `nginx:latest` image defaults to. TheService port can be an arbitrary port of your choosing, such as **8080**.
+The Container port should be **80** because its what the `nginx:latest` image defaults to. The Service port can be an arbitrary port of your choosing, such as **8080**.
 
 ![specify ports](assets/ports.png)
 
@@ -98,7 +98,7 @@ _Note: During the deployment you may notice that the number of pods temporarily 
 
 <br>
 
-Now that the port is open, let's add a route. Click **Routes** in the navigation sidebar tab, then click **Add**
+Now that the port is open, let's add a route. Click **Routes** in the navigation sidebar tab, then click **Add Route**
 
 ![add route](assets/add-route.png)
 
@@ -106,13 +106,13 @@ Let's enter "\*" for host, which allows us to visit directly via IP address.
 
 ![specify host](assets/specify-host.png)
 
-In the _Targets_ section, select our component from the dropdown.
+In the _Targets_ section, select our _"webserver"_ component from the dropdown.
 
 ![add target](assets/add-target.png)
 
-Click **Save Route**, and a route will have been added.
+Click **Update Route**. Our route is now completely setup.
 
-Click **Open in Browser**
+Click **Open in Browser** to check it out.
 
 ![open in browser](assets/open-in-browser.png)
 
@@ -122,8 +122,8 @@ Great, our application is working!
 
 You've just installed an application on your cluster, modified it, scaled it, and setup routing to make it accessible from the outside world!
 
-All the heavy lifting is done via kubernetes and istio. Kalm is simply applying the appropriate configurations to your cluster. In fact anyone with familiarity with kubernetes should be able to create the same application configuration with a text editor and `kubectl`. We encourage this as an _execrise for the reader_.
+All the heavy lifting is done via kubernetes and istio. Kalm is simply applying the appropriate configurations to your cluster. In fact anyone with familiarity with kubernetes should be able to create the same application configuration with a text editor and `kubectl`. We encourage this as an _exercise for the reader_.
 
 ## Next Step
 
-Admittedly our "application" is rather trivial. In the next tutorial, let's go over a more representative application comtaining multiple microservices working together.
+Admittedly our "application" is rather trivial. In the next tutorial, let's go over a more representative application containing multiple microservices working together.
