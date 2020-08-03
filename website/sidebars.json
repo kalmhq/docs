@@ -8,7 +8,9 @@
       "volumes",
       "registry",
       "probes",
-      "guide-https"
+      "guide-https",
+      "guide-export-kalm-resources",
+      "guide-logging-for-kalm"
     ],
     "Tutorials": ["tut-bookinfo", "tut-wordpress"],
     "Platform Setup": ["guide-aws", "guide-google"]
