@@ -25,11 +25,11 @@
       "guide-google": {
         "title": "Install on Google Kubernetes Engine"
       },
-      "guide-https": {
-        "title": "Setup HTTPS Certificates"
-      },
       "guide-logs": {
         "title": "View Container Logs"
+      },
+      "https-certs": {
+        "title": "HTTPS Certificates"
       },
       "install": {
         "title": "Installation"
