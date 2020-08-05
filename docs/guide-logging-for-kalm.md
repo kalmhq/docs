@@ -18,13 +18,14 @@ EFK (Elasticsearch) and PLG (Loki) were the most popular logging system of the m
 
 Make sure KALM installed to your cluster.
 Make sure you have ***kubectl*** and configure to your cluster.
+Make sure your cluster has at least 500m cpu and 800Mi memory (each node has at least 100m cpu and 100Mi) to install PLG.
 
 ### Install PLG on KALM
 
 Run the following command to install plg.
 
 ```
-$ kubectl apply -f https://github.com/kalmhq/kalm/blob/master/resources/kalm-install-plg.yaml
+$ kubectl apply -f https://raw.githubusercontent.com/kalmhq/kalm/master/resources/kalm-install-plg.yaml
 ```
 
 ### View & Query logs
@@ -58,13 +59,14 @@ For more informations of PLG, see https://github.com/grafana/loki/blob/master/do
 
 Make sure KALM installed to your cluster.
 Make sure you have ***kubectl*** and configure to your cluster.
+Make sure your cluster has at least 4100m cpu and 8100Mi memory(each node has at least 100m cpu and 100Mi) to install EFK.
 
 ### Install EFK on KALM
 
 Run the following command to install EFK.
 
 ```
-$ kubectl apply -f https://github.com/kalmhq/kalm/blob/master/resources/kalm-install-efk.yaml
+$ kubectl apply -f https://raw.githubusercontent.com/kalmhq/kalm/master/resources/kalm-install-efk.yaml
 
 ```
 

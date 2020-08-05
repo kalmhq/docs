@@ -15,13 +15,10 @@ Run the command as follow, a resource file that describe the application will be
 
 ```
 $ export KALM_APP_NAME=<name_of_exporting_applaction>
-$ kubectl get namespace $KALM_APP_NAME -o yaml > $KALM_APP_NAME.bak.yaml;\
-    echo "---" >> $KALM_APP_NAME.bak.yaml;\
-    kubectl -n $KALM_APP_NAME get dockerregistries,deploykeys,httpscertissuers,httproutes,httpscerts,singlesignonconfigs,protectedendpoints,components,componentplugins,componentpluginbindings \
-    -o yaml >> $KALM_APP_NAME.bak.yaml
+$ curl https://raw.githubusercontent.com/kalmhq/kalm/add_script_to_export_kalm_resources/scripts/export-resources.sh > export-resources.sh ; bash export-resources.sh $KALM_APP_NAME $KALM_APP_NAME.bak.yaml
 ```
 
-Run the command as follow in another KALM (make sure that there is no application with the same name in KALM), and the application you export will be imported in a few minutes.
+Run the command as follow in another KALM (make sure that there is no application with the same name in KALM, otherwise there will be conflicts when import application), and the application you export will be imported in a few minutes.
 
 ```
 $ kubectl apply -f $KALM_APP_NAME.bak.yaml
@@ -36,11 +33,10 @@ $ kubectl apply -f $KALM_APP_NAME.bak.yaml
 Run the following command to export all resource from old KALM.
 
 ```
-$ kubectl get dockerregistries,deploykeys,httpscertissuers,httproutes,httpscerts,singlesignonconfigs,protectedendpoints,components,componentplugins,componentpluginbindings \
-    -A -o yaml > kalm.bak.yaml
+$ curl https://raw.githubusercontent.com/kalmhq/kalm/add_script_to_export_kalm_resources/scripts/export-resources.sh > export-resources.sh ; bash export-resources.sh all-application kalm.bak.yaml
 ```
 
-Run the following command to import all resource to new KALM. 
+Run the following command to import all resource to new KALM (make sure in your new cluster, there is no application with the same name as the old cluster). 
 *Persistent data will not be migrated such as postgresql data and some file that you mount on disks. If you want to migrate these data, you should through your own customized way.
 
 ```
