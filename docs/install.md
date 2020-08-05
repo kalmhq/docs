@@ -40,36 +40,15 @@ Kalm can be installed as a [Kubernetes Operator](https://kubernetes.io/docs/conc
 curl -sL https://get.kalm.dev | bash
 ```
 
-This command installs Kalm plus a few dependencies, and can take a few seconds to complete. To check the status of the installation, run:
+This command installs Kalm plus a few dependencies, and typically takes 3-5 minutes to complete. Relax in the mean time, or watch this short video on how Kalm works:
 
-```sh
-curl -sL https://get.kalm.dev/status | bash
-```
-
-```sh
-NAME                            READY   STATUS    RESTARTS   AGE
-kalm-operator-5fcf5d87f-k4h69   2/2     Running   0          21m
-
-NAME                               READY   STATUS    RESTARTS   AGE
-kalm-79f76fbf9c-tskck              2/2     Running   0          13m
-kalm-controller-694d8d9c78-rn55v   2/2     Running   0          16m
-
-NAME                                       READY   STATUS    RESTARTS   AGE
-cert-manager-766d5c494b-lqdfs              1/1     Running   0          20m
-cert-manager-cainjector-6649bbb695-gccc7   1/1     Running   0          20m
-cert-manager-webhook-68d464c8b-bds28       1/1     Running   0          20m
-
-NAME                                    READY   STATUS    RESTARTS   AGE
-istio-ingressgateway-74d4d8d459-thqsz   1/1     Running   0          19m
-istiod-5c99cfc846-mx6c5                 1/1     Running   0          20m
-prometheus-69d8b457f9-5t5tk             2/2     Running   0          19m
-```
-
-If one or more namespaces is showing up as not ready, please wait a few seconds and try again.
-
-_Instructions on installing from source can be found on the Kalm github repository._
+<figure class="video_container">
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/fzig4AvMr74" frameborder="0" allowfullscreen="true"> </iframe>
+</figure>
 
 <br>
+
+The installation script will give you real-time feedback of services spinning up. Once you see **Installation Complete**, move on to the next step.
 
 ## Step 3: Launch Webserver
 
@@ -89,7 +68,7 @@ Now open <a href="http://localhost:3001/" target="_blank">http://localhost:3001/
 
 Kalm should be running. Next we need to generate a Service Account on the cluster.
 
-## Step 4: Admin Service Account
+## Step 4: Create a Service Account
 
 In order to manage applications, Kalm requires _cluster-admin_ privilages on the cluster. To keep things clean, we recommend creating a <a href="https://kubernetes.io/docs/reference/access-authn-authz/service-accounts-admin/" target="_blank">_Service Acount_</a> for Kalm.
 
