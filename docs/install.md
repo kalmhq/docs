@@ -28,6 +28,12 @@ Once minikube is installed, create a new cluster via:
 minikube start --memory 8192 --cpus 4
 ```
 
+After the cluster starts, start the minikube tunnel in another terminal session via:
+
+```
+minikube tunnel
+```
+
 Alternatively, see the References sections for provisioning clusters on AWS and Google Cloud.
 
 <br>
