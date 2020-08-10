@@ -10,7 +10,8 @@
       "probes",
       "guide-https",
       "guide-export-kalm-resources",
-      "guide-logging-for-kalm"
+      "guide-logging-for-kalm",
+      "https-certs"
     ],
     "Tutorials": ["tut-bookinfo", "tut-wordpress"],
     "Platform Setup": ["guide-aws", "guide-google"]

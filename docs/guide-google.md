@@ -6,15 +6,19 @@ The simplest way to provision a cluster on Google Cloud Platform is via Google K
 
 As a prerequisit, please install and authenticate the `gcloud` command line tool. Instructions can be found here.
 
-## Setup Cluster
+## Step 1: Create a GKE Cluster
 
-To begin, choose a project
+There are a few different ways to create a GKE Cluster. You can either create one through only gcloud, use the web interface, or with Terraform.
+
+### Option A - gcloud command line
+
+To begin, choose a <a href="https://cloud.google.com/resource-manager/docs/creating-managing-projects">Google Cloud project</a>
 
 ```bash
 export PROJECT_ID=hello-kalm
 ```
 
-Note: If you don't have an existing project, you can create one with:
+Note: If you don't have an existing Google Cloud project, you can create one with:
 
 ```bash
 export PROJECT_ID=hello-kalm
@@ -45,7 +49,7 @@ gcloud container clusters create $CLUSTER_NAME \
   --project $PROJECT_ID
 ```
 
-The creation of the cluster will take a few minutes. Once complete, point kubeconfig to the new cluster:
+The creation of the cluster will take a few minutes. Once complete, configure kubectl to use the new cluster:
 
 ```bash
 gcloud container clusters get-credentials $CLUSTER_NAME \
@@ -53,15 +57,69 @@ gcloud container clusters get-credentials $CLUSTER_NAME \
   --project $PROJECT_ID
 ```
 
-Verify context is properly setup and accessible
+Verify the cluster is properly setup and accessible.
 
-```
+```sh
 kubectl cluster-info
 ```
 
-## Install Kalm Operator
+### Option B - Terraform
 
-Install the Kalm operator
+If you are more familiar with Terraform, you can provision a demo cluster with the following steps.
+
+First, <a href="https://learn.hashicorp.com/tutorials/terraform/install-cli?in=terraform/gcp-get-started" target="_blank">install Terraform</a>.
+
+Give Terraform access to the Application Default Credentials (ADC).
+
+```bash
+gcloud auth application-default login
+```
+
+Clone the repository below.
+
+```bash
+git clone https://github.com/kalmhq/terraform-gke
+cd terraform-gke
+```
+
+Open 'terraform.tfvars', and specify the ID of the Google Cloud project you would like to install to.
+
+```
+# terraform.tfvars
+project_id = "REPLACE_ME"
+region     = "us-west2"
+```
+
+Install the cluster with the following commands.
+
+```
+terraform init
+terraform apply
+```
+
+Type `yes` to confirm the installation.
+
+After 5-10 minutes, the cluster should be created. Once complete, retrieve the name of the newly created cluster.
+
+```
+terraform output
+```
+
+Configure kubectl to use the new cluster.
+
+```bash
+gcloud container clusters get-credentials NAME_OF_YOUR_CLUSTER --zone ZONE_OF_CLUSTER
+```
+
+Verify the cluster is properly setup and accessible.
+
+```sh
+kubectl cluster-info
+```
+
+## Step 2: Install Kalm
+
+Once the cluster is setup, install Kalm with the following command.
 
 ```bash
 curl -sL https://get.kalm.dev | bash
@@ -79,14 +137,8 @@ kubectl port-forward -n kalm-system \
 
 Now open http://localhost:3001/
 
-To setup access directly via the cluster IP:
-
-```
-#TODO ask team how to do this
-```
-
 For setting up a login token, refer to [installation instructions](/docs/install#step-4-admin-service-account).
 
 ## Next Step
 
-You've now setup Kalm on a GKE cluster. For managing apps with Kalm, see the [Hello Kalm](/docs/tut-hello) tutorial.
+You've now setup Kalm on a GKE cluster. To get a sense of how Kalm works, see the [Hello Kalm](/docs/tut-hello) tutorial.

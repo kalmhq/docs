@@ -28,14 +28,14 @@
       "guide-google": {
         "title": "Install on Google Kubernetes Engine"
       },
-      "guide-https": {
-        "title": "Setup HTTPS Certificates"
-      },
       "guide-logging-for-kalm": {
         "title": "Guide: Logging for KALM"
       },
       "guide-logs": {
         "title": "View Container Logs"
+      },
+      "https-certs": {
+        "title": "HTTPS Certificates"
       },
       "install": {
         "title": "Installation"
@@ -71,7 +71,7 @@
         "title": "Rollback"
       },
       "tut-wordpress": {
-        "title": "Deploy Another Wordpress in 3-Minute"
+        "title": "Deploy Another Wordpress in 3-Minutes"
       },
       "volumes": {
         "title": "Mount Disks"
