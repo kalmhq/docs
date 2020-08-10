@@ -4,6 +4,9 @@
     "next": "Next",
     "previous": "Previous",
     "docs": {
+      "azure-aks": {
+        "title": "Install on Azure"
+      },
       "cronjob": {
         "title": "Schedule CronJobs"
       },
@@ -16,14 +19,14 @@
       "first-deploy": {
         "title": "first-deploy"
       },
+      "google-gke": {
+        "title": "Install on Google Kubernetes Engine"
+      },
       "guide-aws": {
         "title": "Install on AWS"
       },
       "guide-config": {
         "title": "Add Env Variables & Configs"
-      },
-      "guide-google": {
-        "title": "Install on Google Kubernetes Engine"
       },
       "guide-logs": {
         "title": "View Container Logs"

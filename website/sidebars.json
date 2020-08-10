@@ -11,6 +11,6 @@
       "https-certs"
     ],
     "Tutorials": ["tut-bookinfo", "tut-wordpress"],
-    "Platform Setup": ["guide-aws", "guide-google"]
+    "Platform Setup": ["guide-aws", "google-gke", "azure-aks"]
   }
 }

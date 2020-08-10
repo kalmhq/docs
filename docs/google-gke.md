@@ -137,8 +137,6 @@ kubectl port-forward -n kalm-system \
 
 Now open http://localhost:3001/
 
-For setting up a login token, refer to [installation instructions](/docs/install#step-4-admin-service-account).
-
 ## Next Step
 
 You've now setup Kalm on a GKE cluster. To get a sense of how Kalm works, see the [Hello Kalm](/docs/tut-hello) tutorial.
