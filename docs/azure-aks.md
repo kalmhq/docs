@@ -31,8 +31,8 @@ Note: the resulting output only appears once. Save the appId and password immedi
 Clone the repository below and `cd` into the aks directory
 
 ```sh
-git clone https://github.com/kalmhq/terraform-installs
-cd azure-aks
+git clone https://github.com/kalmhq/tf-scripts
+cd tf-scripts/aks
 ```
 
 Open 'terraform.tfvars', and paste in the appId and password from Step 2.

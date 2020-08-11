@@ -78,8 +78,8 @@ gcloud auth application-default login
 Clone the repository below.
 
 ```bash
-git clone https://github.com/kalmhq/terraform-gke
-cd terraform-gke
+git clone https://github.com/kalmhq/tf-scripts
+cd tf-scripts/gke
 ```
 
 Open 'terraform.tfvars', and specify the ID of the Google Cloud project you would like to install to.
