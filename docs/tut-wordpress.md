@@ -1,10 +1,10 @@
 ---
-title: Deploy Another Wordpress in 3-Minutes
+title: Deploy "Just Another Wordpress Site" in 3-Minutes
 ---
 
 ![Wordpress with Kubernetes](assets/wp-tut-0.jpeg)
 
-Running a WordPress site with Kubernetes alone is a little like driving a giant truck loaded with only one brick. For such a simple site, there are tons of concepts and config files you need to understand and manage. Kalm makes this process much smoother - let's install the "Just Another WordPress Site" in 3 minutes!
+While some believe that running a WordPress site with Kubernetes is a little like driving a giant truck loaded with only one brick, it's actually rather simple to setup with Kalm. Let's install the "Just Another WordPress Site" in 3 minutes!
 
 ## Create New Application
 
