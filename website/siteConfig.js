@@ -22,18 +22,18 @@ const users = [];
 
 const siteConfig = {
   title: "Kalm", // Title for your website.
-  headline: "Manage Kubernetes Applications with ease",
+  headline: "The Easiest Way to Manage Kubernetes",
   subtitle:
     "Stop struggling with yml files. Manage your application deployment on k8s with an intuitive interface made for developers.",
-  url: "https://swinges.github.io", // Your website URL
+  url: "https://kalm.dev", // Your website URL
   baseUrl: "/", // Base URL for your project */
   // For github.io type URLs, you would set the url and baseUrl like:
   //   url: 'https://facebook.github.io',
   //   baseUrl: '/test-site/',
 
   // Used for publishing and more
-  projectName: "kalm-docs",
-  organizationName: "swinges",
+  projectName: "kalm",
+  organizationName: "kalmhq",
   // For top-level user or org sites, the organization is still the same.
   // e.g., for the https://JoelMarcey.github.io site, it would be set like...
   //   organizationName: 'JoelMarcey'
@@ -42,16 +42,16 @@ const siteConfig = {
   headerLinks: [
     { doc: "intro", label: "Docs" },
     { href: "https://github.com/kalmhq/kalm", label: "Github" },
-    { href: "https://github.com/", label: "Live Demo" },
+    // { href: "https://github.com/", label: "Live Demo" },
   ],
   editUrl: "https://github.com/kalmhq/docs/edit/master/docs/",
   // If you have users set above, you add it here:
   users,
 
   /* path to images for header/footer */
-  headerIcon: "img/Kubernetes_logo_without_workmark.svg",
-  footerIcon: "img/Kubernetes_logo_without_workmark.svg",
-  favicon: "img/Kubernetes_logo_without_workmark.svg",
+  headerIcon: "img/kalm-logo-white-400.svg",
+  footerIcon: "img/kalm-logo-white-400.svg",
+  favicon: "img/kalm-logo-blue.svg",
 
   /* Colors for website */
   colors: {
@@ -74,7 +74,7 @@ const siteConfig = {
   */
 
   // This copyright info is used in /core/Footer.js and blog RSS/Atom feeds.
-  copyright: `Copyright © ${new Date().getFullYear()} Random Block Labs, Inc.`,
+  // copyright: `Copyright © ${new Date().getFullYear()} Kalm Block Labs, Inc.`,
 
   highlight: {
     // Highlight.js theme to use for syntax highlighting in code blocks.
@@ -110,7 +110,7 @@ const siteConfig = {
 
   // You may provide arbitrary config keys to be used as needed by your
   // template. For example, if you need your repo's URL...
-  //   repoUrl: 'https://github.com/facebook/test-site',
+  repoUrl: "https://github.com/kalmhq/kalm",
 };
 
 module.exports = siteConfig;
