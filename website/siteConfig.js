@@ -44,7 +44,7 @@ const siteConfig = {
     { href: "https://github.com/kalmhq/kalm", label: "Github" },
     { href: "https://github.com/", label: "Live Demo" },
   ],
-
+  editUrl: "https://github.com/kalmhq/docs/edit/master/docs/",
   // If you have users set above, you add it here:
   users,
 
