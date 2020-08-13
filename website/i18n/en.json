@@ -68,7 +68,7 @@
         "title": "Rollback"
       },
       "tut-wordpress": {
-        "title": "Deploy \"Just Another Wordpress Site\" in 3-Minutes"
+        "title": "Demo: Hosting Wordpress on K8S"
       },
       "volumes": {
         "title": "Mount Disks"
@@ -76,8 +76,7 @@
     },
     "links": {
       "Docs": "Docs",
-      "Github": "Github",
-      "Live Demo": "Live Demo"
+      "Github": "Github"
     },
     "categories": {
       "Getting Started": "Getting Started",
