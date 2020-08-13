@@ -49,6 +49,9 @@
       "registry": {
         "title": "Private Image Registry"
       },
+      "service-account": {
+        "title": "Authorization via Service Account"
+      },
       "tut-bookinfo": {
         "title": "Application and Routing"
       },
