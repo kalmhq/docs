@@ -137,6 +137,16 @@ kubectl port-forward -n kalm-system \
 
 Now open http://localhost:3001/
 
+## Clean Up
+
+Delete the cluster to avoid resource charges.
+
+If you created the cluster with Terraform:
+
+```
+terraform destroy
+```
+
 ## Next Step
 
 You've now setup Kalm on a GKE cluster. To get a sense of how Kalm works, see the [Hello Kalm](/docs/tut-hello) tutorial.

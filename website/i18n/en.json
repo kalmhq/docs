@@ -4,6 +4,9 @@
     "next": "Next",
     "previous": "Previous",
     "docs": {
+      "amazon-eks": {
+        "title": "Install on Amazon EKS"
+      },
       "azure-aks": {
         "title": "Install on Azure"
       },
@@ -21,9 +24,6 @@
       },
       "google-gke": {
         "title": "Install on Google Kubernetes Engine"
-      },
-      "guide-aws": {
-        "title": "Install on AWS"
       },
       "guide-config": {
         "title": "Add Env Variables & Configs"

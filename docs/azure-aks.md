@@ -90,6 +90,14 @@ kubectl port-forward -n kalm-system \
 
 Now open http://localhost:3001/
 
+## Clean Up
+
+Delete the cluster to avoid resource charges.
+
+```
+terraform destroy
+```
+
 ## Next Step
 
 You've now setup Kalm on an Azure AKS cluster. To get a sense of how Kalm works, see the [Hello Kalm](/docs/tut-hello) tutorial.
