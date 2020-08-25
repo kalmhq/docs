@@ -28,6 +28,6 @@ After deployment is complete, click the _Log Icon_:
 
 ![log button example](assets/log-button-example.png)
 
-<br>
+<br />
 You should see the Log View:
 ![log view](assets/log-view.png)

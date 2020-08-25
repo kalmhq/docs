@@ -10,11 +10,9 @@ This tutorial will teach you:
 - How to create application configurations
 - How to open a port and direct traffic to an application
 
-
 <figure class="video_container">
   <iframe width="560" height="315" src="https://www.youtube.com/embed/fzig4AvMr74" frameborder="0" allowfullscreen="true"> </iframe>
 </figure>
-
 
 ## Step 1: Create Application
 
@@ -26,7 +24,7 @@ Enter a name for your application, then press **Create Application**
 
 ![name application](assets/name-app.png)
 
-<br>
+<br />
 
 ## Step 2: Create Component
 
@@ -40,7 +38,7 @@ After a few seconds, a single Pod holding the nginx:latest image will be deploye
 
 ![first pod](assets/first-pod.png)
 
-<br>
+<br />
 
 ## Step 3: Examining and Updating
 
@@ -96,7 +94,7 @@ _Note: During the deployment you may notice that the number of pods temporarily 
 
 ![rolling updates](assets/rolling-update.png)
 
-<br>
+<br />
 
 Now that the port is open, let's add a route. Click **Routes** in the navigation sidebar tab, then click **Add Route**
 

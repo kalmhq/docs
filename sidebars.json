@@ -1,0 +1,18 @@
+{
+  "docs": {
+    "Getting Started": ["intro", "install", "tut-hello"],
+    "Guides": [
+      "guide-logs",
+      "guide-config",
+      "cronjob",
+      "volumes",
+      "registry",
+      "probes",
+      "guide-export-kalm-resources",
+      "guide-logging-for-kalm",
+      "https-certs"
+    ],
+    "Tutorials": ["tut-bookinfo", "tut-wordpress"],
+    "Platform Setup": ["amazon-eks", "google-gke", "azure-aks"]
+  }
+}
