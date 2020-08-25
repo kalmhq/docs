@@ -65,10 +65,10 @@ kubectl port-forward -n kalm-system \
   $(kubectl get pod -n kalm-system \
     -l app=kalm \
     -ojsonpath="{.items[0].metadata.name}") \
-  3001:3001
+  3010:3010
 ```
 
-Now open <a href="http://localhost:3001/" target="_blank">http://localhost:3001/</a>
+Now open <a href="http://localhost:3010/" target="_blank">http://localhost:3010/</a>
 
 ![login screen](assets/main-page.png)
 
