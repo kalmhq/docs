@@ -41,7 +41,7 @@
 }
 
 .getStarted {
-  border-width: 1px;
+  border: 1px solid;
   display: inline-block;
   line-height: 1.2em;
   text-decoration: none !important;

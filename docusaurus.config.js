@@ -28,11 +28,6 @@ const siteConfig = {
     //   },
     // },
 
-    colorMode: {
-      defaultMode: "light",
-      respectPrefersColorScheme: true,
-    },
-
     navbar: {
       title: "Kalm",
       hideOnScroll: true,
