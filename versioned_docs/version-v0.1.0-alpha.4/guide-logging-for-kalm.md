@@ -1,5 +1,5 @@
 ---
-title: Logging for KALM
+title: Logging System
 ---
 
 KALM provide  a simple log board for component, you can view component’s logs in this board.
