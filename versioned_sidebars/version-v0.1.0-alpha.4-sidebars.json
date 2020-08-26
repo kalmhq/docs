@@ -1,0 +1,100 @@
+{
+  "version-v0.1.0-alpha.4/docs": [
+    {
+      "collapsed": true,
+      "type": "category",
+      "label": "Getting Started",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-v0.1.0-alpha.4/intro"
+        },
+        {
+          "type": "doc",
+          "id": "version-v0.1.0-alpha.4/install"
+        },
+        {
+          "type": "doc",
+          "id": "version-v0.1.0-alpha.4/tut-hello"
+        }
+      ]
+    },
+    {
+      "collapsed": true,
+      "type": "category",
+      "label": "Guides",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-v0.1.0-alpha.4/guide-logs"
+        },
+        {
+          "type": "doc",
+          "id": "version-v0.1.0-alpha.4/guide-config"
+        },
+        {
+          "type": "doc",
+          "id": "version-v0.1.0-alpha.4/cronjob"
+        },
+        {
+          "type": "doc",
+          "id": "version-v0.1.0-alpha.4/volumes"
+        },
+        {
+          "type": "doc",
+          "id": "version-v0.1.0-alpha.4/registry"
+        },
+        {
+          "type": "doc",
+          "id": "version-v0.1.0-alpha.4/probes"
+        },
+        {
+          "type": "doc",
+          "id": "version-v0.1.0-alpha.4/guide-export-kalm-resources"
+        },
+        {
+          "type": "doc",
+          "id": "version-v0.1.0-alpha.4/guide-logging-for-kalm"
+        },
+        {
+          "type": "doc",
+          "id": "version-v0.1.0-alpha.4/https-certs"
+        }
+      ]
+    },
+    {
+      "collapsed": true,
+      "type": "category",
+      "label": "Tutorials",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-v0.1.0-alpha.4/tut-bookinfo"
+        },
+        {
+          "type": "doc",
+          "id": "version-v0.1.0-alpha.4/tut-wordpress"
+        }
+      ]
+    },
+    {
+      "collapsed": true,
+      "type": "category",
+      "label": "Platform Setup",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-v0.1.0-alpha.4/amazon-eks"
+        },
+        {
+          "type": "doc",
+          "id": "version-v0.1.0-alpha.4/google-gke"
+        },
+        {
+          "type": "doc",
+          "id": "version-v0.1.0-alpha.4/azure-aks"
+        }
+      ]
+    }
+  ]
+}
