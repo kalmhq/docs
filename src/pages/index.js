@@ -6,38 +6,7 @@ import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import styles from "./styles.module.css";
 
-const features = [
-  {
-    title: <>Open Source</>,
-    imageUrl: "img/undraw_docusaurus_mountain.svg",
-    description: (
-      <>
-        Kalm is free and open source. Deploy on your cluster trustlessly.
-        Modifiable to fit your requirements.
-      </>
-    ),
-  },
-  {
-    title: <>Works with any Kubernetes cluster</>,
-    imageUrl: "img/undraw_docusaurus_tree.svg",
-    description: (
-      <>
-        Works with Minikube, GKE, AKE, MKE, Digital Ocean, Aliyun and more. Kalm
-        installs all the necessary dependencies for common usecases and works
-        out of the box.
-      </>
-    ),
-  },
-  {
-    title: <>For Developers</>,
-    imageUrl: "img/undraw_docusaurus_react.svg",
-    description: (
-      <>Built for developers, by developers. Full time DevOps not required.</>
-    ),
-  },
-];
-
-function Feature({ imageUrl, title, description }) {
+function Feature({ icon, title, description }) {
   // const imgUrl = useBaseUrl(imageUrl);
   return (
     <div className={clsx("col col--4", styles.feature)}>
@@ -46,6 +15,7 @@ function Feature({ imageUrl, title, description }) {
           <img className={styles.featureImage} src={imgUrl} alt={title} />
         </div>
       )} */}
+      <img className="primary-icon" src={icon}></img>
       <h3>{title}</h3>
       <p>{description}</p>
     </div>
@@ -66,20 +36,49 @@ const FeatureSection = (props) => {
   );
 };
 
+const features = [
+  {
+    title: <>Open Source</>,
+    icon: "img/github.svg",
+    description: <>Kalm is free, open source, and actively maintained. </>,
+  },
+  {
+    title: "Get Running Quickly",
+    icon: "img/build-24px.svg",
+    description: (
+      <>
+        Kalm simplifies the common workflows related to kubernetes, including
+        deploying applications, routing, and intergrating with your existing
+        pipeline.
+      </>
+    ),
+  },
+  {
+    title: <>Works with any Kubernetes cluster</>,
+    icon: "img/install.svg",
+    description: (
+      <>
+        Kalm works on Google GKE, Amazon EKS, Azure AKS, and most Kubernetes
+        configurations. Take it with you if you decide to migrate someday.
+      </>
+    ),
+  },
+];
+
 function Home() {
   const context = useDocusaurusContext();
   const { siteConfig = {} } = context;
   return (
-    <Layout
-      // title={`${siteConfig.title}`}
-      description="the easiest way to manage kubernetes"
-    >
+    <Layout>
       <header className={clsx("hero hero--primary", styles.heroBanner)}>
         <div className="container">
-          <h1 className="hero__title">The Easiest Way to Manage Kubernetes</h1>
+          <h1 className="hero__title">
+            Easily deploy and manage applications on Kubernetes
+          </h1>
           <p className="hero__subtitle">
-            Stop struggling with yml files. Manage your application deployment
-            on k8s with an intuitive interface made for developers.
+            Get what you want out of Kubernetes without having to write and
+            maintain a ton of custom tooling. Deploy apps, handle requests, hook
+            up CI/CD, all through an intuitive web interface.
           </p>
           <div className={styles.buttons}>
             <Link
@@ -109,76 +108,105 @@ function Home() {
         )}
 
         <FeatureSection
-          desc="Kalm provides an intuitive web interface for performing common tasks including App configuration, scaling, routing, auto-healing, and job scheduling."
-          title="Easily Create and Update Applications"
+          title="Create and Manage Applications"
+          desc={
+            <>
+              Kalm provides an intuitive web interface for core Kubernetes
+              functionalities:
+              <p></p>
+              <ul>
+                <li>Configuring and deploying applications</li>
+                <li>Managing ports and container networking</li>
+                <li>Probes and Auto-Healing</li>
+                <li>Scaling</li>
+                <li>Mouting Volumes</li>
+                <li>Scheduling according to Resources</li>
+              </ul>
+            </>
+          }
           image="img/kalm_start2x_gif.gif"
         />
         <FeatureSection
+          title="Powerful Ingress"
           desc={
             <>
-              Kalm is built on <Link to="https://istio.io/">Istio</Link>. With
-              its power, you can easily manage the traffic entering the cluster.
-              You can get many ingress functions immediately, such as Request
-              Routing, Error Injection, Mirroring Traffic, Traffic Shifting,
-              etc.
+              Kalm supports the Service Mesh{" "}
+              <Link to="https://istio.io/">Istio</Link> out of the box. This
+              gives you full control over traffic entering the cluster. You can
+              setup Request Routing, Error Injection, Mirroring, Traffic
+              Shifting, and more.
             </>
           }
-          title="Powerful Ingress"
           image="img/Configs3.svg"
         />
         <FeatureSection
           desc={
             <>
-              Kalm uses <Link to="https://github.com/dexidp/dex">dex</Link>,
-              which allows you to use your existing employee account system
-              (such as github, gitlab) to seamlessly use the entire kubernetes
-              cluster. kalm provides RBAC mode and application-level access
-              control.
+              Want the Heroku-like experience of "git push, update app"? Kalm
+              provides webhooks which you can use to invoke deployment updates.
+              In addition, you can generate snippets for popular build tools.
+            </>
+          }
+          title="CI/CD Integration"
+          image="img/node_scheduling2.png"
+        />
+        <FeatureSection
+          title="Automatic HTTPS Certification"
+          desc={
+            <>
+              Easily obtain and renew HTTPS Certificates via{" "}
+              <Link to="https://letsencrypt.org/">Let's Encrypt</Link>. Kalm
+              currently supports specific domain name certificates using http01
+              challenge. (Wildcard certificates coming soon)
+            </>
+          }
+          image="img/Configs3.svg"
+        />
+        <FeatureSection
+          title="Log Collection"
+          desc={
+            <>
+              New to Kuberentes and struggling with log collection? Kalm can
+              help you setup a logging solution within minutes. Choose either{" "}
+              <Link to="https://grafana.com/oss/loki/">Loki(PLG stack)</Link> or{" "}
+              <Link to="https://www.elastic.co/what-is/elk-stack">ELK</Link>.
+            </>
+          }
+          image="img/Configs3.svg"
+        />
+        <FeatureSection
+          title="Works with any Kubernetes clusters"
+          desc={
+            <>
+              Kalm abides by Kubernetes standards and tries to avoid platform
+              specific dependencies. Kalm has been tested on:
+              <p></p>
+              <ul>
+                <li>Amazon EKS</li>
+                <li>Google GKE</li>
+                <li>Azure AKS</li>
+                <li>Digital Ocean Kubernetes</li>
+                <li>Linode Kubernetes Engine</li>
+                <li>k3s rasberry pi</li>
+                <li>Minikube</li>
+              </ul>{" "}
+            </>
+          }
+          image="img/Configs3.svg"
+        />
+
+        <FeatureSection
+          desc={
+            <>
+              Kalm utilizes <Link to="https://github.com/dexidp/dex">dex</Link>,
+              which lets you use your existing team authentication system(i.e
+              Github, Gitlab, Auth0) to control access to applications running
+              on your Kubernetes cluster. Kalm supports RBAC mode and
+              application-level access control.
             </>
           }
           title="Built-in Single Sign-On"
           image="img/Configs3.svg"
-        />
-        <FeatureSection
-          desc={
-            <>
-              Kalm uses{" "}
-              <Link to="https://cert-manager.io/docs/">Cert Manager</Link>. Kalm
-              can help you apply for an https certificate from{" "}
-              <Link to="https://letsencrypt.org/">Let's Encrypt</Link> at any
-              time, and automatically renew it for you. Currently supports
-              specific domain name certificates (using http01 Challenge), and
-              wildcard certificates will be supported soon.
-            </>
-          }
-          title="Fully automatic certificate hosting"
-          image="img/Configs3.svg"
-        />
-        <FeatureSection
-          desc={
-            <>
-              Log collection within the cluster is a common requirement. Kalm
-              has built-in log system construction, you only need to fill in a
-              small amount of configuration, you can get a pretty good log
-              collection system, and support you to further customize. Provides
-              multiple options for you to choose, such as{" "}
-              <Link to="https://grafana.com/oss/loki/">Loki(PLG stack)</Link>,{" "}
-              <Link to="https://www.elastic.co/what-is/elk-stack">ELK</Link>
-              (under development) .
-            </>
-          }
-          title="Logging function out of the box"
-          image="img/Configs3.svg"
-        />
-        <FeatureSection
-          desc="Kalm doesn't explicity depend on platform specific features. You can use Kalm on any kubernetes cluster, including Amazon EKS, Google Kubernetes Engine, Digital Ocean Kubernetes Cluster, and minikube. Take Kalm with you if you need to migrate from one platform to another."
-          title="Work with all clusters"
-          image="img/Configs3.svg"
-        />
-        <FeatureSection
-          desc="Kalm can connect to your private image registy and help you automatically synchronize image pull secrets to various applications. Kalm provides webhooks so whatever CI you are using, you can trigger deployment updates easily."
-          title="Integrate with CI/CD"
-          image="img/node_scheduling2.png"
         />
       </div>
     </Layout>
