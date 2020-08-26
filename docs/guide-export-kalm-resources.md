@@ -1,6 +1,10 @@
 ---
-title: Export KALM resources
+title: Import / Export
 ---
+
+:::info
+This is a temporary solution, kalm will provide better import and export functions.
+:::
 
 Sometimes we need to export an application, and reinstall it on another cluster. This is the way to export resource from KALM.
 
