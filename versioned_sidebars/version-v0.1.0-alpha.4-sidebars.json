@@ -1,103 +1,53 @@
 {
   "version-v0.1.0-alpha.4/docs": [
     {
-      "collapsed": true,
       "type": "category",
       "label": "Getting Started",
+      "collapsed": false,
       "items": [
-        {
-          "type": "doc",
-          "id": "version-v0.1.0-alpha.4/intro"
-        },
-        {
-          "type": "doc",
-          "id": "version-v0.1.0-alpha.4/install"
-        },
-        {
-          "type": "doc",
-          "id": "version-v0.1.0-alpha.4/tut-hello"
-        }
+        "version-v0.1.0-alpha.4/intro",
+        "version-v0.1.0-alpha.4/install",
+        "version-v0.1.0-alpha.4/tut-hello"
       ]
     },
     {
-      "collapsed": true,
       "type": "category",
       "label": "Guides",
+      "collapsed": false,
       "items": [
-        {
-          "type": "doc",
-          "id": "version-v0.1.0-alpha.4/guide-logs"
-        },
-        {
-          "type": "doc",
-          "id": "version-v0.1.0-alpha.4/guide-config"
-        },
-        {
-          "type": "doc",
-          "id": "version-v0.1.0-alpha.4/cronjob"
-        },
-        {
-          "type": "doc",
-          "id": "version-v0.1.0-alpha.4/volumes"
-        },
-        {
-          "type": "doc",
-          "id": "version-v0.1.0-alpha.4/registry"
-        },
-        {
-          "type": "doc",
-          "id": "version-v0.1.0-alpha.4/probes"
-        },
-        {
-          "type": "doc",
-          "id": "version-v0.1.0-alpha.4/guide-export-kalm-resources"
-        },
-        {
-          "type": "doc",
-          "id": "version-v0.1.0-alpha.4/guide-logging-for-kalm"
-        },
-        {
-          "type": "doc",
-          "id": "version-v0.1.0-alpha.4/https-certs"
-        }
+        "version-v0.1.0-alpha.4/guide-logs",
+        "version-v0.1.0-alpha.4/guide-config",
+        "version-v0.1.0-alpha.4/cronjob",
+        "version-v0.1.0-alpha.4/volumes",
+        "version-v0.1.0-alpha.4/registry",
+        "version-v0.1.0-alpha.4/probes",
+        "version-v0.1.0-alpha.4/https-certs"
       ]
     },
     {
-      "collapsed": true,
       "type": "category",
-      "label": "Tutorials",
+      "label": "Examples",
       "items": [
-        {
-          "type": "doc",
-          "id": "version-v0.1.0-alpha.4/tut-bookinfo"
-        },
-        {
-          "type": "doc",
-          "id": "version-v0.1.0-alpha.4/tut-wordpress"
-        }
+        "version-v0.1.0-alpha.4/tut-bookinfo",
+        "version-v0.1.0-alpha.4/tut-wordpress"
       ]
     },
     {
-      "collapsed": true,
+      "type": "category",
+      "label": "Operations",
+      "items": [
+        "version-v0.1.0-alpha.4/guide-export-kalm-resources",
+        "version-v0.1.0-alpha.4/guide-logging-for-kalm"
+      ]
+    },
+    {
       "type": "category",
       "label": "Platform Setup",
       "items": [
-        {
-          "type": "doc",
-          "id": "version-v0.1.0-alpha.4/guide-minikube"
-        },
-        {
-          "type": "doc",
-          "id": "version-v0.1.0-alpha.4/amazon-eks"
-        },
-        {
-          "type": "doc",
-          "id": "version-v0.1.0-alpha.4/google-gke"
-        },
-        {
-          "type": "doc",
-          "id": "version-v0.1.0-alpha.4/azure-aks"
-        }
+        "version-v0.1.0-alpha.4/guide-minikube",
+        "version-v0.1.0-alpha.4/amazon-eks",
+        "version-v0.1.0-alpha.4/google-gke",
+        "version-v0.1.0-alpha.4/azure-aks"
       ]
     }
   ]

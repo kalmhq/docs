@@ -1,23 +1,39 @@
 {
-  "docs": {
-    "Getting Started": ["intro", "install", "tut-hello"],
-    "Guides": [
-      "guide-logs",
-      "guide-config",
-      "cronjob",
-      "volumes",
-      "registry",
-      "probes",
-      "guide-export-kalm-resources",
-      "guide-logging-for-kalm",
-      "https-certs"
-    ],
-    "Tutorials": ["tut-bookinfo", "tut-wordpress"],
-    "Platform Setup": [
-      "guide-minikube",
-      "amazon-eks",
-      "google-gke",
-      "azure-aks"
-    ]
-  }
+  "docs": [
+    {
+      "type": "category",
+      "label": "Getting Started",
+      "collapsed": false,
+      "items": ["intro", "install", "tut-hello"]
+    },
+    {
+      "type": "category",
+      "label": "Guides",
+      "collapsed": false,
+      "items": [
+        "guide-logs",
+        "guide-config",
+        "cronjob",
+        "volumes",
+        "registry",
+        "probes",
+        "https-certs"
+      ]
+    },
+    {
+      "type": "category",
+      "label": "Examples",
+      "items": ["tut-bookinfo", "tut-wordpress"]
+    },
+    {
+      "type": "category",
+      "label": "Operations",
+      "items": ["guide-export-kalm-resources", "guide-logging-for-kalm"]
+    },
+    {
+      "type": "category",
+      "label": "Platform Setup",
+      "items": ["guide-minikube", "amazon-eks", "google-gke", "azure-aks"]
+    }
+  ]
 }

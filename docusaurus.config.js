@@ -100,7 +100,6 @@ const siteConfig = {
       copyright: `Copyright © ${new Date().getFullYear()} Random Block Labs, Inc. Built with Docusaurus.`,
     },
     image: "img/undraw_online.svg",
-    sidebarCollapsible: false,
     twitterImage: "img/undraw_tweetstorm.svg",
   },
   presets: [

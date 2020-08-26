@@ -1,5 +1,5 @@
 ---
-title: "Demo: Hosting Wordpress on K8S"
+title: "Wordpress"
 ---
 
 ![Wordpress with Kubernetes](assets/wp-tut-0.jpeg)
