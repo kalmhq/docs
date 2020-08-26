@@ -28,6 +28,12 @@ const siteConfig = {
     //   },
     // },
 
+    // algolia: {
+    //   apiKey: "YOUR_API_KEY",
+    //   indexName: "YOUR_INDEX_NAME",
+    //   searchParameters: {}, // Optional (if provided by Algolia)
+    // },
+
     navbar: {
       title: "Kalm",
       hideOnScroll: true,
@@ -91,7 +97,7 @@ const siteConfig = {
         src: "img/kalm-logo-blue.svg",
         href: "https://kalm.dev/",
       },
-      copyright: `Copyright © ${new Date().getFullYear()} Random Block Labs, Inc.`,
+      copyright: `Copyright © ${new Date().getFullYear()} Random Block Labs, Inc. Built with Docusaurus.`,
     },
     image: "img/undraw_online.svg",
     sidebarCollapsible: false,
