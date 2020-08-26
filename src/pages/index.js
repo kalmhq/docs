@@ -21,7 +21,11 @@ const features = [
     title: <>Works with any Kubernetes cluster</>,
     imageUrl: "img/undraw_docusaurus_tree.svg",
     description: (
-      <>Works with Minikube, GKE, AKE, MKE, Digital Ocean, Aliyun and more.</>
+      <>
+        Works with Minikube, GKE, AKE, MKE, Digital Ocean, Aliyun and more. Kalm
+        installs all the necessary dependencies for common usecases and works
+        out of the box.
+      </>
     ),
   },
   {
@@ -105,28 +109,65 @@ function Home() {
         )}
 
         <FeatureSection
-          desc="Kalm provides an intuitive web interface for performing common tasks including App configuration, scaling, routing, auto-healing, and job scheduling"
+          desc="Kalm provides an intuitive web interface for performing common tasks including App configuration, scaling, routing, auto-healing, and job scheduling."
           title="Easily Create and Update Applications"
           image="img/kalm_start2x_gif.gif"
         />
         <FeatureSection
-          desc="Kalm makes it easy to configure external access - hook up hosts and paths to services, specify routing rules, and setup HTTPS"
-          title="Add Routes"
+          desc={
+            <>
+              Kalm is built on <Link to="https://istio.io/">Istio</Link>. With
+              its power, you can easily manage the traffic entering the cluster.
+              You can get many ingress functions immediately, such as Request
+              Routing, Error Injection, Mirroring Traffic, Traffic Shifting,
+              etc.
+            </>
+          }
+          title="Powerful Ingress"
           image="img/Configs3.svg"
         />
         <FeatureSection
-          desc="Kalm defines a high-level CRD called Application - which helps cut down the amount of boilerplate and copy pasting in the underlying config files"
-          title="Organize your cluster into Apps"
+          desc={
+            <>
+              Kalm uses <Link to="https://github.com/dexidp/dex">dex</Link>,
+              which allows you to use your existing employee account system
+              (such as github, gitlab) to seamlessly use the entire kubernetes
+              cluster. kalm provides RBAC mode and application-level access
+              control.
+            </>
+          }
+          title="Built-in Single Sign-On"
           image="img/Configs3.svg"
         />
         <FeatureSection
-          desc="First time K8s setup can be daunting. Kalm installs all the necessary dependencies for common usecases and works out of the box"
-          title="Works Out of the Box"
+          desc={
+            <>
+              Kalm uses{" "}
+              <Link to="https://cert-manager.io/docs/">Cert Manager</Link>. Kalm
+              can help you apply for an https certificate from{" "}
+              <Link to="https://letsencrypt.org/">Let's Encrypt</Link> at any
+              time, and automatically renew it for you. Currently supports
+              specific domain name certificates (using http01 Challenge), and
+              wildcard certificates will be supported soon.
+            </>
+          }
+          title="Fully automatic certificate hosting"
           image="img/Configs3.svg"
         />
         <FeatureSection
-          desc="Kalm uses the Kubernetes Operator pattern and CRD(Custom Resource Definitions), which means its easy to install and complements existing tools. Drop into kubectl anytime if the web UI does not cover a corner case."
-          title="Kalm is a Kubernetes Operator"
+          desc={
+            <>
+              Log collection within the cluster is a common requirement. Kalm
+              has built-in log system construction, you only need to fill in a
+              small amount of configuration, you can get a pretty good log
+              collection system, and support you to further customize. Provides
+              multiple options for you to choose, such as{" "}
+              <Link to="https://grafana.com/oss/loki/">Loki(PLG stack)</Link>,{" "}
+              <Link to="https://www.elastic.co/what-is/elk-stack">ELK</Link>
+              (under development) .
+            </>
+          }
+          title="Logging function out of the box"
           image="img/Configs3.svg"
         />
         <FeatureSection
@@ -135,7 +176,7 @@ function Home() {
           image="img/Configs3.svg"
         />
         <FeatureSection
-          desc="Kalm provides a webhook so whatever CI you are using, you can trigger deployment updates easily"
+          desc="Kalm can connect to your private image registy and help you automatically synchronize image pull secrets to various applications. Kalm provides webhooks so whatever CI you are using, you can trigger deployment updates easily."
           title="Integrate with CI/CD"
           image="img/node_scheduling2.png"
         />
