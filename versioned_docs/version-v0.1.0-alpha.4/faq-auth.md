@@ -10,7 +10,7 @@ _IMAGE_PLACE_HOLDER_
 You need to config static user for k8s first. It's easy to understand but rarely used, as extra configuration and a restart are required. Learn more from https://kubernetes.io/docs/reference/access-authn-authz/authentication/#static-password-file
 
 ### Token
-Kubernetes has various ways to config token. 
+Kubernetes has various ways to config token.
 - [Static Token](https://kubernetes.io/docs/reference/access-authn-authz/authentication/#static-password-file). This method will require extra configuration on your api server, and a restart is required.
 - [Bootstrap Tokens](https://kubernetes.io/docs/reference/access-authn-authz/authentication/#bootstrap-tokens)
 - [Service Account Tokens](https://kubernetes.io/docs/reference/access-authn-authz/authentication/#bootstrap-tokens). The following sections shows how to login by using a servier account token.
@@ -26,13 +26,13 @@ The commands should be executed in the same shell seesion.
 
 1. Create a service account
 
-```
+```bash
 kubectl create sa kapp-sample-user
 ```
 
 2. grant admin permission to the service account
 
-```
+```bash
 kubectl create clusterrolebinding kapp-sample-user-admin --user=system:serviceaccount:default:kapp-sample-user --clusterrole=cluster-admin
 ```
 

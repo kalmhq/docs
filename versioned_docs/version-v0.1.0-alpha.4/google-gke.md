@@ -92,7 +92,7 @@ region     = "us-west2"
 
 Install the cluster with the following commands.
 
-```
+```bash
 terraform init
 terraform apply
 ```
@@ -101,7 +101,7 @@ Type `yes` to confirm the installation.
 
 After 5-10 minutes, the cluster should be created. Once complete, retrieve the name of the newly created cluster.
 
-```
+```bash
 terraform output
 ```
 
@@ -143,7 +143,7 @@ Delete the cluster to avoid resource charges.
 
 If you created the cluster with Terraform:
 
-```
+```bash
 terraform destroy
 ```
 

@@ -24,15 +24,14 @@ Make sure your cluster has at least 500m cpu and 800Mi memory (each node has at 
 
 Run the following command to install plg.
 
-```
-$ kubectl apply -f https://raw.githubusercontent.com/kalmhq/kalm/master/resources/kalm-install-plg.yaml
+```bash
+kubectl apply -f https://raw.githubusercontent.com/kalmhq/kalm/master/resources/kalm-install-plg.yaml
 ```
 
 ### View & Query logs
 
-```
-$ kubectl -n loki port-forward $(kubectl get pods -n loki -l app=grafana -o jsonpath="{.items[].metadata.name}") 3000:3000
-
+```bash
+kubectl -n loki port-forward $(kubectl get pods -n loki -l app=grafana -o jsonpath="{.items[].metadata.name}") 3000:3000
 ```
 
 Open [http://localhost:3000](http://localhost:3000/login) in browser, and use ‘*admin’* and ‘*password’ to login.*
@@ -65,15 +64,14 @@ Make sure your cluster has at least 4100m cpu and 8100Mi memory(each node has at
 
 Run the following command to install EFK.
 
-```
-$ kubectl apply -f https://raw.githubusercontent.com/kalmhq/kalm/master/resources/kalm-install-efk.yaml
-
+```bash
+kubectl apply -f https://raw.githubusercontent.com/kalmhq/kalm/master/resources/kalm-install-efk.yaml
 ```
 
 ### View & Query logs
 
-```
-$ kubectl -n efk port-forward $(kubectl get pods -n efk -l app=kibana -o jsonpath="{.items[].metadata.name}") 5601:5601
+```bash
+kubectl -n efk port-forward $(kubectl get pods -n efk -l app=kibana -o jsonpath="{.items[].metadata.name}") 5601:5601
 
 ```
 

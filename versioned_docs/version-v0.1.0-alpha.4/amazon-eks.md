@@ -31,7 +31,7 @@ cd tf-scripts/eks
 
 Install the cluster with the following commands.
 
-```
+```bash
 terraform init
 terraform apply
 ```
@@ -82,7 +82,7 @@ Now open http://localhost:3010/
 
 Delete the cluster to avoid resource charges.
 
-```
+```bash
 terraform destroy
 ```
 

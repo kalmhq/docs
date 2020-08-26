@@ -14,7 +14,7 @@ There are a many different ways to create a Kubernetes Cluster on Amazon. We wil
 
 You need an AWS service account. Configure [service credentials](https://console.aws.amazon.com/iam/home?#/security_credentials), then configure the aws CLI with:
 
-```sh
+```bash
 aws configure
 ```
 
@@ -24,14 +24,14 @@ Enter your Access key ID and secret.
 
 Clone the repository below and `cd` into the aks directory
 
-```sh
+```bash
 git clone https://github.com/kalmhq/tf-scripts
 cd tf-scripts/eks
 ```
 
 Install the cluster with the following commands.
 
-```
+```bash
 terraform init
 terraform apply
 ```
@@ -42,7 +42,7 @@ After 5-10 minutes, the cluster should be created.
 
 View the newly cluster with:
 
-```sh
+```bash
 aws eks list-clusters
 ```
 
@@ -82,7 +82,7 @@ Now open http://localhost:3010/
 
 Delete the cluster to avoid resource charges.
 
-```
+```bash
 terraform destroy
 ```
 
