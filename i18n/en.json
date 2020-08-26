@@ -43,9 +43,7 @@
       "install": {
         "title": "Installation"
       },
-      "intro": {
-        "title": "What is Kalm"
-      },
+
       "probes": {
         "title": "Health Checking Probes"
       },

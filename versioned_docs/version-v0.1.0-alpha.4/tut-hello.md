@@ -30,11 +30,11 @@ Enter a name for your application, then press **Create Application**
 
 An application is made of one or more _components_. Each component typically holds a docker image. In this example, we will create a component which contains the official <a href="https://hub.docker.com/_/nginx" target="_blank">nginx image</a>
 
-Under the Basic Information section, enter a name such as _"webserver"_ into the **Name** field and **_nginx:latest_** into the **Image** field. Leave all other fields as is and click **Deploy Component**.
+Under the Basic Information section, enter a name such as _"webserver"_ into the **Name** field and **_nginx:alpine_** into the **Image** field. Leave all other fields as is and click **Deploy Component**.
 
 ![create component](assets/create-comp.png)
 
-After a few seconds, a single Pod holding the nginx:latest image will be deployed to your cluster.
+After a few seconds, a single Pod holding the nginx:alpine image will be deployed to your cluster.
 
 ![first pod](assets/first-pod.png)
 
@@ -84,13 +84,16 @@ First we'll open a port. Once again, we'll go the components area and click on *
 
 To open a port, we need to specify a `Container Port` and a `Service Port`. Kalm tries to be helpful by providing a visual reminder of which is which.
 
-The Container port should be **80** because its what the `nginx:latest` image defaults to. The Service port can be an arbitrary port of your choosing, such as **8080**.
+The Container port should be **80** because its what the `nginx:alpine` image defaults to. The Service port can be an arbitrary port of your choosing, such as **8080**.
 
 ![specify ports](assets/ports.png)
 
 Click **Deploy** to apply changes.
 
-_Note: During the deployment you may notice that the number of pods temporarily exceeds three. Kalm by default uses `rolling update`, which means pods are incrementally added and removed one by one, resulting in zero downtime._
+:::note
+During the deployment you may notice that the number of pods temporarily exceeds three. Kalm by default uses `rolling update`, which means pods are incrementally added and removed one by one, resulting in zero downtime.
+:::
+
 
 ![rolling updates](assets/rolling-update.png)
 

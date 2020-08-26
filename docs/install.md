@@ -8,41 +8,30 @@ Kalm is optimized to work with the latest version of Kuberenetes (currently 1.18
 
 | Kalm version | k8s 1.14.x | k8s 1.15.x | k8s 1.16.x | k8s 1.17.x | k8s 1.18.x |
 | ------------ | ---------- | ---------- | ---------- | ---------- | ---------- |
-| 0.1.0        | ✔          | ✔          | ✔          | ✔          | ✔          |
-
-<br />
+| v0.1.0       | ✔          | ✔          | ✔          | ✔          | ✔          |
 
 ## Step 1: Prerequisites
+
+### Cluster Setup
+
+Kalm can be used to manage any kubernetes cluster.
+For the purpose of this tutorial, we recommend that you try kalm on [Minikube](./guide-minikube.md) localhost cluster first.
+
+Alternatively, see the References sections for provisioning clusters on [AWS](./guide-aws.md), [Google Cloud](./google-gke.md) and [Azure](./azure-aks.md).
 
 ### Install Kubectl
 
 Installation of Kalm requires kubectl, which can be installed according to the official <a href="https://kubernetes.io/docs/tasks/tools/install-kubectl/" target="_blank">Install and Set Up kubectl</a> docs.
 
-### Cluster Setup (Minikube)
-
-Kalm can be used to manage any kubernetes cluster. For the purpose of this tutorial, we recommend that you <a href="https://kubernetes.io/docs/tasks/tools/install-minikube/" target="_blank">install Minikube</a>, a single-node localhost cluster.
-
-Once minikube is installed, create a new cluster via:
-
-```
-minikube start --memory 8192 --cpus 4
-```
-
-After the cluster starts, start the minikube tunnel in another terminal session via:
-
-```
-minikube tunnel
-```
-
-Alternatively, see the References sections for provisioning clusters on AWS and Google Cloud.
-
-<br />
-
 ## Step 2: Install Kalm
+
+:::caution
+Before proceeding, please make sure that the current context of your kubectl is the correct cluster.
+:::
 
 Kalm can be installed as a [Kubernetes Operator](https://kubernetes.io/docs/concepts/extend-kubernetes/operator/) directly onto your cluster via:
 
-```sh
+```bash
 curl -sL https://get.kalm.dev | bash
 ```
 
@@ -56,11 +45,11 @@ This command installs Kalm plus a few dependencies, and typically takes 3-5 minu
 
 The installation script will give you real-time feedback of services spinning up. Once you see **Installation Complete**, move on to the next step.
 
-## Step 3: Launch Webserver
+## Step 3: Access Webserver
 
 To enable browser access, open a port via:
 
-```sh
+```bash
 kubectl port-forward -n kalm-system \
   $(kubectl get pod -n kalm-system \
     -l app=kalm \

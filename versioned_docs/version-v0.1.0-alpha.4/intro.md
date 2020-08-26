@@ -1,18 +1,26 @@
 ---
 title: What is Kalm
+hide_title: false
+hide_table_of_contents: true
+sidebar_label: What is Kalm
+
+# SEO options
+description: What is kalm
+keywords:
+  - docs
+  - docusaurus
+image: https://i.imgur.com/mErPwqL.png
 ---
 
-## Introduction
-
-Kalm (Kubernetes AppLication Manager) is an open source tool that makes it easier to manage applications on kubernetes. Kalm comes with a web interface for the most common operations including:
+Kalm (Kubernetes AppLication Manager) is an open source tool that makes it easier to manage applications on kubernetes without struggling with yamls. Kalm comes with a web interface for the most common operations including:
 
 - Creation of new application deployments
 - Deploying, updating, and scaling existing deployments
 - Volume, config, and secret management
 
-![Web Interface](assets/kalm.png)
+Kalm is installed as a kubernetes controller directly on your cluster, and automatically sets up istio and cert-manager, which makes it easy to configure HTTPS certificates, routes, SSO, and logging system out of the box.
 
-Kalm is installed as a kubernetes controller directly on your cluster, and automatically sets up istio and cert-manager, which makes it easy to configure HTTPS certificates, routes, and SSO out of the box.
+![Web Interface](assets/kalm.png)
 
 ## Why Kalm
 
@@ -24,6 +32,4 @@ Kalm tries to reduce complexity in three different ways:
 2. Introduce higher level Custom Resource Definitions such as `Application`. These CRDs help reducing the amount of boilerplate configuration and copy-pasting.
 3. Designed with popular extensions in mind - Kalm is designed to work with istio, cert-manager, and prometheus and more, which make setting up a productive stack quick and easy.
 
-Next, lets install Kalm and go through an example to illustrate how it works:
-
-[interface]: /img/intro-ux.png
+Next, lets install Kalm and go through an example to illustrate how it works.
