@@ -24,6 +24,8 @@ In the **Command** input box, enter the following command, which outputs a times
 
 Click **Deploy** to instantiate the component container.
 
+## View log
+
 After deployment is complete, click the _Log Icon_:
 
 ![log button example](assets/log-button-example.png)
@@ -31,3 +33,9 @@ After deployment is complete, click the _Log Icon_:
 <br />
 You should see the Log View:
 ![log view](assets/log-view.png)
+
+## Logging system
+
+You may ask, can I only view my program logs one by one container? What if I want to view aggregated logs for a specific time period?
+
+Don't worry, see if [Logging System](./guide-logging-for-kalm.md) meets your needs.
