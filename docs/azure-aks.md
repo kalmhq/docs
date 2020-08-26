@@ -85,10 +85,10 @@ kubectl port-forward -n kalm-system \
   $(kubectl get pod -n kalm-system \
     -l app=kalm \
     -ojsonpath="{.items[0].metadata.name}") \
-  3001:3001
+  3010:3010
 ```
 
-Now open http://localhost:3001/
+Now open http://localhost:3010/
 
 ## Clean Up
 

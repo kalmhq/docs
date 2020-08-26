@@ -21,7 +21,7 @@ const features = [
     title: <>Works with any Kubernetes cluster</>,
     imageUrl: "img/undraw_docusaurus_tree.svg",
     description: (
-      <>Works with Minikube, GKE, AKE, MKE, Digital Ocean, Aliyun and more</>
+      <>Works with Minikube, GKE, AKE, MKE, Digital Ocean, Aliyun and more.</>
     ),
   },
   {
