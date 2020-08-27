@@ -172,8 +172,8 @@ function Home() {
             <>
               New to Kubernetes and struggling with log collection? Kalm can
               help you setup a logging solution within minutes. Choose either{" "}
-              <Link to="https://grafana.com/oss/loki/">Loki(PLG stack)</Link> or{" "}
-              <Link to="https://www.elastic.co/what-is/elk-stack">ELK</Link>.
+              <a href="https://grafana.com/oss/loki/">Loki(PLG stack)</a> or{" "}
+              <a href="https://www.elastic.co/what-is/elk-stack">ELK</a>.
             </>
           }
           image="img/feature-logs.png"
