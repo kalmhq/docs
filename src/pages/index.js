@@ -24,13 +24,17 @@ function Feature({ icon, title, description }) {
 
 const FeatureSection = (props) => {
   return (
-    <div class={clsx("row", styles.featureRow)}>
-      <div class="col col--6">
+    <div className={clsx("row", styles.featureRow)}>
+      <div className="col col--6">
         <h3>{props.title}</h3>
         {props.desc}
       </div>
-      <div class="col col--6">
-        <img src={useBaseUrl(props.image)} alt={props.title} />
+      <div className="col col--6">
+        <img
+          className="feature-img"
+          src={useBaseUrl(props.image)}
+          alt={props.title}
+        />
       </div>
     </div>
   );
@@ -77,8 +81,8 @@ function Home() {
           </h1>
           <p className="hero__subtitle">
             Get what you want out of Kubernetes without having to write and
-            maintain a ton of custom tooling. Deploy apps, handle requests, and hook
-            up CI/CD, all through an intuitive web interface.
+            maintain a ton of custom tooling. Deploy apps, handle requests, and
+            hook up CI/CD, all through an intuitive web interface.
           </p>
           <div className={styles.buttons}>
             <Link
@@ -94,7 +98,7 @@ function Home() {
         </div>
       </header>
 
-      <div class="container">
+      <div className="container">
         {features && features.length > 0 && (
           <section className={styles.features}>
             <div className="div">
@@ -137,7 +141,7 @@ function Home() {
               Shifting, and more.
             </>
           }
-          image="img/Configs3.svg"
+          image="img/feature-routes.png"
         />
         <FeatureSection
           desc={
@@ -148,7 +152,7 @@ function Home() {
             </>
           }
           title="CI/CD Integration"
-          image="img/node_scheduling2.png"
+          image="img/feature-cicd.png"
         />
         <FeatureSection
           title="Automatic HTTPS Certification"
@@ -160,7 +164,7 @@ function Home() {
               challenge. (Wildcard certificates coming soon)
             </>
           }
-          image="img/Configs3.svg"
+          image="img/feature-cert.png"
         />
         <FeatureSection
           title="Log Collection"
@@ -172,7 +176,7 @@ function Home() {
               <Link to="https://www.elastic.co/what-is/elk-stack">ELK</Link>.
             </>
           }
-          image="img/Configs3.svg"
+          image="img/feature-logs.png"
         />
         <FeatureSection
           title="Works With Any Kubernetes Cluster"
@@ -192,7 +196,7 @@ function Home() {
               </ul>{" "}
             </>
           }
-          image="img/Configs3.svg"
+          image="img/feature-clusters.png"
         />
 
         <FeatureSection
@@ -206,7 +210,7 @@ function Home() {
             </>
           }
           title="Built-in Single Sign-On"
-          image="img/Configs3.svg"
+          image="img/feature-sso.png"
         />
       </div>
     </Layout>

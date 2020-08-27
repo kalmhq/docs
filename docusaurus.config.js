@@ -97,7 +97,7 @@ const siteConfig = {
         src: "img/kalm-logo-blue.svg",
         href: "https://kalm.dev/",
       },
-      copyright: `Copyright © ${new Date().getFullYear()} Random Block Labs, Inc. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} Kalm Inc.`,
     },
     image: "img/undraw_online.svg",
     twitterImage: "img/undraw_tweetstorm.svg",
