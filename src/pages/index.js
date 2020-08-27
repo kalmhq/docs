@@ -47,14 +47,14 @@ const features = [
     icon: "img/build-24px.svg",
     description: (
       <>
-        Kalm simplifies the common workflows related to kubernetes, including
-        deploying applications, routing, and intergrating with your existing
+        Kalm simplifies the common workflows related to Kubernetes, including
+        deploying applications, routing, and integrating with your existing
         pipeline.
       </>
     ),
   },
   {
-    title: <>Works with any Kubernetes cluster</>,
+    title: <>Works With Any Kubernetes Cluster</>,
     icon: "img/install.svg",
     description: (
       <>
@@ -77,7 +77,7 @@ function Home() {
           </h1>
           <p className="hero__subtitle">
             Get what you want out of Kubernetes without having to write and
-            maintain a ton of custom tooling. Deploy apps, handle requests, hook
+            maintain a ton of custom tooling. Deploy apps, handle requests, and hook
             up CI/CD, all through an intuitive web interface.
           </p>
           <div className={styles.buttons}>
@@ -119,7 +119,7 @@ function Home() {
                 <li>Managing ports and container networking</li>
                 <li>Probes and Auto-Healing</li>
                 <li>Scaling</li>
-                <li>Mouting Volumes</li>
+                <li>Mounting Volumes</li>
                 <li>Scheduling according to Resources</li>
               </ul>
             </>
@@ -156,7 +156,7 @@ function Home() {
             <>
               Easily obtain and renew HTTPS Certificates via{" "}
               <Link to="https://letsencrypt.org/">Let's Encrypt</Link>. Kalm
-              currently supports specific domain name certificates using http01
+              currently supports specific domain name certificates using http-01
               challenge. (Wildcard certificates coming soon)
             </>
           }
@@ -166,7 +166,7 @@ function Home() {
           title="Log Collection"
           desc={
             <>
-              New to Kuberentes and struggling with log collection? Kalm can
+              New to Kubernetes and struggling with log collection? Kalm can
               help you setup a logging solution within minutes. Choose either{" "}
               <Link to="https://grafana.com/oss/loki/">Loki(PLG stack)</Link> or{" "}
               <Link to="https://www.elastic.co/what-is/elk-stack">ELK</Link>.
@@ -175,7 +175,7 @@ function Home() {
           image="img/Configs3.svg"
         />
         <FeatureSection
-          title="Works with any Kubernetes clusters"
+          title="Works With Any Kubernetes Cluster"
           desc={
             <>
               Kalm abides by Kubernetes standards and tries to avoid platform
@@ -187,7 +187,7 @@ function Home() {
                 <li>Azure AKS</li>
                 <li>Digital Ocean Kubernetes</li>
                 <li>Linode Kubernetes Engine</li>
-                <li>k3s rasberry pi</li>
+                <li>k3s raspberry pi</li>
                 <li>Minikube</li>
               </ul>{" "}
             </>
