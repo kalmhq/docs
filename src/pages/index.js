@@ -128,7 +128,7 @@ function Home() {
               </ul>
             </>
           }
-          image="img/kalm_opt.gif"
+          image="gif/kalm_short.gif"
         />
         <FeatureSection
           title="Powerful Ingress"
