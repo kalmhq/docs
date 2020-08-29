@@ -20,19 +20,11 @@ const siteConfig = {
   favicon: "img/kalm-logo-blue.svg",
 
   themeConfig: {
-    // algolia: {
-    //   apiKey: '47ecd3b21be71c5822571b9f59e52544',
-    //   indexName: 'docusaurus-2',
-    //   algoliaOptions: {
-    //      //...
-    //   },
-    // },
-
-    // algolia: {
-    //   apiKey: "YOUR_API_KEY",
-    //   indexName: "YOUR_INDEX_NAME",
-    //   searchParameters: {}, // Optional (if provided by Algolia)
-    // },
+    algolia: {
+      apiKey: "d589acaac8cdb8ae96fca3f78c600ae4",
+      indexName: "kalm",
+      searchParameters: {}, // Optional (if provided by Algolia)
+    },
 
     navbar: {
       title: "Kalm",
