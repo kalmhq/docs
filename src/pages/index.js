@@ -27,7 +27,7 @@ const FeatureSection = (props) => {
     <div className={clsx("row", styles.featureRow)}>
       <div className="col col--6">
         <h3>{props.title}</h3>
-        {props.desc}
+        <p>{props.desc}</p>
       </div>
       <div className="col col--6">
         <img
@@ -169,21 +169,21 @@ function Home() {
         <FeatureSection
           title="Log Collection"
           desc={
-            <>
+            <p>
               New to Kubernetes and struggling with log collection? Kalm can
               help you setup a logging solution within minutes. Choose either{" "}
-              <a href="https://grafana.com/oss/loki/" target="_blank">
-                Loki(PLG stack)
-              </a>{" "}
-              or{" "}
               <a
                 href="https://www.elastic.co/what-is/elk-stack"
                 target="_blank"
               >
                 ELK
+              </a>{" "}
+              or{" "}
+              <a href="https://grafana.com/oss/loki/" target="_blank">
+                Loki(PLG stack)
               </a>
               .
-            </>
+            </p>
           }
           image="img/feature-logs.png"
         />
