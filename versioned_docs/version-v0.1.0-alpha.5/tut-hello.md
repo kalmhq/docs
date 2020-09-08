@@ -94,7 +94,6 @@ Click **Deploy** to apply changes.
 During the deployment you may notice that the number of pods temporarily exceeds three. Kalm by default uses `rolling update`, which means pods are incrementally added and removed one by one, resulting in zero downtime.
 :::
 
-
 ![rolling updates](assets/rolling-update.png)
 
 <br />
@@ -103,9 +102,13 @@ Now that the port is open, let's add a route. Click **Routes** in the navigation
 
 ![add route](assets/add-route.png)
 
-Let's enter "\*" for host, which allows us to visit directly via IP address.
+The cluster ip address should be displayed under the Hosts field. Enter this address in the **Hosts** field.
 
-![specify host](assets/specify-host.png)
+![specify host](assets/specify-ip.png)
+
+:::note
+For minikube, if no ip is shown, run `minikube tunnel` and refresh the page.
+:::
 
 In the _Targets_ section, select our _"webserver"_ component from the dropdown.
 
@@ -113,11 +116,11 @@ In the _Targets_ section, select our _"webserver"_ component from the dropdown.
 
 Click **Update Route**. Our route is now completely setup.
 
-Click **Open in Browser** to check it out.
+There should be a new entry in the Routes table. Click on the link in the _Domain_ column to open our app in a new browser tab.
 
 ![open in browser](assets/open-in-browser.png)
 
-Great, our application is working!
+Great, our nginx webserver app is working!
 
 ![nginx success](assets/nginx-success.png)
 
