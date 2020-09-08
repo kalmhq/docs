@@ -7,10 +7,10 @@ There are a many different ways to create a Kubernetes Cluster on Amazon. We wil
 ## Step 1: Install Prerequisits
 
 - Install [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
-- Install [Terraform](https://learn.hashicorp.com/tutorials/terraform/install-cli?in=terraform/azure-get-started)
+- Install [Terraform](https://learn.hashicorp.com/tutorials/terraform/install-cli)
 - Install [Amazon CLI](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html)
 
-## Step 2: Azure Setup
+## Step 2: AWS Setup
 
 You need an AWS service account. Configure [service credentials](https://console.aws.amazon.com/iam/home?#/security_credentials), then configure the aws CLI with:
 
