@@ -6,9 +6,11 @@ title: Installation
 
 Kalm is optimized to work with the latest version of Kuberenetes (currently 1.18.x), and is backwards compatible down to 1.14.x
 
-| Kalm version | k8s 1.14.x | k8s 1.15.x | k8s 1.16.x | k8s 1.17.x | k8s 1.18.x |
-| ------------ | ---------- | ---------- | ---------- | ---------- | ---------- |
-| v0.1.0       | ✔          | ✔          | ✔          | ✔          | ✔          |
+| Kalm version | k8s 1.15.x | k8s 1.16.x | k8s 1.17.x | k8s 1.18.x |
+| ------------ | ---------- | ---------- | ---------- | ---------- |
+| v0.1.0       | ✔          | ✔          | ✔          | ✔          |
+
+For smooth performance, we recommend a kubernetes cluster with at least 4 vCPUs and 8G of memory.
 
 ## Step 1: Prerequisites
 
@@ -17,7 +19,7 @@ Kalm is optimized to work with the latest version of Kuberenetes (currently 1.18
 Kalm can be used to manage any kubernetes cluster.
 For the purpose of this tutorial, we recommend that you try kalm on [Minikube](./guide-minikube.md) localhost cluster first.
 
-Alternatively, see the References sections for provisioning clusters on [AWS](./guide-aws.md), [Google Cloud](./google-gke.md) and [Azure](./azure-aks.md).
+Alternatively, see the References sections for provisioning clusters on [AWS](./amazon-eks.md), [Google Cloud](./google-gke.md) and [Azure](./azure-aks.md).
 
 ### Install Kubectl
 
@@ -26,7 +28,7 @@ Installation of Kalm requires kubectl, which can be installed according to the o
 ## Step 2: Install Kalm
 
 :::caution
-Before proceeding, please make sure that the current context of your kubectl is the correct cluster.
+Before proceeding, please make sure that the current context of your kubectl is set to the correct cluster.
 :::
 
 Kalm can be installed as a [Kubernetes Operator](https://kubernetes.io/docs/concepts/extend-kubernetes/operator/) directly onto your cluster via:
