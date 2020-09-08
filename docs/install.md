@@ -61,7 +61,25 @@ kubectl port-forward -n kalm-system \
 
 Now open <a href="http://localhost:3010/" target="_blank">http://localhost:3010/</a>
 
-![login screen](assets/main-page.png)
+![login screen](assets/kalm-empty-state.png)
+
+## Step 4: (Optional) Configure Access
+
+Although we can visit Kalm through localhost port fowarding, it is a good idea to setup a domain and basic login, so you can access Kalm on any computer, and share it with colleagues.
+
+To setup permanent acess, click **FINISH THE SETUP STEPS** button in the top navigation bar and follow the onscreen directions.
+
+![setup domain](assets/setup-domain.png)
+
+Point a domain to the cluster ip. If you don't have a domain, you can use the wildcard DNS <a href="https://nip.io/" target="_blank">nip.io</a>:
+
+_<CLUSTER_IP>.nip.io_
+
+:::note
+For minikube, if no ip is shown, run `minikube tunnel` and refresh the page.
+:::
+
+Click **Check and Continue**. After configuration is complete, record the generated **Email** and **Password** login information. From this point on, port-fowarding is no longer required, and you should be able to login via the domain you specified.
 
 ## Next Step
 
