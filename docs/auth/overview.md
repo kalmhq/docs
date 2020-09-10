@@ -30,22 +30,18 @@ The token can be passed authorization header `Authorization: Bearer ${access_tok
 
 ## Authorization (Permissions & Roles)
 
-When an authenticated entity sends a request to kalm-api to operate certain resources, kalm uses RBAC(Role-based access control) to determine whether the user has the permission to manage the target resource.
+Authorization is the process of granting users permissions to specific resources.
 
-### Kubernetes RBAC is great, but...
+When an authenticated entity sends a request to kalm-api, RBAC(Role-based access control) is used to determine whether the entity has sufficient permissions to access the resources.
 
-The kubernetes RBAC is very powerful, and the configurable granularity is very fine,
-This is undoubtedly an excellent tool for teams that need to precisely control every detail of permissions.
+### A note on Kubernetes RBAC
 
-But precisely because the granularity is too fine and flexible,
-when you don’t need too many special customizated permissions roles,
-it feels too complicated in the actual usages. With the increasing number of CRDs, this problem has became more serious.
+The kubernetes RBAC is very powerful and configurable for teams which require precise control at a granular level. However it can be overly complicated for simple scenarios involving standard permissions and roles. This complexity grows proportionately to the number of CRDs involved.
 
-So Kalm implements its own RBAC with intuitional built-in roles.
+Therefore, Kalm implements a simpler, more intuitive RBAC system.
 
 ### Kalm RBAC
 
-Kalm want to design a permission system similar to Github and Gitlab. There are several clear roles, such as Viewer and Editor,
-corresponding to the view and edit permissions of resources within a certain range. Owner can operate all resources.
+Kalm's permission system is similar to that of Github and Gitlab. There are only a few clearly defined roles such as **Viewer** and **Editor**, each corresponding to the _view_ and _edit_ permissions of resources within a certain range. The **Owner** role can operate on all resources.
 
 [View detailed Role Permissions table](./roles)
