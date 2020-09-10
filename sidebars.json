@@ -56,7 +56,7 @@
     {
       "type": "category",
       "label": "Examples",
-      "items": ["tut-bookinfo", "tut-wordpress"]
+      "items": ["tut-wordpress"]
     },
     {
       "type": "category",

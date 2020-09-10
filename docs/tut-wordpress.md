@@ -1,5 +1,5 @@
 ---
-title: "Wordpress"
+title: "Wordpress on Kubernetes"
 ---
 
 ![Wordpress with Kubernetes](assets/wp-tut-0.jpeg)

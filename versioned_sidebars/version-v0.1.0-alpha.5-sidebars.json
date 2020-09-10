@@ -61,10 +61,6 @@
       "items": [
         {
           "type": "doc",
-          "id": "version-v0.1.0-alpha.5/tut-bookinfo"
-        },
-        {
-          "type": "doc",
           "id": "version-v0.1.0-alpha.5/tut-wordpress"
         }
       ]
