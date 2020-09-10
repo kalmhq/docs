@@ -38,4 +38,4 @@ You should see the Log View:
 
 You may ask, can I only view my program logs one by one container? What if I want to view aggregated logs for a specific time period?
 
-Don't worry, see if [Logging System](./guide-logging-for-kalm.md) meets your needs.
+Don't worry, see if [Logging System](./logging/index) meets your needs.

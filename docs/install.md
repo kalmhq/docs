@@ -17,9 +17,9 @@ For smooth performance, we recommend a kubernetes cluster with at least 4 vCPUs 
 ### Cluster Setup
 
 Kalm can be used to manage any kubernetes cluster.
-For the purpose of this tutorial, we recommend that you try kalm on [Minikube](./guide-minikube.md) localhost cluster first.
+For the purpose of this tutorial, we recommend that you try kalm on [Minikube](./platform-setup/minikube.md) localhost cluster first.
 
-Alternatively, see the References sections for provisioning clusters on [AWS](./amazon-eks.md), [Google Cloud](./google-gke.md) and [Azure](./azure-aks.md).
+Alternatively, see the References sections for provisioning clusters on [AWS](./platform-setup/aws-eks.md), [Google Cloud](./platform-setup/gcp-gke.md) and [Azure](./platform-setup/azure-aks.md).
 
 ### Install Kubectl
 
