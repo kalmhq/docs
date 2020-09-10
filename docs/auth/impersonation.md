@@ -2,7 +2,6 @@
 title: Impersonation
 ---
 
-After creating the role binding or access token, in order to ensure that the permissions are correct, you may need to log in to kalm as this entity for testing.
-You can use the impersonation function to simulate without knowing the real authentication information. Please note that this feature requires you to have the clusterOwner role.
+It can be useful to log into Kalm as a certain entity to verify the permissions for a certain role binding or access token is functioning as intended. If you posess the **clusterOwner** role, you can impersonate any entity.
 
-When you send requests to kalm api, add the impersonation info into `Kalm-Impersonation` header.
+To impersonate an entity when sending requests to kalm-api, add the corresponding impersonation info into the `Kalm-Impersonation` section of the header.
