@@ -8,7 +8,7 @@
     },
     {
       "type": "category",
-      "label": "Guides",
+      "label": "Tasks",
       "collapsed": false,
       "items": [
         "guide-logs",
@@ -22,18 +22,62 @@
     },
     {
       "type": "category",
+      "label": "Operations",
+      "collapsed": false,
+      "items": [
+        {
+          "type": "category",
+          "label": "Auth",
+          "items": [
+            "auth/overview",
+            "auth/sso",
+            "auth/roles",
+            "auth/impersonation"
+          ]
+        },
+        {
+          "type": "category",
+          "label": "Logging",
+          "items": ["logging/index", "logging/plg", "logging/efk"]
+        },
+        "guide-export-kalm-resources"
+      ]
+    },
+    {
+      "type": "category",
+      "label": "Frequently Asked Questions",
+      "items": ["faq/overview", "faq/old-resources-visibility"]
+    },
+    {
+      "type": "category",
+      "label": "Reference",
+      "items": []
+    },
+    {
+      "type": "category",
       "label": "Examples",
       "items": ["tut-bookinfo", "tut-wordpress"]
     },
     {
       "type": "category",
-      "label": "Operations",
-      "items": ["guide-export-kalm-resources", "guide-logging-for-kalm"]
+      "label": "References",
+      "items": [
+        {
+          "type": "category",
+          "label": "Custom Resource Definition",
+          "items": ["crd/component", "crd/protected-endpoint", "crd/sso"]
+        }
+      ]
     },
     {
       "type": "category",
       "label": "Platform Setup",
-      "items": ["guide-minikube", "amazon-eks", "google-gke", "azure-aks"]
+      "items": [
+        "platform-setup/minikube",
+        "platform-setup/aws-eks",
+        "platform-setup/gcp-gke",
+        "platform-setup/azure-aks"
+      ]
     }
   ]
 }

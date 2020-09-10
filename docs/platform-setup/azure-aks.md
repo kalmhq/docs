@@ -1,5 +1,5 @@
 ---
-title: Install on Azure
+title: Install on Azure AKS
 ---
 
 There are a few different ways to create a Kubernetes Cluster on Azure. The following guide utilizes Terraform to provision an Azure AKS cluster.

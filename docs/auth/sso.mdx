@@ -1,0 +1,38 @@
+---
+title: Single Sign-on
+---
+
+## Standing on the shoulders of giants
+
+Kalm SSO solution is based on [OIDC](https://openid.net/connect/) standard, and is built on top of widely used components, such as [Istio](https://istio.io),
+[Envoy](https://www.envoyproxy.io/) and [dex](https://github.com/dexidp/dex).
+Kalm use Istio CRDs to configure Envoy, add [ext_authz](https://www.envoyproxy.io/docs/envoy/latest/api-v2/config/filter/http/ext_authz/v2/ext_authz.proto) filters for protected endpoints.
+Dex acts as a portal to other identity providers.
+
+## Architecture
+
+The following picture shows the basic architecture of Kalm SSO.
+Two extra components will be installed in your cluster, AuthProxy and Dex.
+Any http traffic to your private component will be checked by auth proxy, if no valid authentication information is found, a redirect response will be returned to authenticate.
+
+![](../assets/sso.svg)
+
+## Authentication Flow
+
+The following chart describes how the whole authentication process works.
+
+![](../assets/sso-oidc-flow.svg)
+
+## How to setup up SSO
+
+### Via dashboard
+
+:::note
+Working in progress
+:::
+
+### Via kubectl
+
+:::note
+Working in progress
+:::
