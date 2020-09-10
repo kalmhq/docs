@@ -7,14 +7,14 @@ This section will talk about **Authentication** and **Authorization**.
 
 ## Authentication (Identity source)
 
-Authentication is the process of ascertaining that somebody really is who they claim to be, then get their identify. This can be done in the following two ways.
+Authentication is the process of ascertaining that users are actually who they claim to be. There are many different authentication methods. Kalm supports two ways to authenticate users.
 
 ### Kalm Single Sign-On
 
-When your cluster is successfully initialized, the kalm Single Sign-on feature should be working, and the kalm-api is protected under auth proxy.
-If a request can pass the auth proxy's review, it means that he has completed the authentication process.
-Kalm api server can parse user info from single sign-on info http header that are injected by auth proxy.
-The user's email address will be used as the user's identity, and groups will be used as roles.
+During the Kalm installation process, the Kalm Single Sign-on is automatically initialized, and kalm-api is protected under an auth proxy.
+The auth proxy will only allow requests from authenticated users.
+
+The Kalm api server can parse users' single sign-on info injected into the http header. An user's email address is used as the identity, and groups map to roles.
 
 [Learn more about Kalm Single Sign-On](./sso)<br />
 [Single Sign-On CRD Reference](./sso)
