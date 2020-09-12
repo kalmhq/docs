@@ -6,13 +6,18 @@ title: View Container Logs
   <iframe width="560" height="315" src="https://www.youtube.com/embed/zMzWkzxIKlo" frameborder="0" allowfullscreen="true"> </iframe>
 </figure>
 
-Sometimes its useful to view the log output of a particular container. Kalm provides a view to quickly view logs in the web:
+Sometimes its useful to view the log output of a particular container. You can quickly view logs for any container within Kalm through the log button:
 
 ![log button](assets/log-button.png)
 
+In this guide you will:
+
+- Create an application component that continously logs output
+- View the container logs within Kalm
+
 ## Example Container Setup
 
-Let's create a container that logs output every second. Create a New Application, then Add a single Component named **logviewer** with the image set to **busybox**.
+Let's create a container that logs output every second. Create a new application, then add a single Component named **logviewer** with the image set to **busybox**.
 
 In the **Command** input box, enter the following command, which outputs a timestamp every second:
 
@@ -22,20 +27,19 @@ In the **Command** input box, enter the following command, which outputs a times
 
 ![log component](assets/log-component.png)
 
-Click **Deploy** to instantiate the component container.
+Click **Deploy Component** to instantiate the component container.
 
-## View log
+## View Log
 
-After deployment is complete, click the _Log Icon_:
+After your component is successfully deployed, click the _Log Icon_:
 
 ![log button example](assets/log-button-example.png)
 
 <br />
 You should see the Log View:
+
 ![log view](assets/log-view.png)
 
-## Logging system
+## Logging System
 
-You may ask, can I only view my program logs one by one container? What if I want to view aggregated logs for a specific time period?
-
-Don't worry, see if [Logging System](./guide-logging-for-kalm.md) meets your needs.
+While it's helpful to view logs for a single container individually as shown above, often you may want to view aggregated logs for multiple containers for specific time periods. For more on setting up a more robust logging system through Kalm, head to our [Logging System](./guide-logging-for-kalm.md) section.
