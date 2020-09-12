@@ -16,11 +16,11 @@ This tutorial will teach you:
 
 ## Step 1: Create Application
 
-The main page of Kalm shows a list of applications. Press the **Add Application** button
+The main page of Kalm shows a list of applications. Press the **Create App** button
 
 ![add application](assets/add-app.png)
 
-Enter a name for your application, then press **Create Application**
+Enter a name for your application, then press **Create App**
 
 ![name application](assets/name-app.png)
 
@@ -34,7 +34,7 @@ Under the Basic Information section, enter a name such as _"webserver"_ into the
 
 ![create component](assets/create-comp.png)
 
-After a few seconds, a single Pod holding the nginx:alpine image will be deployed to your cluster.
+After a few seconds, a single pod holding the nginx:alpine image will be deployed to your cluster.
 
 ![first pod](assets/first-pod.png)
 
@@ -62,7 +62,7 @@ Next let's go back to the Components list by clicking on **Components** in the n
 
 Currently one pod is running. Let's scale up our application. Click the **Edit** button.
 
-![edit component](assets/edit-comp.png)
+![edit component](assets/first-pod.png)
 
 Change the number of replicas to **3** and click Deploy.
 
@@ -72,7 +72,7 @@ After a few moments, there should be three pods running.
 
 ![three pods](assets/three-pods.png)
 
-Kubernetes is declarative, which means you specify the end result("I want 3 pods"), and the kubernetes control plane figures out how best to achieve the end result for you("let's add 2 more").
+Kubernetes is declarative, which means you specify the end result("I want 3 pods"), and the Kubernetes control plane figures out how best to achieve the end result for you("let's add 2 more").
 
 ## Step 4: Ports and Routing
 
@@ -88,7 +88,7 @@ The Container port should be **80** because its what the `nginx:alpine` image de
 
 ![specify ports](assets/ports.png)
 
-Click **Deploy** to apply changes.
+Click **Update Component** to apply changes.
 
 :::note
 During the deployment you may notice that the number of pods temporarily exceeds three. Kalm by default uses `rolling update`, which means pods are incrementally added and removed one by one, resulting in zero downtime.
@@ -126,7 +126,7 @@ Great, our nginx webserver app is working!
 
 You've just installed an application on your cluster, modified it, scaled it, and setup routing to make it accessible from the outside world!
 
-All the heavy lifting is done via kubernetes and istio. Kalm is simply applying the appropriate configurations to your cluster. In fact anyone with familiarity with kubernetes should be able to create the same application configuration with a text editor and `kubectl`. We encourage this as an _exercise for the reader_.
+All the heavy lifting is done via Kubernetes and istio. Kalm is simply applying the appropriate configurations to your cluster. In fact anyone with familiarity with Kubernetes should be able to create the same application configuration with a text editor and `kubectl`. We encourage this as an _exercise for the reader_.
 
 ## Next Step
 
