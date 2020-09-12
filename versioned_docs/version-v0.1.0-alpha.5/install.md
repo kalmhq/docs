@@ -4,20 +4,20 @@ title: Installation
 
 ## Compatibility
 
-Kalm is optimized to work with the latest version of Kuberenetes (currently 1.18.x), and is backwards compatible down to 1.14.x
+Kalm is optimized to work with the latest version of Kubernetes (currently 1.18.x), and is backwards compatible down to 1.14.x
 
 | Kalm version | k8s 1.15.x | k8s 1.16.x | k8s 1.17.x | k8s 1.18.x |
 | ------------ | ---------- | ---------- | ---------- | ---------- |
 | v0.1.0       | ✔          | ✔          | ✔          | ✔          |
 
-For smooth performance, we recommend a kubernetes cluster with at least 4 vCPUs and 8G of memory.
+For smooth performance, we recommend a Kubernetes cluster with at least 4 vCPUs and 8G of memory.
 
 ## Step 1: Prerequisites
 
 ### Cluster Setup
 
-Kalm can be used to manage any kubernetes cluster.
-For the purpose of this tutorial, we recommend that you try kalm on [Minikube](./guide-minikube.md) localhost cluster first.
+Kalm can be used to manage any Kubernetes cluster.
+For the purpose of this tutorial, we recommend that you try Kalm using [Minikube](./guide-minikube.md) localhost cluster first.
 
 Alternatively, see the References sections for provisioning clusters on [AWS](./amazon-eks.md), [Google Cloud](./google-gke.md) and [Azure](./azure-aks.md).
 
@@ -37,7 +37,7 @@ Kalm can be installed as a [Kubernetes Operator](https://kubernetes.io/docs/conc
 curl -sL https://get.kalm.dev | bash
 ```
 
-This command installs Kalm plus a few dependencies, and typically takes 3-5 minutes to complete. Relax in the mean time, or watch this short video on how Kalm works:
+This command installs Kalm plus a few dependencies, and typically takes 3-5 minutes to complete. Relax in the meantime, or watch this short video on how Kalm works:
 
 <figure class="video_container">
   <iframe width="560" height="315" src="https://www.youtube.com/embed/fzig4AvMr74" frameborder="0" allowfullscreen="true"></iframe>
@@ -65,7 +65,7 @@ Now open <a href="http://localhost:3010/" target="_blank">http://localhost:3010/
 
 ## Step 4: (Optional) Configure Access
 
-Although we can visit Kalm through localhost port fowarding, it is a good idea to setup a domain and basic login, so you can access Kalm on any computer, and share it with colleagues.
+Although we can visit Kalm through localhost port fowarding, it is a good idea to setup a domain and basic login, so you can access Kalm on any computer and share it with colleagues.
 
 To setup permanent acess, click **FINISH THE SETUP STEPS** button in the top navigation bar and follow the onscreen directions.
 
