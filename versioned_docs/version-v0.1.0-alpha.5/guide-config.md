@@ -2,12 +2,18 @@
 title: Add Env Variables & Configs
 ---
 
-A well designed application is likely to have configurations which vary between deployments. Kubernetes makes it easy to override the configurations specified in images.
+A well designed application is likely to have configurations which vary between deployments. Kubernetes makes it easy to override configurations specified in images.
 
 <figure class="video_container">
   <iframe width="560" height="315" src="https://www.youtube.com/embed/bMwc6XPtM3c" frameborder="0" allowfullscreen="true"> </iframe>
 </figure>
 
+In this guide you will:
+
+- Create a container with the _redis_ image
+- Change a variable using the CLI (ephemeral state)
+- Add a Config File to change a variable (with persistent state)
+- Create an Environment Variable
 
 ## Example Container Setup
 
@@ -37,9 +43,11 @@ redis-cli CONFIG GET maxmemory
 
 Everything seem to be working. However, let's try deleting the pod.
 
-Go to **Containers** and click on the **Delete** icon
+Go back to your application **Components** and click on the **Delete** icon
 
-As soon as the pod is deleted, kubernetes will schedule a new one to be deployed, automatically maintaining the desired state of 1 pod running.
+![delete-pod](assets/delete-pod)
+
+As soon as the pod is deleted, Kubernetes will schedule a new one to be deployed, automatically maintaining the desired state of 1 pod running.
 
 After the new pod is created, click on the _Shell_ icon next to it.
 
@@ -57,7 +65,7 @@ The correct way to configure containers is via environment variables and configu
 
 Go to **Components**, click on **Edit**
 
-In the Configuration Files section click **Add**
+In the Config Files section click **New File**
 
 For Mount Path, type `/redis-config/redis.conf`
 
@@ -90,9 +98,11 @@ Now if we delete the pod again(go ahead and try it), the configuration will stil
 
 ## Environment Variables
 
-Other Applications may use environment variables instead of config files. To add an environment variable, click _Add_ in the Environment Variables section of the Edit Component Form:
+Other Applications may use environment variables instead of config files. To add an environment variable, click _New Variable_ in the Environment Variables section of the Edit Component Form:
 
 ![env variables](assets/env-variables.png)
+
+For this example, you can enter a _Name_ of `MY_CUSTOM_SETTING` and a _Value_ of `42`
 
 Click **Update Component** to apply this change
 
