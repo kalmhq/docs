@@ -2,13 +2,13 @@
 title: Private Image Registry
 ---
 
-If your images resides in a private registry, you must configure permissions, or else you'll get a `PullImageError` when deploying applications.
+If your image resides in a private registry, you must configure permissions or you'll receive a `PullImageError` when deploying applications.
 
 Kalm can help you simplify the process of configuring Private Image Registries.
 
 ## Example Usage
 
-As a prerequisit you need access to a private registry. One option is to create a <a href="https://docs.docker.com/docker-hub/repos/#private-repositories">free private repository</a> on Docker Hub.
+As a prerequisite you need access to a private registry. One option is to create a <a href="https://docs.docker.com/docker-hub/repos/#private-repositories">free private repository</a> on Docker Hub.
 
 Let's upload an image to a private dockerhub registry.
 
@@ -20,12 +20,12 @@ docker tag busybox:latest <MYREPO>/private-busybox:latest
 docker push <MYREPO>/private-busybox:latest
 ```
 
-Now let's create a new application with a component using this private image
+Now let's create a new application with a component using this private image.
 
 - Create an Application
 - Create a Component with `<MYREPO>/private-busybox:latest` as the image
 - In the command field, enter <code>/bin/sh -c \`sleep 10000\`</code> to keep the container alive.
-- Click **Deploy**
+- Click **Deploy Component**
 
 You should get a "Failed to pull Image..." error.
 
@@ -45,7 +45,7 @@ We can fix the issue by adding a private registry.
 
 ![registry form](assets/add-registry-form.png)
 
-If the login info is correct, you should see Verified checkbox light up shortly.
+If the login info is correct, you should see the Verified checkbox light up shortly.
 
 ![registry validated](assets/registry-validated.png)
 
