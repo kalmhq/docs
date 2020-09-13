@@ -4,7 +4,7 @@ title: Install on Google Kubernetes Engine
 
 The simplest way to provision a cluster on Google Cloud Platform is via Google Kubernetes Engine.
 
-As a prerequisit, please install and authenticate the `gcloud` command line tool. Instructions can be found here.
+As a prerequisite, please install and authenticate the `gcloud` command line tool. Instructions can be found [here](https://cloud.google.com/sdk/docs).
 
 ## Step 1: Create a GKE Cluster
 
@@ -135,7 +135,7 @@ kubectl port-forward -n kalm-system \
   3010:3010
 ```
 
-Now open http://localhost:3010/
+Now open http://localhost:3010/ - you can now test Kalm on your Google GKE cluster!
 
 ## Clean Up
 
@@ -149,4 +149,4 @@ terraform destroy
 
 ## Next Step
 
-You've now setup Kalm on a GKE cluster. To get a sense of how Kalm works, see the [Hello Kalm](/docs/tut-hello) tutorial.
+You've now setup Kalm on a GKE cluster. To get a greater sense of how Kalm works, see the [Hello Kalm](/docs/tut-hello) tutorial.
