@@ -3,44 +3,46 @@ title: Import / Export
 ---
 
 :::info
-This is a temporary solution, kalm will provide better import and export functions.
+This is a temporary solution, Kalm will provide better import and export functions soon.
 :::
 
-Sometimes we need to export an application, and reinstall it on another cluster. This is the way to export resource from KALM.
+Sometimes you need to export an application and reinstall it on another cluster. We'll walk you through how to export resources from KALM.
 
 ## Prerequisites
 
-- Make sure KALM installed to your cluster.
-- Make sure you have ***kubectl*** and configure to your cluster.
+- Make sure KALM is installed on your cluster.
+- Make sure you have ***kubectl*** and it is configured to your cluster.
 
 ### Export & import an application
 
-Run the command as follow, a resource file that describe the application will be created *$KALM_APP_NAME.bak.yaml*
+Run the following command. A resource file that describes the application will be created *$KALM_APP_NAME.bak.yaml*
 
 ```bash
 export KALM_APP_NAME=<name_of_exporting_applaction>
 curl https://raw.githubusercontent.com/kalmhq/kalm/add_script_to_export_kalm_resources/scripts/export-resources.sh > export-resources.sh ; bash export-resources.sh $KALM_APP_NAME $KALM_APP_NAME.bak.yaml
 ```
 
-Run the command as follow in another KALM (make sure that there is no application with the same name in KALM, otherwise there will be conflicts when import application), and the application you export will be imported in a few minutes.
+Now run the following command in another instance of KALM (make sure that there is no application with the same name in KALM, otherwise there will be conflicts when importing application). 
 
 ```bash
 kubectl apply -f $KALM_APP_NAME.bak.yaml
 ```
 
+The application you exported will be imported to your other Kalm instance within a few minutes.
+
 ### Migrate from one KALM to another
 
 1. Prepare a new KALM. https://kalm.dev/docs/install
-2. Export all resource from old KALM
-3. Import all resource to new KALM
+2. Export all resources from the old KALM
+3. Import all resources to the new KALM
 
-Run the following command to export all resource from old KALM.
+Run the following command to export all resources from old KALM.
 
 ```bash
 curl https://raw.githubusercontent.com/kalmhq/kalm/add_script_to_export_kalm_resources/scripts/export-resources.sh > export-resources.sh ; bash export-resources.sh all-application kalm.bak.yaml
 ```
 
-Run the following command to import all resource to new KALM (make sure in your new cluster, there is no application with the same name as the old cluster).
+Run the following command to import all resources to the new KALM (make sure in your new cluster, there is no application with the same name as the old cluster).
 *Persistent data will not be migrated such as postgresql data and some file that you mount on disks. If you want to migrate these data, you should through your own customized way.
 
 ```bash
