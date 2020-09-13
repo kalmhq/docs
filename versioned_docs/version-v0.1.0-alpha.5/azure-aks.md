@@ -88,7 +88,7 @@ kubectl port-forward -n kalm-system \
   3010:3010
 ```
 
-Now open http://localhost:3010/
+Now open http://localhost:3010/ - you can now test Kalm on your Azure AKS cluster!
 
 ## Clean Up
 
@@ -100,4 +100,4 @@ terraform destroy
 
 ## Next Step
 
-You've now setup Kalm on an Azure AKS cluster. To get a sense of how Kalm works, see the [Hello Kalm](/docs/tut-hello) tutorial.
+You've now setup Kalm on an Azure AKS cluster. To get a greater sense of how Kalm works, see the [Hello Kalm](/docs/tut-hello) tutorial.
