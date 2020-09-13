@@ -2,9 +2,9 @@
 title: Install on Amazon EKS
 ---
 
-There are a many different ways to create a Kubernetes Cluster on Amazon. We will cover kops and terraform.
+There are a many different ways to create a Kubernetes Cluster on Amazon. We will cover installing with terraform and kops _(coming soon)_.
 
-## Step 1: Install Prerequisits
+## Step 1: Install Prerequisites
 
 - Install [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
 - Install [Terraform](https://learn.hashicorp.com/tutorials/terraform/install-cli)
@@ -12,7 +12,7 @@ There are a many different ways to create a Kubernetes Cluster on Amazon. We wil
 
 ## Step 2: AWS Setup
 
-You need an AWS service account. Configure [service credentials](https://console.aws.amazon.com/iam/home?#/security_credentials), then configure the aws CLI with:
+You will need an AWS service account. Configure [service credentials](https://console.aws.amazon.com/iam/home?#/security_credentials), then configure the AWS CLI with:
 
 ```bash
 aws configure
@@ -22,7 +22,7 @@ Enter your Access key ID and secret.
 
 ## Step 3: Terraform Apply
 
-Clone the repository below and `cd` into the aks directory
+Clone the repository below and `cd` into the eks directory
 
 ```bash
 git clone https://github.com/kalmhq/tf-scripts
@@ -76,7 +76,7 @@ kubectl port-forward -n kalm-system \
   3010:3010
 ```
 
-Now open http://localhost:3010/
+Now open http://localhost:3010/ - you can now access Kalm on your Amazon EKS cluster!
 
 ## Clean Up
 
@@ -88,4 +88,4 @@ terraform destroy
 
 ## Next Step
 
-You've now setup Kalm on an Amazon EKS cluster. To get a sense of how Kalm works, see the [Hello Kalm](/docs/tut-hello) tutorial.
+You've now setup Kalm on an Amazon EKS cluster. To get a greater sense of how Kalm works, see the [Hello Kalm](/docs/tut-hello) tutorial.
