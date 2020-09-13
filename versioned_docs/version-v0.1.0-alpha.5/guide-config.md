@@ -45,7 +45,7 @@ Everything seem to be working. However, let's try deleting the pod.
 
 Go back to your application **Components** and click on the **Delete** icon
 
-![delete-pod](assets/delete-pod)
+![delete-pod](assets/delete-pod.png)
 
 As soon as the pod is deleted, Kubernetes will schedule a new one to be deployed, automatically maintaining the desired state of 1 pod running.
 
