@@ -1,0 +1,60 @@
+---
+title: Overview
+---
+
+Traffic management is one of the most important tasks in a cluster.
+Based on the default network model of kubernetes and istio traffic routing rules, kalm tried to provide simple and powerful APIs as much as possible through further encapsulation.
+
+## Background
+
+Let's take a look at the background of **internal** and **external** traffic management in the cluster.
+
+### External traffic management
+
+#### Kubernetes way
+
+The external traffic of kubernetes relies on **ingress** and **service** to manage.
+
+The kubernetes ingress is a very simple specification for HTTP workloads. There are many implementations of Kubernetes Ingress, such as nginx and [others](https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/).
+kubernetes has its limitations.
+
+- Since it's designed for HTTP, an ingress does not expose arbitrary ports or protocols. Exposing services other than HTTP and HTTPS to the internet typically recommanded to use a service of type Service.Type=NodePort or Service.Type=LoadBalancer.
+  This makes the inbound traffic management fragmented.
+- Kubernetes ingress doesn't provide the modern routing functions(for now), such as traffic splitting, traffic mirroring, fault injection, etc.
+  There is no standard for these advanced routing functions, Ingress tries to take a common intersection between different HTTP proxies, so it can only support the most basic HTTP routing.
+
+#### Istio way
+
+The Istio uses [Gateway](https://istio.io/latest/docs/reference/config/networking/gateway/) resources and [VirtualServices](https://istio.io/latest/docs/reference/config/networking/virtual-service/) resources to control ingress traffic.
+Istio’s Gateway resource just lets you configure layer 4-6 load balancing properties such as ports to expose, TLS settings, and so on.
+Then instead of adding application-layer traffic routing (L7) to the same API resource, it binds a regular Istio VirtualService to the gateway.
+In this model, inbound traffic management is no longer fragmented. All port and protocols you want to expose are all through Gateway, and powerful routing rules are able to configure easily via VirtualService.
+
+### Internal traffic management
+
+There are several types of internal traffic.
+
+- Highly-coupled **container-to-container** communications, this is solved by Pods and localhost communications, we don't focus on this kind of traffic here.
+- **pod-to-pod** communications. This is solved by implementations of Kubernetes Container Network Interface.
+- **pod-to-service** communications. A Service is an abstraction which defines a logical set of Pods and a policy by which to access them.
+
+kubernetes' internal network works very well. But Istio can still take things further.
+
+For pod-to-pod communications, Istio is still relaying on the mechanism of kubernetes but with improvements.
+Injected Istio sidecars can make pod-to-pod communications secure with mutual TLS, traffic between them is traceable and observable to support distributed monitoring, tracking system.
+
+For pod-to-service communications, service level load balancing is happened here.
+Kube-proxy works under IPVS mode can support advanced load balancing. But kube-proxy works in L4, it does not understand application layer protocols such as HTTP.
+So the load balancing it provides is connection level in L4.
+Different from kubernetes, Istio handle pod-to-service communications in its own way. Pods having the injected istio-proxy won’t use the kube-proxy components any longer.
+Istio load balancing can also work in L7, which means it supports to load balance packages in long-period connection such as gRPC.
+
+And more, flexible envoy filters can be set along with the traffic path to provide powerful features.
+
+## Kalm traffic management
+
+Based on the characteristics of istio, kalm integrates it to provide richer traffic management functions.
+Istio consumes additional resources, but compared with the functions it provides, these overheads are very acceptable.
+
+But more critical is the complexity of Istio. Kalm aims to make devops task easier. [HttpRoute(TODO)](#) and [HttpsCert(TODO)](#) are CRDs designed to simplify Istio configurations for most common daily tasks.
+Kalm does not restrict any native Istio usage, but making extensions on it. So when the functions of kalm are not enough to meet your needs, you can fallback to Istio original config to customize.

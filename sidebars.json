@@ -37,6 +37,11 @@
         },
         {
           "type": "category",
+          "label": "Traffic Management",
+          "items": ["traffic/overview"]
+        },
+        {
+          "type": "category",
           "label": "Logging",
           "items": ["logging/index", "logging/plg", "logging/efk"]
         },
