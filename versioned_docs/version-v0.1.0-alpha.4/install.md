@@ -23,6 +23,11 @@ Alternatively, see the References sections for provisioning clusters on [AWS](./
 
 Installation of Kalm requires kubectl, which can be installed according to the official <a href="https://kubernetes.io/docs/tasks/tools/install-kubectl/" target="_blank">Install and Set Up kubectl</a> docs.
 
+:::note
+Please make sure that the version of kubectl is sufficient. It is strongly recommended that you use the version corresponding to the cluster. Using an earlier version of kubectl may cause errors in the installation process.
+:::
+
+
 ## Step 2: Install Kalm
 
 :::caution
