@@ -53,8 +53,11 @@ And more, flexible envoy filters can be set along with the traffic path to provi
 
 ## Kalm traffic management
 
-Based on the characteristics of istio, kalm integrates it to provide richer traffic management functions.
 Istio consumes additional resources, but compared with the functions it provides, these overheads are very acceptable.
+Based on the characteristics of istio, kalm integrates it to provide richer traffic management functions.
 
-But more critical is the complexity of Istio. Kalm aims to make devops task easier. [HttpRoute(TODO)](#) and [HttpsCert(TODO)](#) are CRDs designed to simplify Istio configurations for most common daily tasks.
-Kalm does not restrict any native Istio usage, but making extensions on it. So when the functions of kalm are not enough to meet your needs, you can fallback to Istio original config to customize.
+But more critical is the complexity of Istio. You may fall into some traps ([for example](https://istio.io/latest/docs/ops/common-problems/network-issues/)) during Istio configuration,
+or use non-recommended best practices ([for example](https://istio.io/latest/docs/ops/best-practices/traffic-management/)).
+
+Kalm aims to make devops task easier. [HttpRoute(TODO)](#) and [HttpsCert(TODO)](#) are CRDs designed to simplify Istio configurations and reduce complexity for most common daily tasks.
+Kalm does not restrict any native Istio usage, but making extensions on it. So when the functions of kalm are not enough to meet your needs, you can always fallback to Istio original config to customize.
