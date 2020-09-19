@@ -44,7 +44,7 @@ curl -sL https://get.kalm.dev | bash
 This command installs Kalm plus a few dependencies, and typically takes 3-5 minutes to complete. Relax in the meantime, or watch this short video on how Kalm works:
 
 <figure class="video_container">
-  <iframe width="560" height="315" src="https://youtu.be/F5wuQaPQ50s" frameborder="0" allowfullscreen="true"></iframe>
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/F5wuQaPQ50s" frameborder="0" allowfullscreen="true"></iframe>
 </figure>
 
 <br />
