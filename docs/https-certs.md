@@ -28,7 +28,7 @@ If you want to use an existing certificate, click **Use an existing certificate*
 
 ### Using Certified Domains in Routes
 
-Domains which have certificates properly configured can be used in Routes to handle HTTPs traffic. See the [Routes Guide]() for more details.
+Domains which have certificates properly configured can be used in Routes to handle HTTPs traffic. See the [Routes Guide](/) for more details.
 
 ![Routes HTTPS](assets/placeholder.png)
 
