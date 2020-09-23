@@ -52,7 +52,7 @@ const siteConfig = {
           title: "Docs",
           items: [
             {
-              label: "Install Kalm",
+              label: "Installation",
               to: "docs/install",
             },
             {
@@ -65,21 +65,25 @@ const siteConfig = {
           title: "Resources",
           items: [
             {
-              label: "Twitter",
-              to: "https://twitter.com/Kalm_HQ",
-            },
-            {
               label: "Docker Hub",
               to: "https://hub.docker.com/u/kalmhq",
+            },
+            {
+              label: "GitHub",
+              to: "https://github.com/kalmhq/kalm",
             },
           ],
         },
         {
-          title: "Source Code",
+          title: "More",
           items: [
             {
-              label: "Github",
-              to: "https://github.com/kalmhq/kalm",
+              label: "Slack",
+              to: "https://kubernetes.slack.com/archives/C01AC80DTFE",
+            },
+            {
+              label: "Twitter",
+              to: "https://twitter.com/Kalm_HQ",
             },
           ],
         },

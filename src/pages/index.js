@@ -69,6 +69,10 @@ const features = [
   },
 ];
 
+var divStyle = {
+  padding: "12px 0px 0px 0px"
+}
+
 function Home() {
   const context = useDocusaurusContext();
   const { siteConfig = {} } = context;
@@ -84,6 +88,7 @@ function Home() {
             maintain a ton of custom tooling. Deploy apps, handle requests, and
             hook up CI/CD, all through an intuitive web interface.
           </p>
+          
           <div className={styles.buttons}>
             <Link
               className={clsx(
@@ -94,7 +99,14 @@ function Home() {
             >
               Try it now
             </Link>
+            
+
           </div>
+          <div style={divStyle}>
+            <iframe src="https://ghbtns.com/github-btn.html?user=kalmhq&repo=kalm&type=star&count=true&size=large" 
+                frameborder="0" width="128" height="30" title="GitHub"></iframe>
+            </div>
+
         </div>
       </header>
 
@@ -111,25 +123,28 @@ function Home() {
           </section>
         )}
 
-        <FeatureSection
-          title="Create and Manage Applications"
-          desc={
-            <>
-              Kalm provides an intuitive web interface for core Kubernetes
-              functionalities:
-              <p></p>
-              <ul>
-                <li>Configuring and deploying applications</li>
-                <li>Managing ports and container networking</li>
-                <li>Probes and Auto-Healing</li>
-                <li>Scaling</li>
-                <li>Mounting Volumes</li>
-                <li>Scheduling according to Resources</li>
-              </ul>
-            </>
-          }
-          image="gif/kalm_short.gif"
-        />
+      <div className={clsx("row", styles.featureRow)}>
+        <div className="col col--6">
+          <h3>Create and Manage Applications</h3>
+          <p>Kalm provides an intuitive web interface for core Kubernetes 
+            functionalities:
+          </p>
+          <ul>
+            <li>Configuring and deploying applications</li>
+            <li>Managing ports and container networking</li>
+            <li>Probes and Auto-Healing</li>
+            <li>Scaling</li>
+            <li>Mounting Volumes</li>
+            <li>Scheduling according to Resources</li>
+          </ul>
+        </div>
+        <div className="col col--6">
+          <iframe width="538" height="303" src="https://www.youtube.com/embed/F5wuQaPQ50s"
+          frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+          allowfullscreen=""></iframe>
+        </div>
+      </div>
+
         <FeatureSection
           title="Powerful Ingress"
           desc={
