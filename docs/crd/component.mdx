@@ -5,3 +5,131 @@ title: Component
 :::note
 Working in progress
 :::
+
+
+
+## Component
+
+`Component` describes your workload.
+
+|  Field    |    Type  | Description | Required |
+| ---- | ---- | ---- | ---- |
+| Labels | map[string]string | labels will add to pods | False |
+| Annotations | map[string]string | annotations will add to pods | False |
+| Env | [EnvVar](#envvar)[] | List of environment variables to set in the container | False |
+| Image | string | Docker image name | True |
+| Replicas | *int32 | the number of desired pods, default to 1 | False |
+| NodeSelectorLabels | map[string]string | if set, pod will only be scheduled onto the node with given labels | False |
+| PreferNotCoLocated | bool | if set, will avoid putting pods of this component in the same node | False |
+| StartAfterComponents | string[] | will start this component after the components specified | False |
+| Command | string | run command for pod | False |
+| EnableHeadlessService | bool | if set, will start a headless service for the component | False |
+| Ports | [Port](#port)[] | information on the component's service ports | False |
+| WorkloadType | [WorkloadType](#workloadtype) | type of the component workload, default to: server | False |
+| Schedule | string | REQUIRED if WorkloadType is `cronjob`, the schedule of cronjob, e.g. `* * * * *` | False |
+| LivenessProbe | *[v1.Probe](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.19/#probe-v1-core) | describes a health check to be performed against a container to determine whether it is alive to receive traffic. | False |
+| ReadinessProbe | *[v1.Probe](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.19/#probe-v1-core) | similar as LivenessProbe, but used to determine if the container is ready to receive traffic | False |
+| ~~BeforeStart~~ | []string | scripts running before the container starts | False |
+| ~~AfterStart~~ | []string | scripts running after the container starts | False |
+| ~~BeforeDestroy~~ | []string | scripts running before the container destroy | False |
+| ResourceRequirements | *[v1.ResourceRequirements](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.19/#resourcerequirements-v1-core) | describes the compute resource requirements | False |
+| TerminationGracePeriodSeconds | *int64 | duration in seconds the pod needs to terminate gracefully. | False |
+| DnsPolicy | [v1.DNSPolicy](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.19/#podspec-v1-core) | how a pod's DNS will be configured. | False |
+| RestartPolicy | [v1.RestartPolicy](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.19/#podspec-v1-core) | how the container should be restarted. | False |
+| RestartStrategy | [appsv1.DeploymentStrategyType](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.19/#deploymentstrategy-v1-apps) | The deployment strategy to use to replace existing pods with new ones. | False |
+| Volumes | [Volume](#volume)[] | temporary or persistent volumes for the pods | False |
+| RunnerPermission | *[RunnerPermission](#runnerpermission) | setup RBAC permission for the running pods | False |
+| PreInjectedFiles | [PreInjectFile](#preinjectfile)[] | convenient way to mount files into containers | False |
+
+
+## EnvVar
+
+|  Field    |    Type  | Description | Required |
+| ---- | ---- | ---- | ---- |
+| Name | string | Name of the environment variable. | True |
+| Value | string | Source for the environment variable's value. | False |
+| Type | EnvVarType | different types of EnvVar have different ways of parsing EnvVar.Value | False |
+| Prefix | string | prefix of env name | False |
+| Suffix | string | suffix of env name | False |
+
+## EnvVarType
+
+| Name                   | Description                                                  |
+| ---------------------- | ------------------------------------------------------------ |
+| EnvVarTypeStatic       | environment variable's value is simply EnvVar.Value          |
+| ~~EnvVarTypeExternal~~ |                                                              |
+| EnvVarTypeLinked       | EnvVar.Value in format of: _serviceName_/_servicePortName_, environment variable's value will resove to: _serviceName_.currentNamespace_:_servicePort_, useful if you wanna reference other component's service in same application. |
+| EnvVarTypeFieldRef     | EnvVar.Value is pod FieldSelector, environment variable's value will resove to the value of pod field. |
+| EnvVarTypeBuiltin      | possible EnvVar values are: `EnvVarBuiltinHost`, `EnvVarBuiltinPodName` and `EnvVarBuiltinNamespace`. <br /><br /> - `EnvVarBuiltinHost`: environment variable's value will resolve to `spec.nodeName` of the pod<br /> - `EnvVarBuiltinPodName`: `metadata.name` of the pod<br /> - `EnvVarBuiltinNamespace`: `metadata.namespace` of the pod |
+
+
+
+## Port
+
+|  Field    |    Type  | Description | Required |
+| ---- | ---- | ---- | ---- |
+| ContainerPort | uint32 | container port | True |
+| ServicePort | uint32 | service port, if absent, will set as same as ContainerPort | False |
+| Protocol | PortProtocol | protocol of the service | False |
+
+## PortProtocol
+
+| Name                | Description |
+| ------------------- | ----------- |
+| PortProtocolHTTP    | HTTP        |
+| PortProtocolHTTPS   | HTTPS       |
+| PortProtocolHTTP2   | HTTP2       |
+| PortProtocolGRPC    | GRPC        |
+| PortProtocolGRPCWEB | GRPCWEB     |
+| PortProtocolTCP     | TCP         |
+| PortProtocolUDP     | UDP         |
+| PortProtocolUnknown | Unknown     |
+
+## WorkloadType
+
+|  Name  | Description  |
+| ---- | ---- |
+| WorkloadTypeServer | component run as deployment |
+| WorkloadTypeCronjob | component run as CronJob |
+| WorkloadTypeDaemonSet | component run as DaemonSet |
+| WorkloadTypeStatefulSet | component run as StatefulSet |
+
+## Volume
+
+|  Field    |    Type  | Description | Required |
+| ---- | ---- | ---- | ---- |
+| Path | string | Path within the container at which the volume should be mounted. | True |
+| HostPath | string | Required when VolumeType is: VolumeTypeHostPath，Path of the directory on the host. | False |
+| Size | [resource.Quantity](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.19/#quantity-resource-core) | size of the volume | False |
+| Type | [VolumeType](#volumetype) | type of storage used as volume | False |
+| StorageClassName | *string | Name of the StorageClass required by the claim, used for VolumeTypePersistentVolumeClaim and VolumeTypePersistentVolumeClaimTemplate | False |
+| PVToMatch | string | for VolumeTypePersistentVolumeClaim, re-use volume which has the same same as set by PVToMatch | False |
+| PVC | string | for VolumeTypePersistentVolumeClaim and VolumeTypePersistentVolumeClaimTemplate, re-use exist PVC. | Flase |
+
+## VolumeType
+
+| Name                                    | Description                                        |
+| --------------------------------------- | -------------------------------------------------- |
+| VolumeTypeTemporaryMemory               | use memory as storage                              |
+| VolumeTypeTemporaryDisk                 | use disk as storage                                |
+| VolumeTypePersistentVolumeClaim         | use PVC as storage                                 |
+| VolumeTypePersistentVolumeClaimTemplate | use VolumeCliamTemplate as storage for StatefulSet |
+| VolumeTypeHostPath                      | use host path as storage                           |
+
+## RunnerPermission
+
+|  Field    |    Type  | Description | Required |
+| ---- | ---- | ---- | ---- |
+| RoleType | string | if is `clusterRole`, will bind `ClusterRole` to the serviceAccount of the pod, otherwise, will bind `Role` | False |
+| Rules | [rbacV1.PolicyRule](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.19/#policyrule-v1-rbac-authorization-k8s-io)[] | the PolicyRules for the binding `ClusterRole` or `Role` | False |
+
+## PreInjectFile
+
+|  Field    |    Type  | Description | Required |
+| ---- | ---- | ---- | ---- |
+| Content | string | content of the file | True |
+| Base64 | bool | To support binary content, it allows set base64 encoded data into `Content` field and set this flag to `true`. Binary data will be restored instead of plain string in `Content`. | False |
+| MountPath | string | the mount path of the file | True |
+| Readonly | bool | if `true`, the file will be readonly, default to `false` | False |
+| Runnable | bool | if `true`, the file can be executed, default to `false` | False |
+

@@ -17,7 +17,8 @@
         "volumes",
         "registry",
         "probes",
-        "https-certs"
+        "https-certs",
+        "cert-issuing"
       ]
     },
     {
