@@ -1,12 +1,12 @@
 ---
-=title: Certificate Issuing
+title: Certificate Issuing
 ---
 
-# Overview
+## Overview
 
 Kalm uses Cert-Manager to pass the "challenges" from Let’s-Encrypt to issue HTTPS certificates. 
 
-# How Certificate Issuing works
+## How Certificate Issuing works
 
 When trying to get a certificate from Cert Authorities like Let’s-Encrypt, the CA validates that you controll the domains in the certificate request using "challenges". There are two kinds of challenges:
 
@@ -15,15 +15,15 @@ When trying to get a certificate from Cert Authorities like Let’s-Encrypt, the
 
 Though details are different, the basic idea of these two is similar: the CA generates some random texts, and you prove your ownership of the domains by putting the texts at specific locations, for HTTP-01, it is a url under that domain, for DNS-01, it is a DNS record at `_acme-challenge.<YOUR_DOMAIN>`.
 
-# How it works in Kalm
+## How it works in Kalm
 
 Kalm supports both HTTP-01 and DNS-01, if Kalm finds wildcard domain in Cert Request, it uses DNS-01, otherwise, HTTP-01.
 
-## HTTP-01
+### HTTP-01
 
 todo
 
-## DNS-01 
+### DNS-01 
 
 For DNS-01 challenge, after Let’s-Encrypt generates a token, Kalm will start a DNS server and serve TXT DNS records derived from that token at `_acme-challenge.<YOUR_DOMAIN>`. Then Let’s-Encrypt will query the DNS system for that record. If it finds a match, you can proceed to issue a certificate!
 
@@ -75,7 +75,7 @@ When Let’s-Encrypt checks if we have meet the challenge it proposed, for domai
 
 After issuing the cert, keep the DNS records at your dns provider, so that kalm can auto renew the certificates before it expire in the future.
 
-## Wildcard Cert Issuing Flow
+#### Wildcard Cert Issuing Flow
 
 ![](./assets/acme-dns-flow.svg)
 
