@@ -1,0 +1,128 @@
+---
+title: HttpRoute
+---
+
+
+
+## HttpRouteSpec
+
+|  Field    |    Type  | Description | Required |
+| ---- | ---- | ---- | ---- |
+| Hosts               | []string               | The destination hosts to which traffic is being sent. Could be a DNS name with wildcard prefix or an IP address. | True     |
+| Paths               | []string               | URI paths for prefix-based match                             | True     |
+| Methods             | [HttpRouteMethod](#httproutemethod)[] | HTTP Method                                                  | T        |
+| Schemes             | [HttpRouteScheme](#httproutescheme)[] | URI Scheme values                                            | T        |
+| StripPath           | bool                   | strip path for URL match                                     | F        |
+| Conditions          | [HttpRouteCondition](#httproutecondition)[] | conditions for route match                                   | F        |
+| Destinations        | [HttpRouteDestination](#httproutedestination)[] | targets of upstream services                                 | T        |
+| HttpRedirectToHttps | bool                   | redirect HTTP to HTTPS                                       | F        |
+| Timeout             | *int                   | Timeout for HTTP requests, default is disabled.              | F        |
+| Retries             | *[HttpRouteRetries](#httprouteretries) | Retry policy for HTTP requests.                              | F        |
+| Mirror              | *[HttpRouteMirror](#httproutemirror) | Mirror HTTP traffic to a another destination in addition to forwarding the requests to the intended destination. | F        |
+| Fault               | *[HttpRouteFault](#httproutefault) | Fault injection policy to apply on HTTP traffic at the client side. | F        |
+| Delay               | *[HttpRouteDelay](#httproutedelay) | Delay requests before forwarding, emulating various failures such as network issues, overloaded upstream service, etc. | F        |
+| CORS                | *[HttpRouteCORS](#httproutecors) | Cross-Origin Resource Sharing policy (CORS).                 | F        |
+
+## HttpRouteMethod
+
+| Name    | Description |
+| ------- | ----------- |
+| GET     |             |
+| HEAD    |             |
+| POST    |             |
+| PUT     |             |
+| PATCH   |             |
+| DELETE  |             |
+| OPTIONS |             |
+| TRACE   |             |
+| CONNECT |             |
+
+## HttpRouteScheme
+
+| Name  | Description |
+| ----- | ----------- |
+| HTTP  |             |
+| HTTPS |             |
+
+## HttpRouteCondition
+
+|  Field    |    Type  | Description | Required |
+| ---- | ---- | ---- | ---- |
+|Type|[HttpRouteConditionType](#httprouteconditiontype)|can be `query` or `header`|T|
+|Name|string||T|
+|Value|string||F|
+|Operator|[HttpRouteConditionOperator](#httprouteconditionoperator)|can be `equal`, `withPrefix` or `matchRegexp`|T|
+
+## HttpRouteConditionType
+
+| Name  | Description |
+| ----- | ----------- |
+| query  | Query parameters in URL for matching. |
+| header | header in HTTP request for matching. |
+
+## HttpRouteConditionOperator
+
+| Name  | Description |
+| ----- | ----------- |
+| equal | same value |
+| withPrefix | condition value is prefix |
+| matchRegexp | condition value should be interpret as regex expression |
+
+## HttpRouteDestination
+
+|  Field    |    Type  | Description | Required |
+| ---- | ---- | ---- | ---- |
+|Host|string|destination host|T|
+| Weight | int    | The proportion of traffic to be forwarded to the destination | F |
+## HttpRouteRetries
+
+|  Field    |    Type  | Description | Required |
+| ---- | ---- | ---- | ---- |
+| Attempts             | int      | Number of retries for a given request.                       | F        |
+| PerTtyTimeoutSeconds | int      | Timeout per retry attempt for a given request, in seconds. MUST BE >= 1. | T        |
+| RetryOn              | []string | the conditions under which retry takes place.                | F        |
+
+## HttpRouteMirror
+
+|  Field    |    Type  | Description | Required |
+| ---- | ---- | ---- | ---- |
+| Percentage   | int      | Percentage of the traffic to be mirrored. | F        |
+| Destination | [HttpRouteDestination](#httproutedestination) | Mirror HTTP traffic to this destination | T       |
+
+## HttpRouteFault
+
+|  Field    |    Type  | Description | Required |
+| ---- | ---- | ---- | ---- |
+| Percentage   | int      | Percentage of requests to be aborted with the error code provided. | F        |
+| ErrorStatus | int | HTTP status code to use to abort the Http request. | F      |
+
+## HttpRouteDelay
+
+|  Field    |    Type  | Description | Required |
+| ---- | ---- | ---- | ---- |
+| Percentage   | int      | Percentage of requests on which the delay will be injected. | F        |
+| DelaySeconds | int | Add a fixed delay before forwarding the request, in seconds, MUST be >= 1 | T     |
+
+## HttpRouteCORS
+
+|  Field    |    Type  | Description | Required |
+| ---- | ---- | ---- | ---- |
+| AllowOrigins     | [HttpRouteCondition](#httproutecondition)[] | String patterns that match allowed origins. An origin is allowed if any of the string matchers match. If a match is found, then the outgoing Access-Control-Allow-Origin would be set to the origin as provided by the client. | F |
+| AllowMethods     | AllowMethod[]                               | List of HTTP methods allowed to access the resource. | F |
+| AllowCredentials | bool                                        | Indicates whether the caller is allowed to send the actual request (not the preflight) using credentials. | F |
+| AllowHeaders     | string[]                                    | List of HTTP headers that can be used when requesting the resource. Serialized to Access-Control-Allow-Headers header. | F |
+| MaxAgeSeconds    | int                                         | Specifies how long the results of a preflight request can be cached. Translates to the `Access-Control-Max-Age` header. | F |
+
+## AllowMethod
+
+| Name    | Description |
+| ------- | ----------- |
+| GET     |             |
+| HEAD    |             |
+| POST    |             |
+| PUT     |             |
+| PATCH   |             |
+| DELETE  |             |
+| OPTIONS |             |
+| TRACE   |             |
+| CONNECT |             |
