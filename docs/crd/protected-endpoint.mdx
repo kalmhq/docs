@@ -1,7 +1,20 @@
 ---
-title: ProtectedEndpoint
+title: Protected Endpoint
 ---
 
-:::note
-Working in progress
-:::
+| Field                       | Type                                            | Description                                                  | Required |
+| --------------------------- | ----------------------------------------------- | ------------------------------------------------------------ | -------- |
+| name                        | string                                          | name of the endpoint                                         | True     |
+| type                        | [ProtectedEndpointType](#protectedendpointtype) | type of protected endpoint                                   | True     |
+| ports                       | uint32[]                                        | the protected service ports                                  | False    |
+| groups                      | string[]                                        | groups the user should be in to access protected endpoint.   | False    |
+| allowToPassIfHasBearerToken | bool                                            | Allow auth proxy to let the request pass if it has bearer token. This flag should be set carefully. Please make sure that the upstream can handle the token correctly. Otherwise, client can bypass Kalm SSO by sending a not empty bearer token. | False    |
+
+## ProtectedEndpointType
+
+| Name      | Description                                            |
+| --------- | ------------------------------------------------------ |
+| Port      | Protect a single port of a component                   |
+| Component | Protect all ports of a component                       |
+| HttpRoute | Protect all ports that receive traffic from this route |
+
