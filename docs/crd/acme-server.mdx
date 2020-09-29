@@ -1,0 +1,18 @@
+---
+title: ACME Server
+---
+
+## ACMEServer
+
+|  Field    |    Type  | Description | Required |
+| ---- | ---- | ---- | ---- |
+| acmeDomain | string | sub-domains of this will server TXT records for DNS01 challenge | True |
+| nsDomain | string | the NameServer domain | True |
+
+## ACMEServerStatus
+
+|  Field    |    Type  | Description |
+| ---- | ---- | ---- |
+| ready | bool | whether this ACME-Server is up running. |
+| ipForNameServer | string | ip for this name server |
+

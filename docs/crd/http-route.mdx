@@ -4,45 +4,45 @@ title: HttpRoute
 
 
 
-## HttpRouteSpec
+## HttpRoute
 
 |  Field    |    Type  | Description | Required |
 | ---- | ---- | ---- | ---- |
-| Hosts               | []string               | The destination hosts to which traffic is being sent. Could be a DNS name with wildcard prefix or an IP address. | True     |
-| Paths               | []string               | URI paths for prefix-based match                             | True     |
-| Methods             | [HttpRouteMethod](#httproutemethod)[] | HTTP Method                                                  | T        |
-| Schemes             | [HttpRouteScheme](#httproutescheme)[] | URI Scheme values                                            | T        |
-| StripPath           | bool                   | strip path for URL match                                     | F        |
-| Conditions          | [HttpRouteCondition](#httproutecondition)[] | conditions for route match                                   | F        |
-| Destinations        | [HttpRouteDestination](#httproutedestination)[] | targets of upstream services                                 | T        |
-| HttpRedirectToHttps | bool                   | redirect HTTP to HTTPS                                       | F        |
-| Timeout             | *int                   | Timeout for HTTP requests, default is disabled.              | F        |
-| Retries             | *[HttpRouteRetries](#httprouteretries) | Retry policy for HTTP requests.                              | F        |
-| Mirror              | *[HttpRouteMirror](#httproutemirror) | Mirror HTTP traffic to a another destination in addition to forwarding the requests to the intended destination. | F        |
-| Fault               | *[HttpRouteFault](#httproutefault) | Fault injection policy to apply on HTTP traffic at the client side. | F        |
-| Delay               | *[HttpRouteDelay](#httproutedelay) | Delay requests before forwarding, emulating various failures such as network issues, overloaded upstream service, etc. | F        |
-| CORS                | *[HttpRouteCORS](#httproutecors) | Cross-Origin Resource Sharing policy (CORS).                 | F        |
+| hosts              | []string               | The destination hosts to which traffic is being sent. Could be a DNS name with wildcard prefix or an IP address. | True     |
+| paths               | []string               | URI paths for prefix-based match                             | True     |
+| methods             | [HttpRouteMethod](#httproutemethod)[] | HTTP Method                                                  | T        |
+| schemes             | [HttpRouteScheme](#httproutescheme)[] | URI Scheme values                                            | T        |
+| stripPath           | bool                   | strip path for URL match                                     | F        |
+| conditions          | [HttpRouteCondition](#httproutecondition)[] | conditions for route match                                   | F        |
+| destinations        | [HttpRouteDestination](#httproutedestination)[] | targets of upstream services                                 | T        |
+| httpRedirectToHttps | bool                   | redirect HTTP to HTTPS                                       | F        |
+| timeout             | *int                   | Timeout for HTTP requests, default is disabled.              | F        |
+| retries             | *[HttpRouteRetries](#httprouteretries) | Retry policy for HTTP requests.                              | F        |
+| mirror              | *[HttpRouteMirror](#httproutemirror) | Mirror HTTP traffic to a another destination in addition to forwarding the requests to the intended destination. | F        |
+| fault               | *[HttpRouteFault](#httproutefault) | Fault injection policy to apply on HTTP traffic at the client side. | F        |
+| delay               | *[HttpRouteDelay](#httproutedelay) | Delay requests before forwarding, emulating various failures such as network issues, overloaded upstream service, etc. | F        |
+| cors             | *[HttpRouteCORS](#httproutecors) | Cross-Origin Resource Sharing policy (CORS).                 | F        |
 
 ## HttpRouteMethod
 
-| Name    | Description |
-| ------- | ----------- |
-| GET     |             |
-| HEAD    |             |
-| POST    |             |
-| PUT     |             |
-| PATCH   |             |
-| DELETE  |             |
-| OPTIONS |             |
-| TRACE   |             |
-| CONNECT |             |
+| Name    |
+| ------- |
+| GET     |
+| HEAD    |
+| POST    |
+| PUT     |
+| PATCH   |
+| DELETE  |
+| OPTIONS |
+| TRACE   |
+| CONNECT |
 
 ## HttpRouteScheme
 
 | Name  | Description |
 | ----- | ----------- |
-| HTTP  |             |
-| HTTPS |             |
+| http  |             |
+| https |             |
 
 ## HttpRouteCondition
 
@@ -72,8 +72,8 @@ title: HttpRoute
 
 |  Field    |    Type  | Description | Required |
 | ---- | ---- | ---- | ---- |
-|Host|string|destination host|T|
-| Weight | int    | The proportion of traffic to be forwarded to the destination | F |
+|host|string|destination host|T|
+| weight | int    | The proportion of traffic to be forwarded to the destination | F |
 ## HttpRouteRetries
 
 |  Field    |    Type  | Description | Required |
@@ -86,8 +86,8 @@ title: HttpRoute
 
 |  Field    |    Type  | Description | Required |
 | ---- | ---- | ---- | ---- |
-| Percentage   | int      | Percentage of the traffic to be mirrored. | F        |
-| Destination | [HttpRouteDestination](#httproutedestination) | Mirror HTTP traffic to this destination | T       |
+| percentage  | int      | Percentage of the traffic to be mirrored. | F        |
+| destination | [HttpRouteDestination](#httproutedestination) | Mirror HTTP traffic to this destination | T       |
 
 ## HttpRouteFault
 
@@ -115,14 +115,14 @@ title: HttpRoute
 
 ## AllowMethod
 
-| Name    | Description |
-| ------- | ----------- |
-| GET     |             |
-| HEAD    |             |
-| POST    |             |
-| PUT     |             |
-| PATCH   |             |
-| DELETE  |             |
-| OPTIONS |             |
-| TRACE   |             |
-| CONNECT |             |
+| Name    |
+| ------- |
+| GET     |
+| HEAD    |
+| POST    |
+| PUT     |
+| PATCH   |
+| DELETE  |
+| OPTIONS |
+| TRACE   |
+| CONNECT |

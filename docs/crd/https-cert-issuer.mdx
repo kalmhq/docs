@@ -6,10 +6,10 @@ title: Https Cert Issuer
 
 | Field              | Type                                 | Description                                           | Required |
 | ------------------ | ------------------------------------ | ----------------------------------------------------- | -------- |
-| CAForTest          | *[CAForTestIssuer](#cafortestissuer) | Self Signed CA, mainly for test                       | False    |
+| caForTest          | *[CAForTestIssuer](#cafortestissuer) | Self Signed CA, mainly for test                       | False    |
 | ~~ACMECloudFlare~~ | *ACMECloudFlareIssuer                |                                                       | False    |
-| HTTP01             | *[HTTP01Issuer](#http01issuer)       | Certificate Issuer using HTTP01 challenge validations | False    |
-| DNS01              | *[DNS01Issuer](#dns01issuer)         | Certificate Issuer using DNS01 challenge validations  | True     |
+| http01             | *[HTTP01Issuer](#http01issuer)       | Certificate Issuer using HTTP01 challenge validations | False    |
+| dns01              | *[DNS01Issuer](#dns01issuer)         | Certificate Issuer using DNS01 challenge validations  | True     |
 
 ## CAForTestIssuer
 
@@ -23,7 +23,7 @@ type CAForTestIssuer struct{}
 
 | Field              | Type                  | Description | Required |
 | ---- | ---- | ---- | ---- |
-| Email | string | email for admin |False|
+| email | string | email for admin |False|
 
 ## DNS01Issuer
 
