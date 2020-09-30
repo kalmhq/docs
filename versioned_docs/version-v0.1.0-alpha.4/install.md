@@ -4,7 +4,7 @@ title: Installation
 
 ## Compatibility
 
-Kalm is optimized to work with the latest version of Kuberenetes (currently 1.18.x), and is backwards compatible down to 1.14.x
+Kalm is optimized to work with the latest version of Kubernetes (currently 1.18.x), and is backwards compatible down to 1.14.x
 
 | Kalm version | k8s 1.14.x | k8s 1.15.x | k8s 1.16.x | k8s 1.17.x | k8s 1.18.x |
 | ------------ | ---------- | ---------- | ---------- | ---------- | ---------- |
@@ -26,7 +26,6 @@ Installation of Kalm requires kubectl, which can be installed according to the o
 :::note
 Please make sure that the version of kubectl is sufficient. It is strongly recommended that you use the version corresponding to the cluster. Using an earlier version of kubectl may cause errors in the installation process.
 :::
-
 
 ## Step 2: Install Kalm
 
