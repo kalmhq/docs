@@ -1,14 +1,22 @@
 {
     "cSpell.words": [
+        "CPUs",
         "CRDs",
         "Kalm",
         "Kubernetes",
+        "Minikube",
+        "allowfullscreen",
         "istio",
+        "kubectl",
+        "ojsonpath",
         "yamls"
     ],
     "grammarly.userWords": [
         "CRDs",
+        "ip",
         "istio",
-        "kalm"
+        "kalm",
+        "kubectl",
+        "minikube"
     ]
 }
