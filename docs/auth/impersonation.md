@@ -2,6 +2,8 @@
 title: Impersonation
 ---
 
-It can be useful to log into Kalm as a certain entity to verify the permissions for a certain role binding or access token is functioning as intended. If you posess the **clusterOwner** role, you can impersonate any entity.
+To test and verify that user and group permissions are setup properly, Kalm comes with an "Impersonate" feature. In any of the Members sections, you can click the **impersonate** button to see what the user/group/access-token has access to within Kalm. As long as you are in a **Cluster Owner** role, you can impersonate any entity within Kalm.
 
-To impersonate an entity when sending requests to kalm-api, add the corresponding impersonation info into the `Kalm-Impersonation` section of the header.
+![impersonate](../assets/impersonate.png)
+
+To impersonate an entity when sending requests to kalm-api, simply add the corresponding impersonation info into the `Kalm-Impersonation` section of the header.
