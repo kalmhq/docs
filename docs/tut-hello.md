@@ -42,7 +42,7 @@ After a few seconds, a single Pod holding the nginx:alpine image will be deploye
 
 ## Step 3: Examining and Updating
 
-Let's examine our pod to see if nginx is really deployed. Kalm provides a handy terminal for quick examinations. Open a shell to our pod by clicking on the shell icon.
+Let's examine our pod to see if nginx is deployed. Kalm provides a handy terminal for quick examinations. Open a shell to our pod by clicking on the shell icon.
 
 ![shell button](assets/shell-button.png)
 
@@ -72,7 +72,7 @@ After a few moments, there should be three pods running.
 
 ![three pods](assets/three-pods.png)
 
-Kubernetes is declarative, which means you specify the end result("I want 3 pods"), and the kubernetes control plane figures out how best to achieve the end result for you("let's add 2 more").
+Kubernetes is declarative, which means you specify the end result("I want 3 pods"), and the Kubernetes control plane figures out how best to achieve the end result for you("let's add 2 more").
 
 ## Step 4: Ports and Routing
 
@@ -114,7 +114,7 @@ In the _Targets_ section, select our _"webserver"_ component from the dropdown.
 
 ![add target](assets/add-target.png)
 
-Click **Update Route**. Our route is now completely setup.
+Click **CREATE ROUTE**. Our route is now completely setup.
 
 There should be a new entry in the Routes table. Click on the link in the _Domain_ column to open our app in a new browser tab.
 
@@ -126,7 +126,7 @@ Great, our nginx webserver app is working!
 
 You've just installed an application on your cluster, modified it, scaled it, and setup routing to make it accessible from the outside world!
 
-All the heavy lifting is done via kubernetes and istio. Kalm is simply applying the appropriate configurations to your cluster. In fact anyone with familiarity with kubernetes should be able to create the same application configuration with a text editor and `kubectl`. We encourage this as an _exercise for the reader_.
+All the heavy lifting is done via Kubernetes and istio. Kalm is simply applying the appropriate configurations to your cluster. In fact anyone with familiarity with Kubernetes should be able to create the same application configuration with a text editor and `kubectl`. We encourage this as an _exercise for the reader_.
 
 ## Next Step
 

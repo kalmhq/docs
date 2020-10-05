@@ -17,6 +17,7 @@
         "istio",
         "kalm",
         "kubectl",
-        "minikube"
+        "minikube",
+        "nginx"
     ]
 }
