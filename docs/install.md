@@ -39,6 +39,9 @@ Kalm can be installed as a [Kubernetes Operator](https://kubernetes.io/docs/conc
 
 ```bash
 curl -sL https://get.kalm.dev | bash
+
+# You can install a specific version like this
+curl -sL https://get.kalm.dev | bash -s v0.1.0-rc.7
 ```
 
 This command installs Kalm plus a few dependencies, and typically takes 3-5 minutes to complete. Relax in the mean time, or watch this short video on how Kalm works:
