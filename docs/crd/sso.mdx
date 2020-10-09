@@ -8,47 +8,47 @@ title: SingleSignOn Config
 
 ## SingleSignOnConfig
 
-| Name                  | Type                            | Description                                                  | Required                                                     |
-| --------------------- | ------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| issuer                | string                          | The base path of dex and the external name of the OpenID Connect service. | Domain or issuer can't be blank at the same time.            |
-| jwksUri               | string                          | JWKS endpoint used to verify JWT tokens                     |                                                              |
-| domain                | string                          | kalm dex oidc provider domain                                | Domain or issuer can't be blank at the same time.            |
-| useHttp               | bool                            | Default scheme is https, this flag is to change it to http   | False                                                        |
-| port                  | *int                            | port of kalm dex oidc provider | False                                                        |
-| showApproveScreen     | bool                            |                                                              |                                                              |
-| alwaysShowLoginScreen | bool                            |                                                              |                                                              |
-| connectors            | [DexConnector](#dexconnector) [] | Dex connectors config                                        | Connectors and TemporaryUser can't be blank at the same time. |
-| temporaryUser         | *[TemporaryDexUser](#temporarydexuser) | Temporary Dex user, mainly used for bootstrapping setup of Kalm. | Connectors and TemporaryUser can't be blank at the same time. |
-| externalEnvoyExtAuthz | *[ExtAuthzEndpoint](extauthzendpoint) | Create service entry if the ext_authz service is running out of istio mesh | False                                                        |
-| idTokenExpirySeconds  | *uint32                         | expiry of idToken in seconds                                 | False                                                        |
+| Name                  | Type                                   | Description                                                                | Required                                                      |
+|-----------------------|----------------------------------------|----------------------------------------------------------------------------|---------------------------------------------------------------|
+| issuer                | string                                 | The base path of dex and the external name of the OpenID Connect service.  | Domain or issuer can't be blank at the same time.             |
+| jwksUri               | string                                 | JWKS endpoint used to verify JWT tokens                                    |                                                               |
+| domain                | string                                 | kalm dex oidc provider domain                                              | Domain or issuer can't be blank at the same time.             |
+| useHttp               | bool                                   | Default scheme is https, this flag is to change it to http                 | False                                                         |
+| port                  | *int                                   | port of kalm dex oidc provider                                             | False                                                         |
+| showApproveScreen     | bool                                   |                                                                            |                                                               |
+| alwaysShowLoginScreen | bool                                   |                                                                            |                                                               |
+| connectors            | [DexConnector](#dexconnector) []       | Dex connectors config                                                      | Connectors and TemporaryUser can't be blank at the same time. |
+| temporaryUser         | *[TemporaryDexUser](#temporarydexuser) | Temporary Dex user, mainly used for bootstrapping setup of Kalm.           | Connectors and TemporaryUser can't be blank at the same time. |
+| externalEnvoyExtAuthz | *[ExtAuthzEndpoint](#extauthzendpoint) | Create service entry if the ext_authz service is running out of istio mesh | False                                                         |
+| idTokenExpirySeconds  | *uint32                                | expiry of idToken in seconds                                               | False                                                         |
 
 ## DexConnector
 
-| Name                  | Type              | Description                                                  | Required                                                     |
-| ---- | ---- | ---- | ---- |
-| type | string | type of Connector, currently support: `github` and `gitlab` | True |
-| id | string | id of dex connector | True |
-| name | string | name of dex connector | True |
-| config | *runtime.RawExtension | config for dex connector | True |
+| Name   | Type                  | Description                                                 | Required |
+|--------|-----------------------|-------------------------------------------------------------|----------|
+| type   | string                | type of Connector, currently support: `github` and `gitlab` | True     |
+| id     | string                | id of dex connector                                         | True     |
+| name   | string                | name of dex connector                                       | True     |
+| config | *runtime.RawExtension | config for dex connector                                    | True     |
 
 
 
 ## TemporaryDexUser
 
-| Name                  | Type              | Description                                                  | Required                                                     |
-| ---- | ---- | ---- | ---- |
-| username | string |  | True |
-| passowrdHash | string | bcrypt hash of the password | True |
-| userId | string |      | True |
-| email | string | | True |
+| Name         | Type   | Description                 | Required |
+|--------------|--------|-----------------------------|----------|
+| username     | string |                             | True     |
+| passowrdHash | string | bcrypt hash of the password | True     |
+| userId       | string |                             | True     |
+| email        | string |                             | True     |
 
 
 
 ## ExtAuthzEndpoint
 
-| Name                  | Type              | Description            | Required |
-| ---- | ---- | ---- | ---- |
-| host | string | host of endpoint | True |
-| port | int | port of endpoint | True |
-| scheme | string | http or https | True |
+| Name   | Type   | Description      | Required |
+|--------|--------|------------------|----------|
+| host   | string | host of endpoint | True     |
+| port   | int    | port of endpoint | True     |
+| scheme | string | http or https    | True     |
 
