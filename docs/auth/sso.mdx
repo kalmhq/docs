@@ -4,23 +4,23 @@ title: Single Sign-on
 
 ## Overview
 
-Kalm SSO is based on the [OIDC](https://openid.net/connect/) standard, and is built on top of a set of widely used open source projects including [Istio](https://istio.io),
-[Envoy](https://www.envoyproxy.io/) and [dex](https://github.com/dexidp/dex).
+Kalm's Single Sign-on (SSO) system is based on the [OIDC](https://openid.net/connect/) standard and is built on top of a set of widely used open source projects including [Istio](https://istio.io),
+[Envoy](https://www.envoyproxy.io/), and [dex](https://github.com/dexidp/dex).
 Istio CRDs are used to configure Envoy, [ext_authz](https://www.envoyproxy.io/docs/envoy/latest/api-v2/config/filter/http/ext_authz/v2/ext_authz.proto) is used as a filter for protected endpoints.
 Dex acts as a portal to other identity providers.
 
 ## Architecture
 
-The picture shows the basic architecture of Kalm SSO.
-During installation, kalm automatically sets up AuthProxy and Dex.
+The picture below summarizes the basic architecture of Kalm's SSO system.
+When you first install Kalm, both AuthProxy and Dex are setup automatically.
 
-Any http traffic to your private component will first be checked by AuthProxy. If no valid authentication information is found, a redirect response(to authentication) is returned.
+Any http traffic to your private components will first be checked by AuthProxy. If no valid authentication information is found, a redirect response(to authentication) is returned.
 
 ![](../assets/sso.svg)
 
 ## Authentication Flow
 
-The following chart details the entire authentication process.
+For a more detailed view, the following chart details the entire authentication process.
 
 ![](../assets/sso-oidc-flow.svg)
 

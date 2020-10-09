@@ -75,6 +75,12 @@ Give Terraform access to the Application Default Credentials (ADC).
 gcloud auth application-default login
 ```
 
+You will need to have the Kubernetes Engine API enabled for your project as well:
+
+```bash
+gcloud services enable container.googleapis.com
+```
+
 Clone the repository below.
 
 ```bash
@@ -110,6 +116,8 @@ Configure kubectl to use the new cluster.
 ```bash
 gcloud container clusters get-credentials NAME_OF_YOUR_CLUSTER --zone ZONE_OF_CLUSTER
 ```
+
+_*Note - You can see your project's zone on your [gcloud console](https://console.cloud.google.com/) or in your CLI enter: `gcloud info | grep "zone"`_
 
 Verify the cluster is properly setup and accessible.
 
