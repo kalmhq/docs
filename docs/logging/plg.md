@@ -53,7 +53,7 @@ EOF
 #### View & Query logs
 
 ```bash
-kubectl -n my-first-log-app port-forward $(kubectl get pods -n my-first-log-app -l app=grafana -o jsonpath="{.items[].metadata.name}") 3000:3000
+kubectl -n my-first-log-app port-forward $(kubectl get pods -n my-first-log-app -l app=plg-grafana -o jsonpath="{.items[].metadata.name}") 3000:3000
 
 ```
 
@@ -66,6 +66,14 @@ Don't worry about the permission. As long as you don't give it a route, it will 
 :::
 
 ![guide-logging-for-kalm3.png](../assets/guide-logging-for-kalm3.png)
+
+#### Cleanup
+
+After test, you can run the following command to clean up the test logging system. If you are using cloud platform, you need also delete generated Disks to avoid unexpected charge.
+
+```bash
+kubectl delete logsystems.core.kalm.dev -n my-first-log-app plg
+```
 
 ### Microservices mode
 
