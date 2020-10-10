@@ -32,6 +32,7 @@ After deployment is complete, click the _Log Icon_:
 
 <br />
 You should see the Log View:
+
 ![log view](assets/log-view.png)
 
 ## Logging system

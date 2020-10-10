@@ -13,16 +13,16 @@ To enable HTTPS access to your applications, you need a certificate from a Certi
 - The Certificate Creation page displays your cluster IP. You need to point domains you want to configure to this cluster IP by adding an A Record. (Specific instructions depends on your domain provider)
 
 * Enter a **Certificate Name**
-* Enter one or more domains in the **Domains** field. You should get an indicator next to each domain which specifies if the IP is properly configured. If you get a warning symbol, please check your DNS configurations. (DNS records can sometimes take a few moments to update)
+* Enter one or more domains in the **Domains** field. If any of the domains is wildcards domain, Kalm will launch ACME DNS Server to handle with [DNS-01 Challenge](./cert-issuing#dns-01)
 * Click **Create Certificate**
 
-![Create Cert](assets/placeholder.png)
+![Create Cert](assets/create-cert.png)
 
 ## Upload Existing Certificate
 
 If you want to use an existing certificate, click **Use an existing certificate** and paste your Certificate and Private Key.
 
-![Upload Cert](assets/placeholder.png)
+![Upload Cert](assets/upload-cert.png)
 
 ## Additional Instructions
 
@@ -30,7 +30,7 @@ If you want to use an existing certificate, click **Use an existing certificate*
 
 Domains which have certificates properly configured can be used in Routes to handle HTTPs traffic. See the [Routes Guide](/) for more details.
 
-![Routes HTTPS](assets/placeholder.png)
+![Routes HTTPS](assets/routes-https-cert.png)
 
 ### Wildcard Certificates
 

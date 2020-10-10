@@ -69,7 +69,7 @@ Now open <a href="http://localhost:3010/" target="_blank">http://localhost:3010/
 
 ## Step 4: (Optional) Configure Access
 
-Although we can visit Kalm through localhost port fowarding, it is a good idea to setup a domain and basic login, so you can access Kalm on any computer and share it with colleagues.
+Although we can visit Kalm through localhost port forwarding, it is a good idea to setup a domain and basic login, so you can access Kalm on any computer and share it with colleagues.
 
 To setup permanent acess, click **FINISH THE SETUP STEPS** button in the top navigation bar and follow the onscreen directions.
 
@@ -83,7 +83,7 @@ _<CLUSTER_IP>.nip.io_
 For minikube, if no ip is shown, run `minikube tunnel` and refresh the page.
 :::
 
-Click **Check and Continue**. After configuration is complete, record the generated **Email** and **Password** login information. From this point on, port-fowarding is no longer required, and you should be able to login via the domain you specified.
+Click **Check and Continue**. After configuration is complete, record the generated **Email** and **Password** login information. From this point on, port-forwarding is no longer required, and you should be able to login via the domain you specified.
 
 ## Next Step
 
