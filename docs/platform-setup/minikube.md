@@ -13,7 +13,7 @@ Please follow [minikube official document](https://kubernetes.io/docs/tasks/tool
 It recommended to use 8G memory and 4 core cpu to test kalm with. Adjust resources base on your environment.
 
 ```bash
-minikube start --memory 8192 --cpus 4
+minikube start --memory 8192 --cpus 4 --extra-config=apiserver.enable-admission-plugins=PodSecurityPolicy --addons=pod-security-policy
 ```
 
 After the cluster is up and running. Open a new terminal and type the following command. You may be prompted to enter your password. It will create a route to services deployed with type LoadBalancer and sets their Ingress to their ClusterIP.

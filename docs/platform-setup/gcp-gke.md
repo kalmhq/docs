@@ -46,7 +46,8 @@ gcloud container clusters create $CLUSTER_NAME \
   --machine-type=$M_TYPE \
   --num-nodes 4 \
   --zone $ZONE \
-  --project $PROJECT_ID
+  --project $PROJECT_ID \
+  --enable-pod-security-policy
 ```
 
 The creation of the cluster will take a few minutes. Once complete, configure kubectl to use the new cluster:
