@@ -103,10 +103,10 @@ const siteConfig = {
       "@docusaurus/preset-classic",
       {
         docs: {
-          homePageId: "intro",
           sidebarPath: require.resolve("./sidebars.json"),
           showLastUpdateAuthor: true,
           showLastUpdateTime: true,
+          routeBasePath: "/",
           // For no header links in the top nav bar -> headerLinks: [],
           editUrl: "https://github.com/kalmhq/docs/edit/master/",
         },

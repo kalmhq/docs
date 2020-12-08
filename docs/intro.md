@@ -10,6 +10,7 @@ keywords:
   - docs
   - docusaurus
 image: https://i.imgur.com/mErPwqL.png
+slug: /
 ---
 
 Kalm (Kubernetes Application Manager) is an open-source tool that makes it easier to manage applications on Kubernetes without struggling with yamls. Kalm comes with a web interface for the most common operations including:
