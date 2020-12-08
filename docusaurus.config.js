@@ -40,8 +40,8 @@ const siteConfig = {
         //   // to: "/path // by default, link to active/latest version
         //   // label: "label" // by default, show active/latest version label
         // },
-        { to: "/docs", label: "Docs" },
-        { href: "https://github.com/kalmhq/kalm", label: "Github" },
+        { to: "/", label: "Docs" },
+        // { href: "https://github.com/kalmhq/kalm", label: "Github" },
         // { to: "/versions", label: "All Versions", position: "right" },
       ],
     },
