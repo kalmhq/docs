@@ -1,6 +1,6 @@
 ---
 title: Authentication & Authorization
-sidebar_label: Overview
+sidebar_label: Auth Overview
 ---
 
 Kalm has built in systems for managing user **Authentication** and **Authorization**. The following documentation provides a high level overview of how Kalm's Auth systems work.
@@ -47,4 +47,3 @@ For specific details on Kalm's Role Permission definitions, see our [detailed Ro
 The Kubernetes RBAC is powerful and configurable for teams which require precise control at a granular level. However, it can be quite complicated for simple scenarios involving standard permissions and roles. This complexity grows proportionately to the number of CRDs involved.
 
 Kalm's RBAC system is designed to be initially simple and intuitive, while still allowing for complex customization if needed.
-

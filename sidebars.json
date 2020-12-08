@@ -8,7 +8,7 @@
     },
     {
       "type": "category",
-      "label": "Tasks",
+      "label": "App Deployment",
       "collapsed": false,
       "items": [
         "guide-logs",
@@ -17,37 +17,28 @@
         "volumes",
         "registry",
         "probes",
-        "https-certs",
-        "cert-issuing",
         "tut-wordpress"
       ]
     },
     {
       "type": "category",
-      "label": "Concepts",
+      "label": "Traffic Management",
       "collapsed": false,
       "items": [
-        {
-          "type": "category",
-          "label": "Auth",
-          "items": [
-            "auth/overview",
-            "auth/sso",
-            "auth/roles",
-            "auth/impersonation"
-          ]
-        },
-        {
-          "type": "category",
-          "label": "Traffic Management",
-          "items": ["traffic/overview"]
-        }
+        "traffic/overview",
+        "https-certs",
+        "cert-issuing"
       ]
     },
     {
       "type": "category",
-      "label": "Reference",
-      "items": []
+      "label": "Team Collaboration",
+      "items": [
+        "auth/overview",
+        "auth/sso",
+        "auth/roles",
+        "auth/impersonation"
+      ]
     },
     {
       "type": "category",
