@@ -4,7 +4,7 @@
       "type": "category",
       "label": "Getting Started",
       "collapsed": false,
-      "items": ["intro", "install", "tut-hello"]
+      "items": ["intro", "get-started"]
     },
     {
       "type": "category",
@@ -73,16 +73,6 @@
           "label": "Custom Resource Definition",
           "items": ["crd/component", "crd/protected-endpoint", "crd/sso", "crd/http-route", "crd/https-cert", "crd/https-cert-issuer", "crd/access-token", "crd/role-binding", "crd/acme-server"]
         }
-      ]
-    },
-    {
-      "type": "category",
-      "label": "Platform Setup",
-      "items": [
-        "platform-setup/minikube",
-        "platform-setup/aws-eks",
-        "platform-setup/gcp-gke",
-        "platform-setup/azure-aks"
       ]
     }
   ]

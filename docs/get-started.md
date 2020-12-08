@@ -1,5 +1,5 @@
 ---
-title: Hello Kalm
+title: Get Started
 ---
 
 Let's go through a simple example of deploying a single pod holding an nginx container.
