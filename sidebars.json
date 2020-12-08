@@ -18,12 +18,13 @@
         "registry",
         "probes",
         "https-certs",
-        "cert-issuing"
+        "cert-issuing",
+        "tut-wordpress"
       ]
     },
     {
       "type": "category",
-      "label": "Operations",
+      "label": "Concepts",
       "collapsed": false,
       "items": [
         {
@@ -40,19 +41,8 @@
           "type": "category",
           "label": "Traffic Management",
           "items": ["traffic/overview"]
-        },
-        {
-          "type": "category",
-          "label": "Logging",
-          "items": ["logging/index", "logging/plg", "logging/efk"]
-        },
-        "guide-export-kalm-resources"
+        }
       ]
-    },
-    {
-      "type": "category",
-      "label": "Frequently Asked Questions",
-      "items": ["faq/overview", "faq/old-resources-visibility"]
     },
     {
       "type": "category",
@@ -61,19 +51,8 @@
     },
     {
       "type": "category",
-      "label": "Examples",
-      "items": ["tut-wordpress"]
-    },
-    {
-      "type": "category",
-      "label": "References",
-      "items": [
-        {
-          "type": "category",
-          "label": "Custom Resource Definition",
-          "items": ["crd/component", "crd/protected-endpoint", "crd/sso", "crd/http-route", "crd/https-cert", "crd/https-cert-issuer", "crd/access-token", "crd/role-binding", "crd/acme-server"]
-        }
-      ]
+      "label": "Custom Resource Definitions",
+      "items": ["crd/component", "crd/protected-endpoint", "crd/sso", "crd/http-route", "crd/https-cert", "crd/https-cert-issuer", "crd/access-token", "crd/role-binding", "crd/acme-server"]
     }
   ]
 }
