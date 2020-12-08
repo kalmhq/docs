@@ -52,12 +52,8 @@ const siteConfig = {
           title: "Docs",
           items: [
             {
-              label: "Installation",
-              to: "docs/install",
-            },
-            {
-              label: "Basic Tutorial",
-              to: "docs/tut-hello",
+              label: "Getting Started",
+              to: "docs/get-started",
             },
           ],
         },
