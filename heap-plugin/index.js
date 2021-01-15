@@ -12,7 +12,7 @@ module.exports = function (context, options) {
     /* other lifecycle API */
     injectHtmlTags() {
       let heapId = process.env.HEAP_ID;
-      console.log({ heapId });
+
       return {
         headTags: [
           {
