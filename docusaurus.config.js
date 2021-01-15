@@ -7,6 +7,7 @@
 
 // See https://docusaurus.io/docs/site-config for all the possible
 // site configuration options.
+const path = require("path");
 
 const siteConfig = {
   title: "Kalm", // Title for your website.
@@ -15,10 +16,9 @@ const siteConfig = {
   // Used for publishing and more
   projectName: "kalm",
   organizationName: "kalmhq",
-
   /* path to images for header/footer */
   favicon: "img/kalm-logo-blue.svg",
-
+  plugins: [path.resolve(__dirname, "heap-plugin")],
   themeConfig: {
     algolia: {
       apiKey: "d589acaac8cdb8ae96fca3f78c600ae4",

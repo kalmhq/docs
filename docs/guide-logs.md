@@ -2,8 +2,8 @@
 title: View Container Logs
 ---
 
-<figure class="video_container">
-  <iframe width="560" height="315" src="https://www.youtube.com/embed/zMzWkzxIKlo" frameborder="0" allowfullscreen="true"> </iframe>
+<figure className="video_container">
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/zMzWkzxIKlo" frameBorder="0" allowFullScreen={true}> </iframe>
 </figure>
 
 Sometimes its useful to view the log output of a particular container. Kalm provides a view to quickly view logs in the web:
