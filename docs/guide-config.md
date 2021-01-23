@@ -4,10 +4,9 @@ title: Add Env Variables & Configs
 
 A well designed application is likely to have configurations which vary between deployments. Kubernetes makes it easy to override the configurations specified in images.
 
-<figure class="video_container">
-  <iframe width="560" height="315" src="https://www.youtube.com/embed/bMwc6XPtM3c" frameborder="0" allowfullscreen="true"> </iframe>
+<figure className="video_container">
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/bMwc6XPtM3c" frameBorder="0" allowFullScreen={true}> </iframe>
 </figure>
-
 
 ## Example Container Setup
 

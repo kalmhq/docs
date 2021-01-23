@@ -7,6 +7,7 @@
 
 // See https://docusaurus.io/docs/site-config for all the possible
 // site configuration options.
+const path = require("path");
 
 const siteConfig = {
   title: "Kalm", // Title for your website.
@@ -15,10 +16,9 @@ const siteConfig = {
   // Used for publishing and more
   projectName: "kalm",
   organizationName: "kalmhq",
-
   /* path to images for header/footer */
   favicon: "img/kalm-logo-blue.svg",
-
+  plugins: [path.resolve(__dirname, "heap-plugin")],
   themeConfig: {
     algolia: {
       apiKey: "d589acaac8cdb8ae96fca3f78c600ae4",
@@ -34,15 +34,15 @@ const siteConfig = {
         src: "img/kalm-logo-blue.svg",
       },
       items: [
-        {
-          type: "docsVersionDropdown",
-          position: "left",
-          // to: "/path // by default, link to active/latest version
-          // label: "label" // by default, show active/latest version label
-        },
-        { to: "/docs", label: "Docs" },
-        { href: "https://github.com/kalmhq/kalm", label: "Github" },
-        { to: "/versions", label: "All Versions", position: "right" },
+        // {
+        //   type: "docsVersionDropdown",
+        //   position: "left",
+        //   // to: "/path // by default, link to active/latest version
+        //   // label: "label" // by default, show active/latest version label
+        // },
+        { to: "/", label: "Docs" },
+        // { href: "https://github.com/kalmhq/kalm", label: "Github" },
+        // { to: "/versions", label: "All Versions", position: "right" },
       ],
     },
 
@@ -52,12 +52,8 @@ const siteConfig = {
           title: "Docs",
           items: [
             {
-              label: "Installation",
-              to: "docs/install",
-            },
-            {
-              label: "Basic Tutorial",
-              to: "docs/tut-hello",
+              label: "Getting Started",
+              to: "get-started",
             },
           ],
         },
@@ -103,10 +99,10 @@ const siteConfig = {
       "@docusaurus/preset-classic",
       {
         docs: {
-          homePageId: "intro",
           sidebarPath: require.resolve("./sidebars.json"),
           showLastUpdateAuthor: true,
           showLastUpdateTime: true,
+          routeBasePath: "/",
           // For no header links in the top nav bar -> headerLinks: [],
           editUrl: "https://github.com/kalmhq/docs/edit/master/",
         },

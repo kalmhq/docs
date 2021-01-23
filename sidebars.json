@@ -4,11 +4,11 @@
       "type": "category",
       "label": "Getting Started",
       "collapsed": false,
-      "items": ["intro", "install", "tut-hello"]
+      "items": ["intro", "get-started"]
     },
     {
       "type": "category",
-      "label": "Tasks",
+      "label": "App Deployment",
       "collapsed": false,
       "items": [
         "guide-logs",
@@ -17,73 +17,33 @@
         "volumes",
         "registry",
         "probes",
+        "tut-wordpress"
+      ]
+    },
+    {
+      "type": "category",
+      "label": "Traffic Management",
+      "collapsed": false,
+      "items": [
+        "traffic/overview",
         "https-certs",
         "cert-issuing"
       ]
     },
     {
       "type": "category",
-      "label": "Operations",
-      "collapsed": false,
+      "label": "Team Collaboration",
       "items": [
-        {
-          "type": "category",
-          "label": "Auth",
-          "items": [
-            "auth/overview",
-            "auth/sso",
-            "auth/roles",
-            "auth/impersonation"
-          ]
-        },
-        {
-          "type": "category",
-          "label": "Traffic Management",
-          "items": ["traffic/overview"]
-        },
-        {
-          "type": "category",
-          "label": "Logging",
-          "items": ["logging/index", "logging/plg", "logging/efk"]
-        },
-        "guide-export-kalm-resources"
+        "auth/overview",
+        "auth/sso",
+        "auth/roles",
+        "auth/impersonation"
       ]
     },
     {
       "type": "category",
-      "label": "Frequently Asked Questions",
-      "items": ["faq/overview", "faq/old-resources-visibility"]
-    },
-    {
-      "type": "category",
-      "label": "Reference",
-      "items": []
-    },
-    {
-      "type": "category",
-      "label": "Examples",
-      "items": ["tut-wordpress"]
-    },
-    {
-      "type": "category",
-      "label": "References",
-      "items": [
-        {
-          "type": "category",
-          "label": "Custom Resource Definition",
-          "items": ["crd/component", "crd/protected-endpoint", "crd/sso", "crd/http-route", "crd/https-cert", "crd/https-cert-issuer", "crd/access-token", "crd/role-binding", "crd/acme-server"]
-        }
-      ]
-    },
-    {
-      "type": "category",
-      "label": "Platform Setup",
-      "items": [
-        "platform-setup/minikube",
-        "platform-setup/aws-eks",
-        "platform-setup/gcp-gke",
-        "platform-setup/azure-aks"
-      ]
+      "label": "Custom Resource Definitions",
+      "items": ["crd/component", "crd/protected-endpoint", "crd/sso", "crd/http-route", "crd/https-cert", "crd/https-cert-issuer", "crd/access-token", "crd/role-binding", "crd/acme-server"]
     }
   ]
 }

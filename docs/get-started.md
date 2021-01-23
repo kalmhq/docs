@@ -1,5 +1,5 @@
 ---
-title: Hello Kalm
+title: Get Started
 ---
 
 Let's go through a simple example of deploying a single pod holding an nginx container.
@@ -10,8 +10,8 @@ This tutorial will teach you:
 - How to create application configurations
 - How to open a port and direct traffic to an application
 
-<figure class="video_container">
-  <iframe width="560" height="315" src="https://www.youtube.com/embed/fzig4AvMr74" frameborder="0" allowfullscreen="true"> </iframe>
+<figure className="video_container">
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/fzig4AvMr74" frameBorder="0" allowFullScreen={true}> </iframe>
 </figure>
 
 ## Step 1: Create Application
