@@ -13,24 +13,18 @@ image: https://docs.kalm.dev/img/kalm-logo-blue.svg
 slug: /
 ---
 
-Kalm (Kubernetes Application Manager) is an open-source tool that makes it easier to manage applications on Kubernetes without struggling with yamls. Kalm comes with a web interface for the most common operations including:
+Kubernetes is powerful but hard to use. It is not uncommon for teams to have to first spend weeks writing internal tools and yaml configurations before getting a satisfactory Kubernetes setup. Kalm is a suite of open-source tools that makes it easier for you to quickly setup a working Kubernetes production environment. Key features include:
 
-- Creation of new application deployments
-- Deploying, updating, and scaling existing deployments
-- Volume, config, and secret management
+- **Web UI for common operations:** create and update deployments, networks, environment variables, configs and secrets, and problems, all from a web interface.
+- **SSO & Membership:** Invite team members to a cluster and allow them to authenicate via SSO. Setup permission rules(view/edit/owner) for users and groups.
+- ** HTTPS Certification:** Setup HTTPS certification and auto-renewal with a few clicks, including wildcard certificates.
+- **Traffic Management:** Kalm allows you to route traffic from multiple domains/sub-domains to one or or target deployments. Easy start servicing external traffic, or setup more advanced schemes such as as blue-green and canary deployments.
+- ** Webhooks:** Kalm let's you update or roll-back deployments via webhooks. This is useful in quickly integrate with CI/CD tools such as Github Actions or CircleCI.
 
-Kalm is installed as a Kubernetes controller directly on your cluster, and automatically sets up istio and cert-manager, which makes it easy to configure HTTPS certificates, routes, SSO, and logging system out of the box.
+Kalm is a standard [Kubernetes controller](https://kubernetes.io/docs/concepts/architecture/controller/) that can be installed onto any Kubernetes cluster(v1.15+), including Amazon EKS and Google GKE. Think of it as a special app that helps you manage the rest of your apps and workflows.
+
+Although Kalm extends the [Kubernetes API](https://kubernetes.io/docs/concepts/overview/kubernetes-api/) and is accessible via `kubectl`, a core goal of the project is to provide an intuitive UI to make common tasks easier for teams of developers.
 
 ![Web Interface](assets/kalm.png)
 
-## Why Kalm
-
-Kubernetes is a powerful and flexible tool for managing microservices. However first-time to setup and configuration can be daunting. The high upfront cost makes it prohibitive for smaller teams to adopt Kubernetes. We made kalm in an attempt to decrease the cognitive load for developers to interact with Kubernetes in both development and production environments.
-
-Kalm tries to reduce complexity in three different ways:
-
-1. Provide an intuitive graphical interface for the most common operations.
-2. Introduce higher level Custom Resource Definitions such as `Application`. These CRDs help to reduce the amount of boilerplate configuration and copy-pasting.
-3. Designed with popular extensions in mind - Kalm is designed to work with istio, cert-manager, and Prometheus, and more, which make setting up a productive stack quick and easy.
-
-Next, let‘s install Kalm and go through an example to illustrate how it works.
+If you have a running Kubernetes cluster, you can install Kalm and try out the [Getting Started](get-started) tutorial.
