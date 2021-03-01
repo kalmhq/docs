@@ -6,11 +6,35 @@ title: Role Binding
 
 RoleBinding describes the roles that the subject have in Kalm system.
 
-| Name      | Type                                                         | Description                        | Required |
-| --------- | ------------------------------------------------------------ | ---------------------------------- | -------- |
-| subject | string | subject that is binding to role | True |
-| subjectType | string | type of subject, can be: `user` and `group`. | True |
-| role | string | the role that this subject is binding to, can be: `viewer`, `editor`, `owner`, `clusterViewer`, `clusterEditor` and `clusterOwner`. | True |
-| creator | string | Creator of this binding | True |
-| expiredAt | *[metav1.Time](https://pkg.go.dev/k8s.io/apimachinery/pkg/apis/meta/v1#Time) | Expire time of this key. Infinity if blank | False |
+A RoleBinding binds ClusterOwner role to a use can be as follows:
 
+```yaml
+apiVersion: core.kalm.dev/v1alpha1
+kind: RoleBinding
+metadata:
+  name: cluster-owner-bd72be3c
+  namespace: kalm-system
+spec:
+  creator: kalm-operator
+  role: clusterOwner
+  subject: foo@kalm.dev
+  subjectType: user
+```
+
+It binds the role: `clusterOwner` to a user with email: `foo@kalm.dev`:
+
+```yaml
+spec:
+  ...
+  role: clusterOwner
+  subject: foo@kalm.dev
+  subjectType: user
+```
+
+| Name        | Type                                                                          | Description                                                                                                                         | Required |
+| ----------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| subject     | string                                                                        | subject that is binding to role                                                                                                     | True     |
+| subjectType | string                                                                        | type of subject, can be: `user` and `group`.                                                                                        | True     |
+| role        | string                                                                        | the role that this subject is binding to, can be: `viewer`, `editor`, `owner`, `clusterViewer`, `clusterEditor` and `clusterOwner`. | True     |
+| creator     | string                                                                        | Creator of this binding                                                                                                             | True     |
+| expiredAt   | \*[metav1.Time](https://pkg.go.dev/k8s.io/apimachinery/pkg/apis/meta/v1#Time) | Expire time of this key. Infinity if blank                                                                                          | False    |

@@ -4,28 +4,60 @@ title: Access Token
 
 ## AccessToken
 
-A model to describe general access token permissions, It's designed to be easy to translate to [casbin](https://casbin.org/) policies. 
+A model to describe general access token permissions, It's designed to be easy to translate to [casbin](https://casbin.org/) policies.
 
 This model should NOT be generate manually through Kubernetes api directly. Instead, use kalm apis to manage records.
 
-| Name      | Type                                                         | Description                        | Required |
-| --------- | ------------------------------------------------------------ | ---------------------------------- | -------- |
-| memo      | string                                                       | memo for this token                | False    |
-| token     | string                                                       | token value, minimum length is 64  | True     |
-| rules     | [AccessTokenRule](#accesstokenrule)[]                        | rules of this token                | True     |
-| creator   | string                                                       | creator of this token              | True     |
-| expiredAt | *[metav1.Time](https://pkg.go.dev/k8s.io/apimachinery/pkg/apis/meta/v1#Time) | when will this access token expire | False    |
+A token with edit permission to our component could be like as follows:
+
+```yaml
+apiVersion: core.kalm.dev/v1alpha1
+kind: AccessToken
+metadata:
+  name: c153f45fd43449ea99fb72adefc3014c9442de1caf655e6675d29ec2a3bad2d8
+spec:
+  creator: admin-foo@kalm.dev
+  memo: a token used to update our wordpress component
+  rules:
+    - kind: components
+      name: wordpress
+      namespace: wordpress-showcase
+      verb: edit
+  token: 4ddb864cfx56pkxwk9fhcn52zcgggg4llfmk5jgzjfprgm2jfgdk4t798x27jk9c6cpw7f28zsjmbxlstqt48khwgvtkcfrhk2scbp8p4q962ns2t4v2smwkwprbcns9
+```
+
+The long token name and content are generated using kalm API.
+
+The token permission is defined using the rule:
+
+```yaml
+rules:
+  - kind: components
+    name: wordpress
+    namespace: wordpress-showcase
+    verb: edit
+```
+
+It says this token can edit component named: `wordpress` in namespace: `wordpress-showcase`
+
+| Name      | Type                                                                          | Description                        | Required |
+| --------- | ----------------------------------------------------------------------------- | ---------------------------------- | -------- |
+| memo      | string                                                                        | memo for this token                | False    |
+| token     | string                                                                        | token value, minimum length is 64  | True     |
+| rules     | [AccessTokenRule](#accesstokenrule)[]                                         | rules of this token                | True     |
+| creator   | string                                                                        | creator of this token              | True     |
+| expiredAt | \*[metav1.Time](https://pkg.go.dev/k8s.io/apimachinery/pkg/apis/meta/v1#Time) | when will this access token expire | False    |
 
 ## AccessTokenRule
 
 describe the permission this token has.
 
-| Name      | Type                                                         | Description                        | Required |
-| ---- | ---- | ---- | ---- |
-| verb | [AccessTokenVerb](#accessTokenVerb) | what this token can do | True |
-| namespace | string | namespace this rule has effect on, value `*` means all namespaces. | True |
-| kind | string | kind of resource this rule has effect on, e.g. Kalm's Component, value `*` means all kinds of resources. | True |
-| name | string | name of resource this rule has effect on, value `*` means all resources of the given `kind`. | True |
+| Name      | Type                                | Description                                                                                              | Required |
+| --------- | ----------------------------------- | -------------------------------------------------------------------------------------------------------- | -------- |
+| verb      | [AccessTokenVerb](#accessTokenVerb) | what this token can do                                                                                   | True     |
+| namespace | string                              | namespace this rule has effect on, value `*` means all namespaces.                                       | True     |
+| kind      | string                              | kind of resource this rule has effect on, e.g. Kalm's Component, value `*` means all kinds of resources. | True     |
+| name      | string                              | name of resource this rule has effect on, value `*` means all resources of the given `kind`.             | True     |
 
 ## AccessTokenVerb
 
