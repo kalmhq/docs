@@ -2,31 +2,53 @@
 title: Https Cert
 ---
 
+`HttpsCert` represent an Https Cert you wanna apply.
+
+For example, a simple `HttpsCert` would be look as follows:
+
+```yaml
+apiVersion: core.kalm.dev/v1alpha1
+kind: HttpsCert
+metadata:
+  name: dashboard
+spec:
+  domains:
+    - kalm-demo.kalm.dev
+  httpsCertIssuer: default-http01-issuer
+```
+
+We apply HTTPs cert for domain `kalm-demo.kalm.dev`, and the cert issuer is `default-http01-issuer`:
+
+```yaml
+spec:
+  domains:
+    - kalm-demo.kalm.dev
+  httpsCertIssuer: default-http01-issuer
+```
+
 ## HttpsCert
 
-| Field                     | Type     | Description                                                  | Required |
-| ------------------------- | -------- | ------------------------------------------------------------ | -------- |
-| isSelfManaged             | bool     | whether certificate is uploaded by user or managed by Kalm   | False    |
+| Field                     | Type     | Description                                                                 | Required |
+| ------------------------- | -------- | --------------------------------------------------------------------------- | -------- |
+| isSelfManaged             | bool     | whether certificate is uploaded by user or managed by Kalm                  | False    |
 | selfManagedCertSecretName | string   | if `IsSelfManaged` is true, the name of secret storing the certificate info | False    |
-| httpsCertIssuer           | string   | issuer name of the cert                                      | False    |
-| domains                   | string[] | domains in certificate                                       | True     |
-
-
+| httpsCertIssuer           | string   | issuer name of the cert                                                     | False    |
+| domains                   | string[] | domains in certificate                                                      | True     |
 
 ## HttpsCertStatus
-| Field                             | Type                                        | Description                                                  |
-| --------------------------------- | ------------------------------------------- | ------------------------------------------------------------ |
-| Conditions                        | [HttpsCertCondition](#httpscertcondition)[] | details of httpsCert condition                               |
-| ExpireTimestamp                   | int64                                       | expire timestamp of the certificate.                         |
-| IsSignedByPublicTrustedCA         | bool                                        | is this certificate signed by publicly trusted Certificate Authority. |
+
+| Field                             | Type                                        | Description                                                                                                                                                                      |
+| --------------------------------- | ------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Conditions                        | [HttpsCertCondition](#httpscertcondition)[] | details of httpsCert condition                                                                                                                                                   |
+| ExpireTimestamp                   | int64                                       | expire timestamp of the certificate.                                                                                                                                             |
+| IsSignedByPublicTrustedCA         | bool                                        | is this certificate signed by publicly trusted Certificate Authority.                                                                                                            |
 | WildcardCertDNSChallengeDomainMap | map[string]string                           | for wildcard certificate, CNAME info of domains, key is the certificate domain, value if where this certificate domain should add CNAME DNS record to pass the DNS-01 challenge. |
 
 ## HttpsCertCondition
 
-| Field                             | Type                 | Description |
-| ---- | ---- | ---- |
-| Type | HttpsCertConditionType | type of the HttpsCert condition, possible value: `Ready`. |
-| Status | corev1.ConditionStatus | status of the condition, possible values: `True`, `False` and `Unknown`. |
-| Reason | string | a brief machine readable explanation for the condition's last transition. |
-| Message | string | a human readable description of the details of the last transition, complementing reason. |
-
+| Field   | Type                   | Description                                                                               |
+| ------- | ---------------------- | ----------------------------------------------------------------------------------------- |
+| Type    | HttpsCertConditionType | type of the HttpsCert condition, possible value: `Ready`.                                 |
+| Status  | corev1.ConditionStatus | status of the condition, possible values: `True`, `False` and `Unknown`.                  |
+| Reason  | string                 | a brief machine readable explanation for the condition's last transition.                 |
+| Message | string                 | a human readable description of the details of the last transition, complementing reason. |

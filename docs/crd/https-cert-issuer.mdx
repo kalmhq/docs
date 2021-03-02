@@ -2,14 +2,70 @@
 title: Https Cert Issuer
 ---
 
+HttpsCertIssuer represent the issuer for HTTPs certificate.
+
+A simple HTTP01 issuer can be as follows:
+
+```yaml
+apiVersion: core.kalm.dev/v1alpha1
+kind: HttpsCertIssuer
+metadata:
+  name: default-http01-issuer
+spec:
+  http01: {}
+```
+
+By declare the `http01` stanza, it tells that this is an HTTP01 issuer:
+
+```yaml
+spec:
+  http01: {}
+```
+
+A DNS01 issuer can be as follows:
+
+```yaml
+apiVersion: core.kalm.dev/v1alpha1
+kind: HttpsCertIssuer
+metadata:
+  name: default-dns01-issuer
+spec:
+  dns01:
+    baseACMEDomain: acme.kalm-demo.clusters.kalm-dns.com
+    configs:
+      kalm-demo.clusters.kalm-apps.com:
+        fulldomain: 4xxxxxxxx2.acme.mingmin-demo.clusters.kalm-dns.com
+        password: m8-PS6CzMlPxxxxxxxxxxxxwqeXly09
+        subdomain: 4xxxxxxxx2
+        username: bb453100-1164-422e-8839-0013c700bc12
+```
+
+The base domain is `acme.kalm-demo.clusters.kalm-dns.com`, subdomain of this will be used for DNS01 challenge:
+
+```yaml
+dns01:
+  baseACMEDomain: acme.kalm-demo.clusters.kalm-dns.com
+```
+
+DNS01 HttpsCertIssuer works with [acme-dns](https://github.com/joohoi/acme-dns), for each HTTPs certificate request, acme-dns will generate some configurations, we save each of them in the spec:
+
+```yaml
+configs:
+  kalm-demo.clusters.kalm-apps.com:
+    fulldomain: 4xxxxxxxx2.acme.mingmin-demo.clusters.kalm-dns.com
+    password: m8-PS6CzMlPxxxxxxxxxxxxwqeXly09
+    subdomain: 4xxxxxxxx2
+    username: bb453100-1164-422e-8839-0013c700bc12
+```
+
 ## HttpsCertIssuer
 
-| Field              | Type                                 | Description                                           | Required |
-| ------------------ | ------------------------------------ | ----------------------------------------------------- | -------- |
-| caForTest          | *[CAForTestIssuer](#cafortestissuer) | Self Signed CA, mainly for test                       | False    |
-| ~~ACMECloudFlare~~ | *ACMECloudFlareIssuer                |                                                       | False    |
-| http01             | *[HTTP01Issuer](#http01issuer)       | Certificate Issuer using HTTP01 challenge validations | False    |
-| dns01              | *[DNS01Issuer](#dns01issuer)         | Certificate Issuer using DNS01 challenge validations  | True     |
+| Field              | Type                                  | Description                                           | Required |
+| ------------------ | ------------------------------------- | ----------------------------------------------------- | -------- |
+| caForTest          | \*[CAForTestIssuer](#cafortestissuer) | Self Signed CA, mainly for test                       | False    |
+| ~~ACMECloudFlare~~ | \*ACMECloudFlareIssuer                |                                                       | False    |
+| http01             | \*[HTTP01Issuer](#http01issuer)       | Certificate Issuer using HTTP01 challenge validations | False    |
+| dns01              | \*[DNS01Issuer](#dns01issuer)         | Certificate Issuer using DNS01 challenge validations  | True     |
 
 ## CAForTestIssuer
 
@@ -21,26 +77,25 @@ type CAForTestIssuer struct{}
 
 ## HTTP01Issuer
 
-| Field              | Type                  | Description | Required |
-| ---- | ---- | ---- | ---- |
-| email | string | email for admin |False|
+| Field | Type   | Description     | Required |
+| ----- | ------ | --------------- | -------- |
+| email | string | email for admin | False    |
 
 ## DNS01Issuer
 
-| Field              | Type                  | Description | Required |
-| ---- | ---- | ---- | ---- |
-| BaseACMEDomain | string | base domain for our ACME-DNS server | True |
-| Configs | map(string, [DNS01IssuerConfig](#dns01issuerconfig)) | configs to setup different wildcard certificate domains in our ACME-DNS server, key is domain, value is config. | False |
+| Field          | Type                                                 | Description                                                                                                     | Required |
+| -------------- | ---------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | -------- |
+| BaseACMEDomain | string                                               | base domain for our ACME-DNS server                                                                             | True     |
+| Configs        | map(string, [DNS01IssuerConfig](#dns01issuerconfig)) | configs to setup different wildcard certificate domains in our ACME-DNS server, key is domain, value is config. | False    |
 
 ## DNS01IssuerConfig
 
 config used by cert-manager to configure our ACME-DNS server to pass DNS01 challenges.
 
-| Field              | Type                  | Description | Required |
-| ---- | ---- | ---- | ---- |
-| UserName | string |      | True |
-| Password | string | | True |
-| FullDomain | string | | True |
-| SubDomain | string | | True |
-| AllowFrom | []string | | False |
-
+| Field      | Type     | Description | Required |
+| ---------- | -------- | ----------- | -------- |
+| UserName   | string   |             | True     |
+| Password   | string   |             | True     |
+| FullDomain | string   |             | True     |
+| SubDomain  | string   |             | True     |
+| AllowFrom  | []string |             | False    |

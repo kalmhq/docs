@@ -2,17 +2,38 @@
 title: ACME Server
 ---
 
+`ACMEServer` contains the config for the ACME DNS Server in Kalm.
+
+An `ACMEServer` can be look as follows:
+
+```yaml
+apiVersion: core.kalm.dev/v1alpha1
+kind: ACMEServer
+metadata:
+  name: acme-server
+spec:
+  acmeDomain: acme.kalm-demo.clusters.kalm-dns.com
+  nsDomain: ns-acme.kalm-demo.clusters.kalm-dns.com
+```
+
+We provide 2 domains for our ACME DNS Server:
+
+```yaml
+spec:
+  acmeDomain: acme.kalm-demo.clusters.kalm-dns.com
+  nsDomain: ns-acme.kalm-demo.clusters.kalm-dns.com
+```
+
 ## ACMEServer
 
-|  Field    |    Type  | Description | Required |
-| ---- | ---- | ---- | ---- |
-| acmeDomain | string | sub-domains of this will server TXT records for DNS01 challenge | True |
-| nsDomain | string | the NameServer domain | True |
+| Field      | Type   | Description                                                     | Required |
+| ---------- | ------ | --------------------------------------------------------------- | -------- |
+| acmeDomain | string | sub-domains of this will server TXT records for DNS01 challenge | True     |
+| nsDomain   | string | the NameServer domain                                           | True     |
 
 ## ACMEServerStatus
 
-|  Field    |    Type  | Description |
-| ---- | ---- | ---- |
-| ready | bool | whether this ACME-Server is up running. |
-| ipForNameServer | string | ip for this name server |
-
+| Field           | Type   | Description                             |
+| --------------- | ------ | --------------------------------------- |
+| ready           | bool   | whether this ACME-Server is up running. |
+| ipForNameServer | string | ip for this name server                 |
