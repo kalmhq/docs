@@ -73,7 +73,7 @@ volumes:
     type: pvc
 ```
 
-It's a 1Gi disk, since we run this demo at GKE(Google Kubernetes Engine), we use the storageClass provide by GKE: gp2. This disk is mounted at path: `/var/www/html`.
+It's a 1Gi disk, since we run this demo at EKS(Elastic Kubernetes Service), we use the storageClass provide by EKS: gp2(General Purpose SSD). This disk is mounted at path: `/var/www/html`.
 
 We provide Database info use ENVs:
 

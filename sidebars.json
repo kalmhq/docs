@@ -62,7 +62,7 @@
     {
       "type": "category",
       "label": "Examples",
-      "items": ["tut-wordpress"]
+      "items": ["tut-wordpress", "tut-hasura", "tut-strapi"]
     },
     {
       "type": "category",
