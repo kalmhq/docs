@@ -54,9 +54,6 @@ spec:
     size: 2Gi
     storageClassName: gp2
     type: pvc
-  dnsPolicy: ClusterFirst
-  restartStrategy: RollingUpdate
-  terminationGracePeriodSeconds: 30
 ```
 
 Let's walk through some key points here.
