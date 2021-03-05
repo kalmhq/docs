@@ -17,9 +17,7 @@
         "volumes",
         "registry",
         "probes",
-        "tut-wordpress",
-        "tut-hasura",
-        "tut-strapi"
+        "tut-wordpress"
       ]
     },
     {
