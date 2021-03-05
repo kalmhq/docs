@@ -86,9 +86,6 @@ spec:
     requests:
       cpu: 200m
       memory: 256Mi
-  restartStrategy: RollingUpdate
-  terminationGracePeriodSeconds: 30
-  dnsPolicy: ClusterFirst
 ```
 
 ## Deploy Hasura
@@ -152,9 +149,6 @@ spec:
     requests:
       cpu: 100m
       memory: 128Mi
-  restartStrategy: RollingUpdate
-  terminationGracePeriodSeconds: 30
-  dnsPolicy: ClusterFirst
 ---
 apiVersion: core.kalm.dev/v1alpha1
 kind: ProtectedEndpoint
@@ -211,17 +205,9 @@ spec:
   - TRACE
   paths:
   - /
-  retries:
-    attempts: 3
-    perTtyTimeoutSeconds: 2
-    retryOn:
-    - gateway-error
-    - connect-failure
-    - refused-stream
   schemes:
   - http
   - https
-  timeout: 5
 ```
 
 ## Check if everything works

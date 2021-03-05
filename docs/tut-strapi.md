@@ -157,9 +157,6 @@ spec:
     requests:
       cpu: 500m
       memory: 512Mi
-  dnsPolicy: ClusterFirst
-  restartStrategy: RollingUpdate
-  terminationGracePeriodSeconds: 30
 ```
 
 :::note
@@ -195,17 +192,9 @@ spec:
   - TRACE
   paths:
   - /
-  retries:
-    attempts: 3
-    perTtyTimeoutSeconds: 2
-    retryOn:
-    - gateway-error
-    - connect-failure
-    - refused-stream
   schemes:
   - http
   - https
-  timeout: 5
 ```
 
 :::note
@@ -254,4 +243,3 @@ Now visit the domain your have configured and you should see the admin page up r
 ## Clean Up
 
 For clean up, simply delete the app in the Kalm dashboard. To delete the DB disk, go to the Disks page, and delete the disk there.
-
