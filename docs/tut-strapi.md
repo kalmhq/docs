@@ -2,21 +2,22 @@
 title: "Strapi on Kalm"
 ---
 
-While Kalm provides a quit intuitive dashboard for your daily work, it also supports configuring by applying YAML files. 
-In this tutorial, we will show you how to install the headless CMS project: [Strapi](https://strapi.io/) using the YAML way.
+Kalm provides a quick dashboard to simplify your daily work, but sometimes you may still want to set things up with YAML files. Fortunately, it's designed to be mutually inclusive with other ways of applying YAML files.
+
+In this tutorial, we will show you how to install the headless CMS project: [Strapi](https://strapi.io/) by applying YAML files through kubectl. As you go through this process, you can check the Kalm Dashboard to see how it automatically pulls in your work.
 
 ## Objectives
 
-- Deploy MongoDB on kalm as an Component
-- Deploy Strapi on kalm as an Component
+- Deploy MongoDB on Kalm as an Component
+- Deploy Strapi on Kalm as an Component
 
 ## Before you begin
 
-- your should setup a Kalm cluster at Kalm SaaS
+- You'll need a Kubernetes cluster with Kalm installed
 
 ## Deploy MongoDB
 
-We define the DB using Component. For those who are familiar with Deployment, the YAML below should be quit similar.
+Define the DB by using a Component. Use kubectl to apply the YAML file below:
 
 ```yaml
 apiVersion: core.kalm.dev/v1alpha1
@@ -65,7 +66,7 @@ spec:
   image: mongo:4.4.4-bionic
 ```
 
-and we initialized the database using Environment variables:
+and we initialized the database using these Environment variables:
 
 ```yaml
 spec:
@@ -82,7 +83,7 @@ spec:
     value: strapi
 ```
 
-We expose the db service at port: `27017`:
+We exposed the db service at port: `27017`:
 
 ```yaml
   ports:
@@ -91,7 +92,7 @@ We expose the db service at port: `27017`:
     servicePort: 27017
 ```
 
-We also ask for a 2Gi disk for our database:
+We also asked for a 2Gi disk for our database:
 
 ```yaml
   volumes:
@@ -102,12 +103,12 @@ We also ask for a 2Gi disk for our database:
 ```
 
 :::note
-I run this demo on EKS, the storageClassName `gp2` is provided by AWS, on a different platform, this should be different, please update the field accordingly.
+The storageClassName (gp2) displayed in this demo is for EKS. This name is provided by AWS. For a different platform this name will be different, please update the field accordingly. (For GCP it is pd-ssd)
 :::
 
 # Deploy Strapi
 
-The YAML for Strapi is quit similar:
+The YAML for Strapi is quite similar:
 
 ```yaml
 apiVersion: core.kalm.dev/v1alpha1
@@ -158,7 +159,7 @@ spec:
 
 :::note
 - update the ENVs if your db configuration is different
-- update the storageClassName if you are on a different cloud platform
+- update the storageClassName again if you are on a different cloud platform
 :::
 
 # Setup HTTPRoute
@@ -195,7 +196,7 @@ spec:
 ```
 
 :::note
-update your domain for the field: `spec.hosts`.
+You will need to update your domain for the field: `spec.hosts`.
 :::
 
 Some key points:
@@ -221,22 +222,22 @@ spec:
   - strapi.UPDATE-THIS.clusters.kalm-apps.com
 ```
 
-HTTPs is ready for clusters initialized by kalm SaaS, so we enable the HTTPS redirect option:
+HTTPs is ready for clusters initialized by Kalm, so we enable the HTTPS redirect option:
 
 ```yaml
   httpRedirectToHttps: true
 ```
 
-## Check if everything works
+## Try it out
 
-Go to the Component detail page to check if your Strapi service is up now. If everything works as expected, you should see the green light on the page:
+Go into Kalm, and find your application. Check if your Strapi service is up now. If everything works as expected, you should see a green light on the page:
 
 ![pod-green](assets/strapi-pod-green.jpg)
 
-Now visit the domain your have configured and you should see the admin page up running:
+Now visit the domain you just configured (you can also find this on the Routes tab) and you should see the admin page is up and running:
 
 ![strapi-admin](assets/strapi-admin.jpg)
 
 ## Clean Up
 
-For clean up, simply delete the app in the Kalm dashboard. To delete the DB disk, go to the Disks page, and delete the disk there.
+To delete your work here, simply delete the app within the Kalm dashboard. To delete the DB disk, go to the Disks page, and delete the disk there.
