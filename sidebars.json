@@ -4,7 +4,16 @@
       "type": "category",
       "label": "Getting Started",
       "collapsed": false,
-      "items": ["intro", "get-started"]
+      "items": [
+        "intro", 
+        {
+          "type": "category",
+          "label": "How to Install",
+          "items": [
+            "how-to-install/saas-version", "how-to-install/open-source-version"
+          ]
+        },
+        "get-started"]
     },
     {
       "type": "category",
