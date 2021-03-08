@@ -4,7 +4,7 @@ title: "Install Kalm On K3s"
 
 ## Install K3s on Mac
 
-K3s is the lightweight Kubernetes distribution, it's natively available for Linux, so we need install a [multipass](https://multipass.run/) to install it on Mac.
+K3s is the lightweight Kubernetes distribution which is natively available for Linux. To install on a Mac, we need install [multipass](https://multipass.run/) first.
 
 ```
 ❯ brew install --cask multipass
@@ -13,7 +13,7 @@ multipass  1.6.2+mac
 multipassd 1.6.2+mac
 ```
 
-Now create a VM with multipass, assuming 2GB memory and 10GB disk.
+Now create a VM with multipass, specifying 2GB of memory and a 10GB disk.
 
 ```
 ❯ multipass launch --name k3sVM --mem 2G --disk 5G
@@ -21,7 +21,7 @@ Creating k3sVM -
 Launched: k3sVM
 ```
 
-Wait for the VM created, then open a shell to the VM
+Wait for the VM to create, then open a shell to the VM
 
 ```
 ❯ multipass shell k3sVM
@@ -48,9 +48,9 @@ See "man sudo_root" for details.
 ubuntu@k3sVM:~$
 ```
 
-## Install K3s and Create Cluster
+## Install K3s and Create a Cluster
 
-and then install k3s, please install k3s with flag `—write-kubeconfig-mode`, it will make your first Kubernetes life easier, more detail please [check here](https://github.com/k3s-io/k3s/issues/389#issuecomment-503616742).
+To install k3s, we recommend using the flag `—write-kubeconfig-mode`. It will make your first Kubernetes experience easier. For more detail [check here](https://github.com/k3s-io/k3s/issues/389#issuecomment-503616742).
 
 ```
 ubuntu@k3sVM:~$  curl -sfL https://get.k3s.io | sh -s - --write-kubeconfig-mode 644
@@ -73,7 +73,7 @@ NAME    STATUS   ROLES                  AGE   VERSION
 k3svm   Ready    control-plane,master   14m   v1.20.4+k3s1
 ```
 
-and then we can start install kalm
+Now that k3s is installed, you can install Kalm!
 
 ```
 git clone https://github.com/kalmhq/kalm.git
@@ -97,9 +97,9 @@ kubectl port-forward -n kalm-system $(kubectl get pod -n kalm-system -l app=kalm
 Then visit http://localhost:3010 in your browser
 ```
 
-Kalm has installed success! Now let's access kalm via web browser.
+Kalm has installed successfully! Now let's access kalm via your web browser.
 
-Please open another terminal
+Open another terminal and run
 
 ```
 ❯ multipass info k3sVM
@@ -117,7 +117,7 @@ Disk usage:     3.5G out of 4.7G
 192.168.64.9
 ```
 
-update your mac's `/etc/hosts`
+Update your mac's `/etc/hosts`
 
 ```
 ❯ grep kalm /etc/hosts
@@ -150,13 +150,13 @@ users:
 
 ```
 
-replace `[https://127.0.0.1:6443](https://127.0.0.1:6443)` to
+Replace `[https://127.0.0.1:6443](https://127.0.0.1:6443)` to
 
 ```
 ❯ sed -i '' "s/127.0.0.1/${K3S_IP}/" k3s.yaml
 ```
 
-test from mac access k3sVM cluster
+Now, test that you can access the k3sVM cluster
 
 ```
 ❯ export KUBECONFIG=${PWD}/k3s.yaml
@@ -165,10 +165,10 @@ NAME    STATUS   ROLES                  AGE    VERSION
 k3svm   Ready    control-plane,master   105m   v1.20.4+k3s1
 ```
 
-now we can open kalm in web browser
+You should now be able to open Kalm in a web browser
 
 ```
 kubectl port-forward -n kalm-system $(kubectl get pod -n kalm-system -l app=kalm -ojsonpath="{.items[0].metadata.name}") 3010:3010
 ```
 
-open [http://localhost:3010/applications](http://localhost:3010/applications) in browser
+Open [http://localhost:3010/applications](http://localhost:3010/applications) in your browser to use your freshly installed Kalm on k3s!
