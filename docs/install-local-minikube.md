@@ -1,5 +1,5 @@
 ---
-title: "Install Kalm On Minikube"
+title: "Install Kalm on Minikube"
 ---
 
 ## Install Minikube
@@ -12,7 +12,7 @@ minikube version: v1.17.1
 commit: 043bdca07e54ab6e4fc0457e3064048f34133d7e
 ```
 
-## Create a new cluster
+## Create a New Cluster
 
 ```
 ❯ minikube start --memory 4096 --cpus 4  --kubernetes-version v1.18.0
@@ -35,8 +35,8 @@ commit: 043bdca07e54ab6e4fc0457e3064048f34133d7e
 
 ```
 
-If you have network issues, please configure a proxy: [Minikube Proxy](https://minikube.sigs.k8s.io/docs/reference/networking/proxy/)
-And your install log will be like this:
+Note - if you're experiencing networking issues, consider configuring a proxy: [Minikube Proxy](https://minikube.sigs.k8s.io/docs/reference/networking/proxy/)
+Your install log will be like this:
 
 ```
 ❯ minikube start --memory 4096 --cpus 4  --kubernetes-version v1.18.0
@@ -69,7 +69,7 @@ And your install log will be like this:
 
 ```
 
-After cluster running, you can check status by following command:
+After your minikube cluster is running, you can check its status by using the following command:
 
 ```
 ❯ minikube status
