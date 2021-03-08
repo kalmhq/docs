@@ -1,10 +1,10 @@
 ---
-title: "Install Kalm On Kind"
+title: "Install Kalm on Kind"
 ---
 
 ## Install Kind
 
-Kind is a tool for running local Kubernetes clusters using Docker container “nodes”. If you are using Kind for the first time, please checkout its [official website](https://kind.sigs.k8s.io/docs/user/quick-start/) to get basic information and go through the installation process.
+Kind is a tool for running local Kubernetes clusters using Docker container “nodes”. If you are using Kind for the first time, please checkout its [official website](https://kind.sigs.k8s.io/docs/user/quick-start/) to get basic information and go through their installation process.
 
 ```
 brew install kind
