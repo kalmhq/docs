@@ -53,7 +53,7 @@ cd kalm
 ```
 
 ```
-./scripts/install.sh $(git rev-parse HEAD)
+./scripts/install-local-mode.sh
 
 Initializing Kalm - 4/4 modules ready:
 
