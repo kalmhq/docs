@@ -13,7 +13,7 @@ multipass  1.6.2+mac
 multipassd 1.6.2+mac
 ```
 
-Now create a VM with multipass, specifying 2GB of memory and a 10GB disk.
+Now create a VM with multipass, specifying 2GB of memory and a 5GB disk.
 
 ```
 ❯ multipass launch --name k3sVM --mem 2G --disk 5G
