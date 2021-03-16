@@ -13,6 +13,8 @@ image: https://docs.kalm.dev/img/kalm-logo-blue.svg
 slug: /
 ---
 
+(v2 staging)
+
 Kubernetes is powerful but hard to use. It is not uncommon for teams to have to first spend weeks writing internal tools and yaml configurations before getting a satisfactory Kubernetes setup. Kalm is a suite of open-source tools that makes it easier for you to quickly setup a working Kubernetes production environment. Key features include:
 
 - **Web UI for common operations:** create and update deployments, networks, environment variables, configs and secrets, and problems, all from a web interface.
