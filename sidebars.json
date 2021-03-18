@@ -8,9 +8,15 @@
         "intro", 
         {
           "type": "category",
-          "label": "How to Install",
+          "label": "Installation",
           "items": [
-            "how-to-install/saas-version", "how-to-install/open-source-version"
+            "install/install",
+            "install/minikube",
+            "install/eks",
+            "install/gke",
+            "install/install-kalm-cloud",
+            "install/install-open-source",
+            "install/uninstall"
           ]
         },
         "get-started"]
