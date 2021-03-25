@@ -2,38 +2,35 @@
 title: AWS Elastic Kubernetes Service
 ---
 
-We suggest 2 ways to setup your EKS cluster for Kalm:
+There are many different ways to create an EKS cluster on Amazon. We will cover installing with AWS command-line and terraform.
 
-- AWS command line tools.
-- Terraform.
+## Prerequisites
 
-If you want to setup a cluster as soon as possible, the AWS command line is the way to go, while if you prefer the declarative configuration way to provision your cluster, then choose Terraform.
+First, make sure you have the [Amazon CLI](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html) installed.
 
-# AWS command-line tool
+Next, you will need an AWS service account set up and configured. Configure your [service credentials](https://console.aws.amazon.com/iam/home?#/security_credentials), then configure your AWS CLI with:
 
-simplest way to setup EKS cluster is using command line tools: aws and eksctl.
+```
+aws configure
+```
 
-**install aws & eksctl first**
+You'll need to enter your Access key ID and secret.
 
-- install aws: https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2-mac.html
-- install eksctl: https://docs.aws.amazon.com/eks/latest/userguide/eksctl.html#installing-eksctl
+## AWS command-line tool
 
-**config AWS-cli**
+**install eksctl first**
 
-see [https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html#cli-configure-quickstart-config](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html#cli-configure-quickstart-config) for details
+for details, see [this](https://docs.aws.amazon.com/eks/latest/userguide/eksctl.html#installing-eksctl).
 
 **then create k8s cluster**
 
-notes:
-
-- see [https://docs.aws.amazon.com/eks/latest/userguide/getting-started-eksctl.html](https://docs.aws.amazon.com/eks/latest/userguide/getting-started-eksctl.html) for details
-- replace <company-name\> & <cluster-name\> & region according to your case
+replace <company-name\> & <cluster-name\> & region according to your case
 
 ```bash
 # create key
 aws ec2 create-key-pair --region us-east-2 --key-name keypair-for-<company-name>
 
-# create eks cluster
+# create eks cluster, for details, see: https://docs.aws.amazon.com/eks/latest/userguide/getting-started-eksctl.html
 eksctl create cluster \
 --name <cluster-name> \
 --region us-east-2 \
@@ -45,48 +42,49 @@ eksctl create cluster \
 
 the creation process takes 15 ~ 30 minutes, once completes, your `kubectl` config is auto-updated to use the newly created cluster as the current cluster, to double-check this, run `kubectl config get-context`, the new cluster should be marked with a `*` in the output.
 
-# Terraform
+## Terraform
 
-## Prerequisites
+First, make sure you have the following prerequisites installed:
 
-1. a configured AWS Cli, for installation, check out [https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html), for configuration, checkout  [https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html#cli-configure-quickstart-config](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html#cli-configure-quickstart-config)
-2. `kubectl`, for install, checkout [https://kubernetes.io/docs/tasks/tools/](https://kubernetes.io/docs/tasks/tools/)
+- Install [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
+- Install [Terraform](https://learn.hashicorp.com/tutorials/terraform/install-cli)
 
-## Clone the **Terraform workspace**
+Next, clone the repository below and `cd` into the eks directory
 
-In your terminal, clone the repo at [https://github.com/kalmhq/terraform](https://github.com/kalmhq/terraform)
-
-```bash
-git clone https://github.com/kalmhq/terraform.git
-# todo update files and make the repo public
+```
+git clone https://github.com/kalmhq/tf-scripts
+cd tf-scripts/eks
 ```
 
-change your directory into the repo, and you will see the Terraform configurations to setup your EKS cluster.
+Create the cluster with the following commands:
 
-```bash
-cd terraform/eks
 ```
-
-## P**rovision the EKS cluster**
-
-first initialize the Terraform workspace, which will download and configure the providers.
-
-```bash
 terraform init
-```
-
-then run `terraform apply` and review the planned actions.
-
-```bash
 terraform apply
 ```
 
-Confirm the apply with a `yes`. The whole provision process can take 15 ~ 30 minutes.
+Type `yes` to confirm.
 
-## C**onfigure kubectl**
+This process should take around 5-10 minutes.
 
-Run the following command to point your KUBECONFIG to the cluster you have just created
+Once it finishes, view the newly cluster with:
 
-```bash
-aws eks --region $(terraform output -raw region) update-kubeconfig --name $(terraform output -raw cluster_name)
 ```
+aws eks list-clusters
+```
+
+Now let's configure kubectl to use the new cluster.
+
+```
+aws eks --region us-west-2 update-kubeconfig --name NAME_OF_YOUR_CLUSTER
+```
+
+Verify the cluster is properly setup and accessible.
+
+```
+kubectl get nodes
+```
+
+## Next Step
+
+You've now setup an Amazon EKS cluster. To install Kalm onto the cluster, see [Install Kalm Cloud](install-kalm-cloud).
