@@ -10,9 +10,9 @@ To quickly test out Kalm, you may run Kalm on "minified" versions of Kubernetes 
 
 [Install Kalm on Minikube](minikube)
 
-[Install Kalm on k3s](https://docs.kalm.dev/install-local-k3s)
+[Install Kalm on k3s](install-local-k3s)
 
-[Install Kalm on kind](https://docs.kalm.dev/install-local-kind)
+[Install Kalm on kind](install-local-kind)
 
 ## Kalm On The Cloud
 

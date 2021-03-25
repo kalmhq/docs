@@ -12,6 +12,8 @@
           "items": [
             "install/install",
             "install/minikube",
+        "install/install-local-k3s",
+        "install/install-local-kind",
             "install/eks",
             "install/gke",
             "install/install-kalm-cloud",
@@ -41,26 +43,27 @@
       "type": "category",
       "label": "Traffic Management",
       "collapsed": false,
-      "items": [
-        "traffic/overview",
-        "https-certs",
-        "cert-issuing"
-      ]
+      "items": ["traffic/overview", "https-certs", "cert-issuing"]
     },
     {
       "type": "category",
       "label": "Team Collaboration",
-      "items": [
-        "auth/overview",
-        "auth/sso",
-        "auth/roles",
-        "auth/impersonation"
-      ]
+      "items": ["auth/overview", "auth/sso", "auth/roles", "auth/impersonation"]
     },
     {
       "type": "category",
       "label": "Custom Resource Definitions",
-      "items": ["crd/component", "crd/protected-endpoint", "crd/sso", "crd/http-route", "crd/https-cert", "crd/https-cert-issuer", "crd/access-token", "crd/role-binding", "crd/acme-server"]
+      "items": [
+        "crd/component",
+        "crd/protected-endpoint",
+        "crd/sso",
+        "crd/http-route",
+        "crd/https-cert",
+        "crd/https-cert-issuer",
+        "crd/access-token",
+        "crd/role-binding",
+        "crd/acme-server"
+      ]
     }
   ]
 }

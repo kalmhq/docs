@@ -6,38 +6,38 @@ This tutorial shows you how to install [Hasura](https://hasura.io/) on Kalm, and
 
 ## Objectives
 
-- Deploy Hasura on kalm as an Component
-- Protect the Hasura dashboard, only authenticated users can visit it
+- Deploy Hasura on Kalm as an Component
+- Protect the Hasura dashboard: only authenticated users can visit it
 
 ## Before you begin
 
-- your should setup a Kalm cluster at Kalm SaaS
+- You'll need a Kubernetes cluster with Kalm installed (You'll need SSO configured through Kalm as well)
 
 ## (Optional)Deploy Postgres DB
 
-Skip this section if you already have a Postgres DB available in cluster.
+Skip this section if you already have a Postgres DB available in your cluster.
 
-We setup this Database for demo purpose.
+This demo will require a Postgres Database - this step will help you set one up through Kalm.
 
-We use image: `postgres:10-alpine`:
+We'll use image: `postgres:10-alpine`:
 
 ![image-1](assets/db-1-component.png)
 
-We configure the DB using ENVs:
+Add the following environment variables:
 
 ![image-2](assets/db-2-envs.png)
 
-We expose the db at port 5432:
+Then expose the DB at port 5432:
 
 ![db image-3](assets/db-3-network-ports.png)
 
-and we ask for a 1Gi disk for our database:
+Use a 1Gi disk for the database:
 
 ![db image-4](assets/db-4-disk.png)
 
 The YAML below is the equivalent result of our configurations above.
 
-Notice that your storageClass can be different, update the field if you want to install by applying the YAML file.
+_Note that your storageClass can be different than the yaml file below depending on what Kubernetes service you're using. If you want to try installing by applying a yaml file instead of following the steps above, you may need to update the storageClass field._
 
 ```yaml
 apiVersion: v1
@@ -90,25 +90,25 @@ spec:
 
 ## Deploy Hasura
 
-Configurations to install Hasura is similar.
+Create an application and component to use for Hasura. Then configure the component as follows:
 
-We use image: `hasura/graphql-engine:v2.0.0-alpha.2`:
+Use this image: `hasura/graphql-engine:v2.0.0-alpha.2`:
 
 ![image](assets/hasura-1-image.png)
 
-and add some configurations using ENV:
+Add the following environment variables:
 
 ![image](assets/hasura-2-envs.png)
 
-We expose the service at port 8080:
+Next, expose the service at port 8080:
 
 ![image](assets/hasura-3-ports.png)
 
-Since we don't want anyone can visit this dashboard, we add protection on this component by checking the "Only users authenticated by Single Sign-on can access" box under the **ACCESS** tab: 
+Next, you'll want to protect this dashboard so that only authenticated users (via the Kalm SSO) can view it. You can do this by checking the "Only users authenticated by Single Sign-on can access" box under the **ACCESS** tab: 
 
 ![image](assets/hasura-4-access.png)
 
-The YAML file would be look as follows:
+The corresponding YAML file to do this is shown below:
 
 ```yaml
 apiVersion: v1
@@ -163,23 +163,25 @@ spec:
 
 ## Setup HttpRoute
 
-Let's setup a route for our Hasura service.
+Next you'll want to setup a "Route" for Hasura, so that it can be viewed in your browser.
 
-Thanks to Kalm SaaS, a domain is prepared for each kalm cluster.
+Head over to the Routes tab and create a New Route.
 
-We choose a subdomain for our Hasura service:
+You can choose a subdomain for your Hasura service here:
 
 ![domain](assets/hasuraroute-1-domain.png)
 
-HTTPS is also ready, so let's check it:
+_Note - you can add new domains easily in the Domains & Certs tab. Or you can use a default domain created by Kalm_
+
+HTTPS is also ready, so check the box:
 
 ![https](assets/hasuraroute-2-https.png)
 
-We choose our Hasura service as the target:
+Our target is what we want this domain to route to. In this case, select your Hasura component you exposed in the previous step.
 
 ![target](assets/hasuraroute-3-target.png)
 
-The YAML would be like as follows, of course your domain will be different, update it in case you wanna apply the YAML.
+The corresponding YAML is shown below. Note that your domain will be different.
 
 ```yaml
 apiVersion: core.kalm.dev/v1alpha1
@@ -210,18 +212,18 @@ spec:
   - https
 ```
 
-## Check if everything works
+## Try it out
 
-Go to the Component detail page to check if your Hasura service is up now. If everything works as expected, you should see the green light on the page:
+Go back to your application that contains the Hasura Component to verify that your Hasura service is up now. If everything works as expected, you should see the green light on the page:
 
 ![pod-green](assets/hasura-pod-green.png)
 
-Now visit the domain your have configured and you should see the Hasura dashboard up running:
+Now if you visit the domain your have configured (you can just click the domain directly from the Routes tab) you should see the Hasura dashboard up running!
 
 ![hasura-dashboard](assets/hasura-dashboard.png)
 
-To ensure the access protection is working, open a Private Browser window, and enter the dashboard page again, you should be redirected to a page that ask you to login first.
+To ensure the access protection is working, open a Private Browser window, and enter the dashboard page again, you should be redirected to a page that asks you to login first.
 
 ## Clean Up
 
-For clean up, simply delete the hasura app in the Kalm dashboard. To delete the DB disk, go to the Disks page, and delete the disk there.
+If you want to delete your work here, simply delete the Hasura app within the Kalm dashboard. To delete the DB disk, go to the Disks tab, and delete the disk there.
