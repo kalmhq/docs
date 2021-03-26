@@ -2,26 +2,59 @@
 title: HttpRoute
 ---
 
+`HTTPRoute` defines the route to the service in cluster.
 
+For example, the default configuration for Kalm dashboard would look as follows:
+
+```yaml
+apiVersion: core.kalm.dev/v1alpha1
+kind: HttpRoute
+metadata:
+  name: kalm-route
+spec:
+  hosts:
+    - hello-world.kalm.dev
+  destinations:
+    - host: kalm.kalm-system.svc.cluster.local:80
+      weight: 1
+  paths:
+    - /
+  httpRedirectToHttps: true
+  schemes:
+    - https
+    - http
+  methods:
+    - GET
+    - HEAD
+    - POST
+    - PUT
+    - PATCH
+    - DELETE
+    - OPTIONS
+    - TRACE
+    - CONNECT
+```
+
+The configuration defines that the traffic to domain: `hello-world.kalm.dev` will be directed to the in-cluster service: `kalm.kalm-system.svc.cluster.local:80`. It accepts both HTTP and HTTPS requests, but will auto redirect HTTP to HTTPS.
 
 ## HttpRoute
 
-|  Field    |    Type  | Description | Required |
-| ---- | ---- | ---- | ---- |
-| hosts              | []string               | The destination hosts to which traffic is being sent. Could be a DNS name with wildcard prefix or an IP address. | True     |
-| paths               | []string               | URI paths for prefix-based match                             | True     |
-| methods             | [HttpRouteMethod](#httproutemethod)[] | HTTP Method                                                  | T        |
-| schemes             | [HttpRouteScheme](#httproutescheme)[] | URI Scheme values                                            | T        |
-| stripPath           | bool                   | strip path for URL match                                     | F        |
-| conditions          | [HttpRouteCondition](#httproutecondition)[] | conditions for route match                                   | F        |
-| destinations        | [HttpRouteDestination](#httproutedestination)[] | targets of upstream services                                 | T        |
-| httpRedirectToHttps | bool                   | redirect HTTP to HTTPS                                       | F        |
-| timeout             | *int                   | Timeout for HTTP requests, default is disabled.              | F        |
-| retries             | *[HttpRouteRetries](#httprouteretries) | Retry policy for HTTP requests.                              | F        |
-| mirror              | *[HttpRouteMirror](#httproutemirror) | Mirror HTTP traffic to a another destination in addition to forwarding the requests to the intended destination. | F        |
-| fault               | *[HttpRouteFault](#httproutefault) | Fault injection policy to apply on HTTP traffic at the client side. | F        |
-| delay               | *[HttpRouteDelay](#httproutedelay) | Delay requests before forwarding, emulating various failures such as network issues, overloaded upstream service, etc. | F        |
-| cors             | *[HttpRouteCORS](#httproutecors) | Cross-Origin Resource Sharing policy (CORS).                 | F        |
+| Field               | Type                                            | Description                                                                                                            | Required |
+| ------------------- | ----------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | -------- |
+| hosts               | []string                                        | The destination hosts to which traffic is being sent. Could be a DNS name with wildcard prefix or an IP address.       | True     |
+| paths               | []string                                        | URI paths for prefix-based match                                                                                       | True     |
+| methods             | [HttpRouteMethod](#httproutemethod)[]           | HTTP Method                                                                                                            | T        |
+| schemes             | [HttpRouteScheme](#httproutescheme)[]           | URI Scheme values                                                                                                      | T        |
+| stripPath           | bool                                            | strip path for URL match                                                                                               | F        |
+| conditions          | [HttpRouteCondition](#httproutecondition)[]     | conditions for route match                                                                                             | F        |
+| destinations        | [HttpRouteDestination](#httproutedestination)[] | targets of upstream services                                                                                           | T        |
+| httpRedirectToHttps | bool                                            | redirect HTTP to HTTPS                                                                                                 | F        |
+| timeout             | \*int                                           | Timeout for HTTP requests, default is disabled.                                                                        | F        |
+| retries             | \*[HttpRouteRetries](#httprouteretries)         | Retry policy for HTTP requests.                                                                                        | F        |
+| mirror              | \*[HttpRouteMirror](#httproutemirror)           | Mirror HTTP traffic to a another destination in addition to forwarding the requests to the intended destination.       | F        |
+| fault               | \*[HttpRouteFault](#httproutefault)             | Fault injection policy to apply on HTTP traffic at the client side.                                                    | F        |
+| delay               | \*[HttpRouteDelay](#httproutedelay)             | Delay requests before forwarding, emulating various failures such as network issues, overloaded upstream service, etc. | F        |
+| cors                | \*[HttpRouteCORS](#httproutecors)               | Cross-Origin Resource Sharing policy (CORS).                                                                           | F        |
 
 ## HttpRouteMethod
 
@@ -46,72 +79,73 @@ title: HttpRoute
 
 ## HttpRouteCondition
 
-|  Field    |    Type  | Description | Required |
-| ---- | ---- | ---- | ---- |
-|Type|[HttpRouteConditionType](#httprouteconditiontype)|can be `query` or `header`|T|
-|Name|string||T|
-|Value|string||F|
-|Operator|[HttpRouteConditionOperator](#httprouteconditionoperator)|can be `equal`, `withPrefix` or `matchRegexp`|T|
+| Field    | Type                                                      | Description                                   | Required |
+| -------- | --------------------------------------------------------- | --------------------------------------------- | -------- |
+| Type     | [HttpRouteConditionType](#httprouteconditiontype)         | can be `query` or `header`                    | T        |
+| Name     | string                                                    |                                               | T        |
+| Value    | string                                                    |                                               | F        |
+| Operator | [HttpRouteConditionOperator](#httprouteconditionoperator) | can be `equal`, `withPrefix` or `matchRegexp` | T        |
 
 ## HttpRouteConditionType
 
-| Name  | Description |
-| ----- | ----------- |
+| Name   | Description                           |
+| ------ | ------------------------------------- |
 | query  | Query parameters in URL for matching. |
-| header | header in HTTP request for matching. |
+| header | header in HTTP request for matching.  |
 
 ## HttpRouteConditionOperator
 
-| Name  | Description |
-| ----- | ----------- |
-| equal | same value |
-| withPrefix | condition value is prefix |
+| Name        | Description                                             |
+| ----------- | ------------------------------------------------------- |
+| equal       | same value                                              |
+| withPrefix  | condition value is prefix                               |
 | matchRegexp | condition value should be interpret as regex expression |
 
 ## HttpRouteDestination
 
-|  Field    |    Type  | Description | Required |
-| ---- | ---- | ---- | ---- |
-|host|string|destination host|T|
-| weight | int    | The proportion of traffic to be forwarded to the destination | F |
+| Field  | Type   | Description                                                  | Required |
+| ------ | ------ | ------------------------------------------------------------ | -------- |
+| host   | string | destination host                                             | T        |
+| weight | int    | The proportion of traffic to be forwarded to the destination | F        |
+
 ## HttpRouteRetries
 
-|  Field    |    Type  | Description | Required |
-| ---- | ---- | ---- | ---- |
-| Attempts             | int      | Number of retries for a given request.                       | F        |
+| Field                | Type     | Description                                                              | Required |
+| -------------------- | -------- | ------------------------------------------------------------------------ | -------- |
+| Attempts             | int      | Number of retries for a given request.                                   | F        |
 | PerTtyTimeoutSeconds | int      | Timeout per retry attempt for a given request, in seconds. MUST BE >= 1. | T        |
-| RetryOn              | []string | the conditions under which retry takes place.                | F        |
+| RetryOn              | []string | the conditions under which retry takes place.                            | F        |
 
 ## HttpRouteMirror
 
-|  Field    |    Type  | Description | Required |
-| ---- | ---- | ---- | ---- |
-| percentage  | int      | Percentage of the traffic to be mirrored. | F        |
-| destination | [HttpRouteDestination](#httproutedestination) | Mirror HTTP traffic to this destination | T       |
+| Field       | Type                                          | Description                               | Required |
+| ----------- | --------------------------------------------- | ----------------------------------------- | -------- |
+| percentage  | int                                           | Percentage of the traffic to be mirrored. | F        |
+| destination | [HttpRouteDestination](#httproutedestination) | Mirror HTTP traffic to this destination   | T        |
 
 ## HttpRouteFault
 
-|  Field    |    Type  | Description | Required |
-| ---- | ---- | ---- | ---- |
-| Percentage   | int      | Percentage of requests to be aborted with the error code provided. | F        |
-| ErrorStatus | int | HTTP status code to use to abort the Http request. | F      |
+| Field       | Type | Description                                                        | Required |
+| ----------- | ---- | ------------------------------------------------------------------ | -------- |
+| Percentage  | int  | Percentage of requests to be aborted with the error code provided. | F        |
+| ErrorStatus | int  | HTTP status code to use to abort the Http request.                 | F        |
 
 ## HttpRouteDelay
 
-|  Field    |    Type  | Description | Required |
-| ---- | ---- | ---- | ---- |
-| Percentage   | int      | Percentage of requests on which the delay will be injected. | F        |
-| DelaySeconds | int | Add a fixed delay before forwarding the request, in seconds, MUST be >= 1 | T     |
+| Field        | Type | Description                                                               | Required |
+| ------------ | ---- | ------------------------------------------------------------------------- | -------- |
+| Percentage   | int  | Percentage of requests on which the delay will be injected.               | F        |
+| DelaySeconds | int  | Add a fixed delay before forwarding the request, in seconds, MUST be >= 1 | T        |
 
 ## HttpRouteCORS
 
-|  Field    |    Type  | Description | Required |
-| ---- | ---- | ---- | ---- |
-| AllowOrigins     | [HttpRouteCondition](#httproutecondition)[] | String patterns that match allowed origins. An origin is allowed if any of the string matchers match. If a match is found, then the outgoing Access-Control-Allow-Origin would be set to the origin as provided by the client. | F |
-| AllowMethods     | AllowMethod[]                               | List of HTTP methods allowed to access the resource. | F |
-| AllowCredentials | bool                                        | Indicates whether the caller is allowed to send the actual request (not the preflight) using credentials. | F |
-| AllowHeaders     | string[]                                    | List of HTTP headers that can be used when requesting the resource. Serialized to Access-Control-Allow-Headers header. | F |
-| MaxAgeSeconds    | int                                         | Specifies how long the results of a preflight request can be cached. Translates to the `Access-Control-Max-Age` header. | F |
+| Field            | Type                                        | Description                                                                                                                                                                                                                    | Required |
+| ---------------- | ------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------- |
+| AllowOrigins     | [HttpRouteCondition](#httproutecondition)[] | String patterns that match allowed origins. An origin is allowed if any of the string matchers match. If a match is found, then the outgoing Access-Control-Allow-Origin would be set to the origin as provided by the client. | F        |
+| AllowMethods     | AllowMethod[]                               | List of HTTP methods allowed to access the resource.                                                                                                                                                                           | F        |
+| AllowCredentials | bool                                        | Indicates whether the caller is allowed to send the actual request (not the preflight) using credentials.                                                                                                                      | F        |
+| AllowHeaders     | string[]                                    | List of HTTP headers that can be used when requesting the resource. Serialized to Access-Control-Allow-Headers header.                                                                                                         | F        |
+| MaxAgeSeconds    | int                                         | Specifies how long the results of a preflight request can be cached. Translates to the `Access-Control-Max-Age` header.                                                                                                        | F        |
 
 ## AllowMethod
 

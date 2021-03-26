@@ -2,17 +2,30 @@
 title: ACME Server
 ---
 
+`ACMEServer` defines the ACMEDNS server.
+
+For example, a typical definition of ACMEServer for Kalm-Cloud cluster would look as follows:
+
+```yaml
+apiVersion: core.kalm.dev/v1alpha1
+kind: ACMEServer
+metadata:
+  name: acme-server
+spec:
+  acmeDomain: acme.example-cluster.clusters.kalm-dns.com
+  nsDomain: ns-acme.example-cluster.clusters.kalm-dns.com
+```
+
 ## ACMEServer
 
-|  Field    |    Type  | Description | Required |
-| ---- | ---- | ---- | ---- |
-| acmeDomain | string | sub-domains of this will server TXT records for DNS01 challenge | True |
-| nsDomain | string | the NameServer domain | True |
+| Field      | Type   | Description                                                     | Required |
+| ---------- | ------ | --------------------------------------------------------------- | -------- |
+| acmeDomain | string | sub-domains of this will server TXT records for DNS01 challenge | True     |
+| nsDomain   | string | the NameServer domain                                           | True     |
 
 ## ACMEServerStatus
 
-|  Field    |    Type  | Description |
-| ---- | ---- | ---- |
-| ready | bool | whether this ACME-Server is up running. |
-| ipForNameServer | string | ip for this name server |
-
+| Field           | Type   | Description                             |
+| --------------- | ------ | --------------------------------------- |
+| ready           | bool   | whether this ACME-Server is up running. |
+| ipForNameServer | string | ip for this name server                 |
