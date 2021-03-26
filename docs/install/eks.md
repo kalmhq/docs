@@ -2,29 +2,32 @@
 title: AWS Elastic Kubernetes Service
 ---
 
-There are many different ways to create an EKS cluster on Amazon. We will cover installing with AWS command-line and terraform.
+This guide demonstrates how to create an Amazon EKS cluster using either the AWS Command Line Interface (CLI) or with Terraform. The resulting cluster generated from this guide will be ready to install Kalm.
 
 ## Prerequisites
 
-First, make sure you have the [Amazon CLI](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html) installed.
+Before following either guide below
 
-Next, you will need an AWS service account set up and configured. Configure your [service credentials](https://console.aws.amazon.com/iam/home?#/security_credentials), then configure your AWS CLI with:
+- Install the [Amazon CLI v2](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html)
+- Create and configure an AWS Service Account. Configure the [service credentials](https://console.aws.amazon.com/iam/home?#/security_credentials), then configure the AWS CLI with:
 
 ```
 aws configure
 ```
 
-You'll need to enter your Access key ID and secret.
+The Access key ID and secret for this service account will need to be provided.
 
-## AWS command-line tool
+## Creating an EKS Cluster using The AWS CLI
 
-**install eksctl first**
+In addition to the AWS CLI, this guide uses [eksctl](https://eksctl.io/) - a simple CLI tool for creating clusters on EKS.
 
-for details, see [this](https://docs.aws.amazon.com/eks/latest/userguide/eksctl.html#installing-eksctl).
+**Install eksctl**
 
-**then create k8s cluster**
+Follow Amazon's detailed [eksctl installation instructions](https://docs.aws.amazon.com/eks/latest/userguide/eksctl.html#installing-eksctl) for linux, mac, and windows.
 
-replace <company-name\> & <cluster-name\> & region according to your case
+**Create an EKS Cluster**
+
+Before running the command below, specify <company-name\>, <cluster-name\>, and modify the region if needed. Once modified, run the command to create an EKS cluster.
 
 ```bash
 # create key
@@ -40,23 +43,23 @@ eksctl create cluster \
 --managed
 ```
 
-the creation process takes 15 ~ 30 minutes, once completes, your `kubectl` config is auto-updated to use the newly created cluster as the current cluster, to double-check this, run `kubectl config get-context`, the new cluster should be marked with a `*` in the output.
+The creation process typically takes between 15 and 30 minutes. Once it completes, the `kubectl` config file will automatically update to use the newly created cluster as the current cluster. To double-check this, run `kubectl config get-context`. The new cluster should be marked with a `*` in the output.
 
-## Terraform
+## Creating an EKS Cluster with Terraform
 
-First, make sure you have the following prerequisites installed:
+Alternatively, the EKS Cluster can be created using Terraform. To use Terraform, first:
 
 - Install [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
 - Install [Terraform](https://learn.hashicorp.com/tutorials/terraform/install-cli)
 
-Next, clone the repository below and `cd` into the eks directory
+Next, clone the git repository below and `cd` into the eks directory (script included below for convenience):
 
 ```
 git clone https://github.com/kalmhq/tf-scripts
 cd tf-scripts/eks
 ```
 
-Create the cluster with the following commands:
+Create the cluster by running the following commands:
 
 ```
 terraform init
@@ -67,13 +70,13 @@ Type `yes` to confirm.
 
 This process should take around 5-10 minutes.
 
-Once it finishes, view the newly cluster with:
+Once it finishes, view the newly created cluster with:
 
 ```
 aws eks list-clusters
 ```
 
-Now let's configure kubectl to use the new cluster.
+The following command configures kubectl to use the new cluster.
 
 ```
 aws eks --region us-west-2 update-kubeconfig --name NAME_OF_YOUR_CLUSTER
@@ -87,4 +90,4 @@ kubectl get nodes
 
 ## Next Step
 
-You've now setup an Amazon EKS cluster. To install Kalm onto the cluster, see [Install Kalm Cloud](install-kalm-cloud).
+To install Kalm onto the cluster, see [Install Kalm Cloud](install-kalm-cloud).
