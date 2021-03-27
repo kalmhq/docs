@@ -2,53 +2,52 @@
 title: Google Kubernetes Engine
 ---
 
-We suggest 3 ways to setup your GKE cluster for Kalm:
+This guide demonstrates how to create a GKE cluster using any of the following options:
 
-- GKE web console
-- gcloud command line
+- The Google Cloud Console (web interface at https://console.cloud.google.com/)
+- The gcloud command-line tool
 - Terraform
 
-## GKE web console
+## Create a GKE Cluster using The Google Cloud Console
 
-simplest way to setup GCP k8s cluster is using the Web
+The simplest way to create a GKE cluster is by using the Google Cloud Console, which acts as a web interface for GCP. Use the following steps to create a GKE cluster:
 
-- go to [https://console.cloud.google.com/kubernetes/list](https://console.cloud.google.com/kubernetes/list)
-- click **CREATE CLUSTER**
-- the default values for the cluster are mostly reasonable, so only update the cluster name and other fields that you want to update.
-- click **CREATE**
-- the cluster creation process takes 5 ~ 10 minutes
-- once finished, go to [https://console.cloud.google.com/kubernetes/list](https://console.cloud.google.com/kubernetes/list), click the 3 dots on the right of your cluster, click Connect.
-    - you may need to enable the Kubernetes API
-- Copy the command-line access and run it in your local terminal, this command will help you setup the `kubectl config` to access the cluster you just created.
+- Go to [https://console.cloud.google.com/kubernetes/list](https://console.cloud.google.com/kubernetes/list)
+- Click **CREATE CLUSTER**
+    - Select a cluster name, and customize any other fields as needed (default options will work)
+- Click **CREATE**
+    - The cluster creation process typically takes 5-10 minutes
 
-## gcloud command line
+Once the cluster is created:
+- Go to [https://console.cloud.google.com/kubernetes/list](https://console.cloud.google.com/kubernetes/list), click the 3 dots to the right of the newly created cluster, and select Connect
+    - Enable the Kubernetes API if not already enabled
+- Copy the command-line access command and run it on a local terminal. This command will configure `kubectl config` to access the newly created cluster.
 
-:::note
-As a prerequisite, please install and authenticate the gcloud command line tool. Instructions can be found [here](https://cloud.google.com/sdk/docs).
-:::
+## Create a GKE Cluster using The Gcloud Command-Line Tool
 
-To begin, choose [a Google Cloud project](https://cloud.google.com/resource-manager/docs/creating-managing-projects)
+GKE Clusters can also be created using Google's gcloud CLI. The gcloud CLI is included in their SDK, which can be installed by following instructions in [Google's SDK installation docs](https://cloud.google.com/sdk/docs).
 
-```
-export PROJECT_ID=hello-kalm
-```
-
-Note: If you don't have an existing Google Cloud project, you can create one with:
+GKE clusters are organized within [Google Cloud Projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects). The project name is used in several spots, so for the sake of simplicity this demo sets a PROJECT_ID variable to the name of the project used.
 
 ```
 export PROJECT_ID=hello-kalm
+```
+
+This can be either an existing project or a new one. To create a new project, run the command below (the project name is set to "hello-kalm" in this example):
+
+```
 gcloud projects create $PROJECT_ID
 ```
 
-Make sure [billing is enabled](https://cloud.google.com/billing/docs/how-to/modify-project##confirm_billing_is_enabled_on_a_project).
+In order to create a Kubernetes cluster on GCP [billing must be enabled](https://cloud.google.com/billing/docs/how-to/modify-project##confirm_billing_is_enabled_on_a_project) for that project. By default, new projects will **not** have billing enabled.
 
-You need to enable Kubernetes Engine API as well:
+Additionally, projects need to specifically enable the Kubernetes Engine API, which can be done using the command below:
 
 ```
 gcloud services enable container.googleapis.com
 ```
 
-Next, provision a cluster with 4 nodes
+With billing and engine API enabled, the following commands will provision a cluster with 4 nodes (modify the zone as needed):
 
 ```
 export M_TYPE=n1-standard-2 && \
@@ -62,7 +61,7 @@ gcloud container clusters create $CLUSTER_NAME \
   --project $PROJECT_ID
 ```
 
-The creation of the cluster will take a few minutes. Once complete, configure kubectl to use the new cluster:
+It will take a few minutes to create the cluster. Once complete, configure kubectl to use the new cluster:
 
 ```
 gcloud container clusters get-credentials $CLUSTER_NAME \
@@ -78,34 +77,40 @@ kubectl cluster-info
 
 ## Terraform
 
-:::note
-As a prerequisite, please install and authenticate the gcloud command line tool. Instructions can be found [here](https://cloud.google.com/sdk/docs).
-:::
+Alternatively, the GKE Cluster can be created using Terraform. To use Terraform, first:
 
-If you are more familiar with Terraform, you can provision a demo cluster with the following steps.
+- Install [The gcloud CLI](https://cloud.google.com/sdk/docs).
+- Install [Terraform](https://learn.hashicorp.com/tutorials/terraform/install-cli?in=terraform/gcp-get-started).
+- Install [kubectl](https://kubernetes.io/docs/tasks/tools/included/install-kubectl-gcloud/)
 
-First, [install Terraform](https://learn.hashicorp.com/tutorials/terraform/install-cli?in=terraform/gcp-get-started).
+GKE clusters are organized within [Google Cloud Projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects). A new project can be created with:
 
-Give Terraform access to the Application Default Credentials (ADC).
+```
+gcloud projects create PROJECT-NAME-HERE
+```
+
+Use the `gcloud init` command and select the new (or existing) project ([usage details here](https://cloud.google.com/sdk/gcloud/reference/init)).
+
+Terraform also requires access to the Application Default Credentials (ADC), which can be granted using the following command:
 
 ```
 gcloud auth application-default login
 ```
 
-You will need to have the Kubernetes Engine API enabled for your project as well:
+The Kubernetes Engine API will need to be enabled for the project as well, which can be done using the following command:
 
 ```
 gcloud services enable container.googleapis.com
 ```
 
-Clone the repository below.
+Clone the repository below to download Kalm's installation scripts for Terraform.
 
 ```
 git clone https://github.com/kalmhq/tf-scripts
 cd tf-scripts/gke
 ```
 
-Open 'terraform.tfvars', and specify the ID of the Google Cloud project you would like to install to.
+Open 'terraform.tfvars' in a text editor and specify the ID of the current Google Cloud project. The region can be specified as well.
 
 ```
 # terraform.tfvars
@@ -113,7 +118,7 @@ project_id = "REPLACE_ME"
 region     = "us-west2"
 ```
 
-Install the cluster with the following commands.
+With these settings configured, create the cluster by using the following commands:
 
 ```
 terraform init
@@ -122,7 +127,7 @@ terraform apply
 
 Type `yes` to confirm the installation.
 
-After 5-10 minutes, the cluster should be created. Once complete, retrieve the name of the newly created cluster.
+The process should take around 5-10 minutes. Once complete, retrieve the name of the newly created cluster.
 
 ```
 terraform output
@@ -134,7 +139,7 @@ Configure kubectl to use the new cluster.
 gcloud container clusters get-credentials NAME_OF_YOUR_CLUSTER --zone ZONE_OF_CLUSTER
 ```
 
-- *Note - You can see your project's zone on your [gcloud console](https://console.cloud.google.com/) or in your CLI enter: `gcloud info | grep "zone"`*
+- *Note - identify the project's zone either on [gcloud console](https://console.cloud.google.com/) or using the CLI by entering: `gcloud info | grep "zone"`*
 
 Verify the cluster is properly setup and accessible.
 
@@ -144,4 +149,4 @@ kubectl cluster-info
 
 ## Next Step
 
-You've now setup a GKE cluster. To install Kalm onto the cluster, see [Install Kalm Cloud](install-kalm-cloud).
+To install Kalm onto the cluster, see [Install Kalm Cloud](install-kalm-cloud).
