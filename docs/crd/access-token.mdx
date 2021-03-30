@@ -2,30 +2,50 @@
 title: Access Token
 ---
 
+`AccessToken` defines a token with permissions.
+
+For example, the following configurations sets up a token with edit permission for the component named `wordpress` in the default namespace:
+
+```yaml
+apiVersion: core.kalm.dev/v1alpha1
+kind: AccessToken
+metadata:
+  name: c153f45fd4344...95d29ec2a3bad2d8
+spec:
+  creator: admin@kalm.dev
+  memo: token for update webhook
+  rules:
+    - kind: components
+      name: wordpress
+      namespace: default
+      verb: edit
+  token: 4ddb864cfx56pkxw
+```
+
 ## AccessToken
 
-A model to describe general access token permissions, It's designed to be easy to translate to [casbin](https://casbin.org/) policies. 
+A model to describe general access token permissions, It's designed to be easy to translate to [casbin](https://casbin.org/) policies.
 
 This model should NOT be generate manually through Kubernetes api directly. Instead, use kalm apis to manage records.
 
-| Name      | Type                                                         | Description                        | Required |
-| --------- | ------------------------------------------------------------ | ---------------------------------- | -------- |
-| memo      | string                                                       | memo for this token                | False    |
-| token     | string                                                       | token value, minimum length is 64  | True     |
-| rules     | [AccessTokenRule](#accesstokenrule)[]                        | rules of this token                | True     |
-| creator   | string                                                       | creator of this token              | True     |
-| expiredAt | *[metav1.Time](https://pkg.go.dev/k8s.io/apimachinery/pkg/apis/meta/v1#Time) | when will this access token expire | False    |
+| Name      | Type                                                                          | Description                        | Required |
+| --------- | ----------------------------------------------------------------------------- | ---------------------------------- | -------- |
+| memo      | string                                                                        | memo for this token                | False    |
+| token     | string                                                                        | token value, minimum length is 64  | True     |
+| rules     | [AccessTokenRule](#accesstokenrule)[]                                         | rules of this token                | True     |
+| creator   | string                                                                        | creator of this token              | True     |
+| expiredAt | \*[metav1.Time](https://pkg.go.dev/k8s.io/apimachinery/pkg/apis/meta/v1#Time) | when will this access token expire | False    |
 
 ## AccessTokenRule
 
 describe the permission this token has.
 
-| Name      | Type                                                         | Description                        | Required |
-| ---- | ---- | ---- | ---- |
-| verb | [AccessTokenVerb](#accessTokenVerb) | what this token can do | True |
-| namespace | string | namespace this rule has effect on, value `*` means all namespaces. | True |
-| kind | string | kind of resource this rule has effect on, e.g. Kalm's Component, value `*` means all kinds of resources. | True |
-| name | string | name of resource this rule has effect on, value `*` means all resources of the given `kind`. | True |
+| Name      | Type                                | Description                                                                                              | Required |
+| --------- | ----------------------------------- | -------------------------------------------------------------------------------------------------------- | -------- |
+| verb      | [AccessTokenVerb](#accessTokenVerb) | what this token can do                                                                                   | True     |
+| namespace | string                              | namespace this rule has effect on, value `*` means all namespaces.                                       | True     |
+| kind      | string                              | kind of resource this rule has effect on, e.g. Kalm's Component, value `*` means all kinds of resources. | True     |
+| name      | string                              | name of resource this rule has effect on, value `*` means all resources of the given `kind`.             | True     |
 
 ## AccessTokenVerb
 

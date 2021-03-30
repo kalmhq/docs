@@ -2,7 +2,12 @@
 title: How To Install Kalm Cloud
 ---
 
+Kalm installs smoothly into almost any existing Kubernetes cluster.
+
 1. Go to [http://kalm.dev/signin](http://kalm.dev/signin)
+
+Signing in can be done with either Github or Google OAuth, which effectively creates a Kalm account.
+
 2. After signing in, click the **INSTALL NEW CLUSTER** button in the upper right corner:
 
     ![How%20To%20Install%20Kalm%20Cloud%202efc1e7deda144498352c5303d983da0/Untitled.png](../assets/kalm-cloud-1-new-cluster.png)
@@ -11,27 +16,29 @@ title: How To Install Kalm Cloud
 
 ![How%20To%20Install%20Kalm%20Cloud%202efc1e7deda144498352c5303d983da0/Untitled%201.png](../assets/kalm-cloud-2-cluster-name.png)
 
-4. Before running the install command, make sure your `kubectl` is pointing at the cluster for Kalm, run `kubectl config get-context`, the new cluster should be marked with a `*` in the output.
+4. Before running the installation script, double check to make sure `kubectl` is pointing at the desired cluster. Running `kubectl config get-context` will mark a new cluster with a `*` in the output.
 
 5.  Run the install script:
 
 ![How%20To%20Install%20Kalm%20Cloud%202efc1e7deda144498352c5303d983da0/Untitled%202.png](../assets/kalm-cloud-3-install-script.png)
 
-the install process will be updated during the execution:
+The installation process will continuously update while it runs:
 
 ![How%20To%20Install%20Kalm%20Cloud%202efc1e7deda144498352c5303d983da0/Untitled%203.png](../assets/kalm-cloud-4-installing.png)
 
-usually the whole process took 15 - 30 minutes.
+Typically, the installation takes around 15-30 minutes to complete.
 
 6. Once done, click the **GO TO DASHBOARD** button to start using Kalm.
 
 ![How%20To%20Install%20Kalm%20Cloud%202efc1e7deda144498352c5303d983da0/Untitled%204.png](../assets/kalm-cloud-5-install-succeed.png)
 
-# Troubleshooting
+# Troubleshooting (WORK IN PROGRESS)
 
-possible issues for each install step:
+While installing Kalm is designed to be as smooth as possible, we have provided some additional information here to help with troubleshooting just in case something goes wrong during the process. The troubleshooting guides below are categorized by which step of the installation path fails.
 
-- INSTALL_CERT_MANAGER: Kalm is installing Cert-Manager, if this step stuck, very likely the cluster is having problems installing the pods, run `kubectl get pods -n cert-manager` to see if anything is going wrong, a normal running cluster should return something similiar as:
+Possible issues for each install step:
+
+- INSTALL_CERT_MANAGER: Kalm is installing Cert-Manager. If this step is stuck, the cluster is likely having problems installing the pods. Run `kubectl get pods -n cert-manager` to see if anything is going wrong. Most normal clusters should return something similiar to:
 
     ```bash
     ➜  kubectl get pods -n cert-manager
@@ -41,7 +48,7 @@ possible issues for each install step:
     cert-manager-webhook-7c75b89bf6-p9lwx      1/1     Running   0          29d
     ```
 
-- INSTALL_ISTIO: Kalm is installing Istio, if this step stuck, very likely the cluster is having problems installing the pods, run `kubectl get pods -n istio-operator` and `kubectl get pods -n istio-system` to see if anything is going wrong, a normal running cluster should return something similar as:
+- INSTALL_ISTIO: Kalm is installing Istio. If this step is stuck, the cluster is (perhaps obviously) likely having problems installing Istio, run `kubectl get pods -n istio-operator` and `kubectl get pods -n istio-system` to see if anything is going wrong, a normal running cluster should return something similar as:
 
     ```bash
     ➜  kubectl get pods -n istio-operator
