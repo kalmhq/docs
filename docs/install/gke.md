@@ -2,7 +2,7 @@
 title: Google Kubernetes Engine
 ---
 
-We suggest 3 ways to setup your GKE cluster for Kalm:
+We suggest 3 ways to setup the GKE cluster for Kalm:
 
 - GKE web console
 - gcloud command line
@@ -10,7 +10,7 @@ We suggest 3 ways to setup your GKE cluster for Kalm:
 
 ## GKE web console
 
-simplest way to setup GCP k8s cluster is using the Web
+The simplest way to setup GCP k8s cluster is using the web:
 
 - go to [https://console.cloud.google.com/kubernetes/list](https://console.cloud.google.com/kubernetes/list)
 - click **CREATE CLUSTER**
@@ -23,9 +23,11 @@ simplest way to setup GCP k8s cluster is using the Web
 
 ## gcloud command line
 
-:::note
-As a prerequisite, please install and authenticate the gcloud command line tool. Instructions can be found [here](https://cloud.google.com/sdk/docs).
+:::note prerequisite
+- Install and authenticate the gcloud command line tool. Instructions can be found [here](https://cloud.google.com/sdk/docs).
+- Install `kubectl`, Instructions can be found [here](https://kubernetes.io/docs/tasks/tools/#kubectl).
 :::
+
 
 To begin, choose [a Google Cloud project](https://cloud.google.com/resource-manager/docs/creating-managing-projects)
 
@@ -78,8 +80,9 @@ kubectl cluster-info
 
 ## Terraform
 
-:::note
-As a prerequisite, please install and authenticate the gcloud command line tool. Instructions can be found [here](https://cloud.google.com/sdk/docs).
+:::note prerequisite
+- Install and authenticate the gcloud command line tool. Instructions can be found [here](https://cloud.google.com/sdk/docs).
+- Install `kubectl`, Instructions can be found [here](https://kubernetes.io/docs/tasks/tools/#kubectl).
 :::
 
 If you are more familiar with Terraform, you can provision a demo cluster with the following steps.
@@ -101,8 +104,8 @@ gcloud services enable container.googleapis.com
 Clone the repository below.
 
 ```
-git clone https://github.com/kalmhq/tf-scripts
-cd tf-scripts/gke
+git clone https://github.com/kalmhq/terraform
+cd terraform/gke
 ```
 
 Open 'terraform.tfvars', and specify the ID of the Google Cloud project you would like to install to.
