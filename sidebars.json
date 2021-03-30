@@ -5,13 +5,23 @@
       "label": "Getting Started",
       "collapsed": false,
       "items": [
-        "intro",
-        "install-local",
-        "install-local-minikube",
-        "install-local-k3s",
-        "install-local-kind",
-        "get-started"
-      ]
+        "intro", 
+        {
+          "type": "category",
+          "label": "Installation",
+          "items": [
+            "install/install",
+            "install/minikube",
+        "install/install-local-k3s",
+        "install/install-local-kind",
+            "install/eks",
+            "install/gke",
+            "install/install-kalm-cloud",
+            "install/install-open-source",
+            "install/uninstall"
+          ]
+        },
+        "get-started"]
     },
     {
       "type": "category",
