@@ -106,8 +106,8 @@ gcloud services enable container.googleapis.com
 Clone the repository below to download Kalm's installation scripts for Terraform.
 
 ```
-git clone https://github.com/kalmhq/tf-scripts
-cd tf-scripts/gke
+git clone https://github.com/kalmhq/terraform
+cd terraform/gke
 ```
 
 Open 'terraform.tfvars' in a text editor and specify the ID of the current Google Cloud project. The region can be specified as well.

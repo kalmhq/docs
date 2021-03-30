@@ -3,43 +3,39 @@ title: AWS Elastic Kubernetes Service
 ---
 
 This guide demonstrates how to create an Amazon EKS cluster using either the AWS Command Line Interface (CLI) or with Terraform. The resulting cluster generated from this guide will be ready to install Kalm.
-
 ## Prerequisites
 
 Before following either guide below
 
-- Install the [Amazon CLI v2](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html)
-- Create and configure an AWS Service Account. Configure the [service credentials](https://console.aws.amazon.com/iam/home?#/security_credentials), then configure the AWS CLI with:
-
-```
-aws configure
-```
-
-The Access key ID and secret for this service account will need to be provided.
+- Install [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
+- Install the [the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html).
+- Configure the AWS CLI with:
+  ```shell
+  $ aws configure
+  AWS Access Key ID [None]: AKIAxxxxxxxxxEXAMPLE
+  AWS Secret Access Key [None]: wJalrXUtxxxxxxxxxxxxxxXAMPLEKEY
+  Default region name [None]: us-west-2
+  Default output format [None]: json
+  ```
+  Access key ID and secret need to be entered in the prompt, find the access key information at [your aws page](https://console.aws.amazon.com/iam/home?#/security_credentials), create an access key if no one exists yet.
 
 ## Creating an EKS Cluster using The AWS CLI
 
 In addition to the AWS CLI, this guide uses [eksctl](https://eksctl.io/) - a simple CLI tool for creating clusters on EKS.
 
-**Install eksctl**
-
-Follow Amazon's detailed [eksctl installation instructions](https://docs.aws.amazon.com/eks/latest/userguide/eksctl.html#installing-eksctl) for linux, mac, and windows.
-
-**Create an EKS Cluster**
-
-Before running the command below, specify <company-name\>, <cluster-name\>, and modify the region if needed. Once modified, run the command to create an EKS cluster.
+To install eksctl, follow Amazon's detailed [eksctl installation instructions](https://docs.aws.amazon.com/eks/latest/userguide/eksctl.html#installing-eksctl) for linux, mac, and windows.
 
 ```bash
 # create key
-aws ec2 create-key-pair --region us-east-2 --key-name keypair-for-<company-name>
+aws ec2 create-key-pair --region us-east-2 --key-name keypair-for-kalm # <--- key-name can be updated according to your needs
 
 # create eks cluster, for details, see: https://docs.aws.amazon.com/eks/latest/userguide/getting-started-eksctl.html
 eksctl create cluster \
---name <cluster-name> \
---region us-east-2 \
+--name kalm-on-eks \  # <--- cluster name can be updated according to your needs
+--region us-east-2 \  # <--- region can be updated according to your needs
 --with-oidc \
 --ssh-access \
---ssh-public-key keypair-for-<company-name> \
+--ssh-public-key keypair-for-kalm \ # <--- key can be updated according to your needs, make sure the key exist though
 --managed
 ```
 
@@ -55,8 +51,8 @@ Alternatively, the EKS Cluster can be created using Terraform. To use Terraform,
 Next, clone the git repository below and `cd` into the eks directory (script included below for convenience):
 
 ```
-git clone https://github.com/kalmhq/tf-scripts
-cd tf-scripts/eks
+git clone https://github.com/kalmhq/terraform
+cd terraform/eks
 ```
 
 Create the cluster by running the following commands:
@@ -68,7 +64,7 @@ terraform apply
 
 Type `yes` to confirm.
 
-This process should take around 5-10 minutes.
+This process should take around 15-30 minutes.
 
 Once it finishes, view the newly created cluster with:
 
